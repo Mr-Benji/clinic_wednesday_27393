@@ -1,0 +1,41 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/api/offices/search?name=card"
+  method: GET
+  queryParams:
+    name: card
+response:
+  statusCode: 200
+  statusText: ""
+  headers:
+    content-type: application/json
+    transfer-encoding: chunked
+    date: Wed, 07 Oct 2026 21:37:58 GMT
+    keep-alive: timeout=60
+    connection: keep-alive
+  body:
+    type: json
+    content: |-
+      [
+        {
+          "id": "ccbbcd58-be11-4e77-a259-07b1232e669c",
+          "name": "Cardiology",
+          "officeNumber": 101
+        },
+        {
+          "id": "35550fd0-c349-4ebf-8af4-e34c8e5519fa",
+          "name": "Cardiology",
+          "officeNumber": 103
+        },
+        {
+          "id": "697ce044-b470-4152-9e93-1af5bd4d3127",
+          "name": "Cardiology",
+          "officeNumber": 104
+        },
+        {
+          "id": "846e679f-d6c5-470b-ae9a-aa8e82172d63",
+          "name": "Cardiology",
+          "officeNumber": 1120
+        }
+      ]
+order: 1791409468066

@@ -1,0 +1,22 @@
+$kind: http-request
+url: "{{baseUrl}}/api/doctors/save"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+        "firstName": "Test",
+        "lastName": "Doctor",
+        "dateOfBirth": "1990-01-01"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status code is 409", function () {
+          pm.response.to.have.status(409);
+      });
+    language: text/javascript
+examples: .resources/Save the same doctor again.resources/examples
+order: 2000

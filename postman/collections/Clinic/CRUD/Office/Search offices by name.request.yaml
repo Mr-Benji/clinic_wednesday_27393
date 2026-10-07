@@ -1,0 +1,14 @@
+$kind: http-request
+url: "{{baseUrl}}/api/offices/search?name=card"
+method: GET
+queryParams:
+  name: card
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status code is 200", function () {
+          pm.response.to.have.status(200);
+      });
+    language: text/javascript
+examples: .resources/Search offices by name.resources/examples
+order: 5000

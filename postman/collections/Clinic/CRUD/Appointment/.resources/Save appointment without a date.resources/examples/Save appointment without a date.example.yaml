@@ -1,0 +1,27 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/api/appointments/save?patientId={{tempPatientId}}&doctorId={{tempDoctorId}}"
+  method: POST
+  headers:
+    Content-Type: application/json
+  queryParams:
+    patientId: "{{tempPatientId}}"
+    doctorId: "{{tempDoctorId}}"
+  body:
+    type: json
+    content: |-
+      {
+          "reason": "No date"
+      }
+response:
+  statusCode: 400
+  statusText: ""
+  headers:
+    content-type: text/plain;charset=UTF-8
+    content-length: "28"
+    date: Wed, 07 Oct 2026 21:39:41 GMT
+    connection: close
+  body:
+    type: text
+    content: Appointment date is required
+order: 1791409862490

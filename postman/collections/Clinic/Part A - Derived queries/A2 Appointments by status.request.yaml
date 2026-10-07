@@ -1,0 +1,14 @@
+$kind: http-request
+url: "{{baseUrl}}/api/appointments/by-status?status=SCHEDULED"
+method: GET
+queryParams:
+  status: SCHEDULED
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status code is 200", function () {
+          pm.response.to.have.status(200);
+      });
+    language: text/javascript
+examples: .resources/A2 Appointments by status.resources/examples
+order: 4000

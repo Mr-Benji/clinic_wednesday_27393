@@ -1,0 +1,29 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/api/doctors/update/{{tempDoctorId}}?officeId={{officeId}}"
+  method: PUT
+  headers:
+    Content-Type: application/json
+  queryParams:
+    officeId: "{{officeId}}"
+  body:
+    type: json
+    content: |-
+      {
+          "firstName": "Test",
+          "lastName": "Doctor",
+          "dateOfBirth": "1990-02-02"
+      }
+response:
+  statusCode: 409
+  statusText: ""
+  headers:
+    content-type: text/plain;charset=UTF-8
+    content-length: "44"
+    date: Wed, 07 Oct 2026 21:38:55 GMT
+    keep-alive: timeout=60
+    connection: keep-alive
+  body:
+    type: text
+    content: Office is already assigned to another doctor
+order: 1791409671154

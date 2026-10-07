@@ -1,0 +1,18 @@
+$kind: http-request
+url: "{{baseUrl}}/api/patients/by-last-name?lastName=nobody"
+method: GET
+queryParams:
+  lastName: nobody
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status code is 200", function () {
+          pm.response.to.have.status(200);
+      });
+
+      pm.test("Empty list", function () {
+          pm.expect(pm.response.json()).to.eql([]);
+      });
+    language: text/javascript
+examples: .resources/A1 Patients by last name (no match).resources/examples
+order: 3000

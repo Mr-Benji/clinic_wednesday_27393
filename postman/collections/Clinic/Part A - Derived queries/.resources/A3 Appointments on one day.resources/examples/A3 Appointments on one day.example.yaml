@@ -1,0 +1,91 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/api/appointments/between?start=2026-10-20&end=2026-10-20"
+  method: GET
+  queryParams:
+    start: 2026-10-20
+    end: 2026-10-20
+response:
+  statusCode: 200
+  statusText: ""
+  headers:
+    content-type: application/json
+    transfer-encoding: chunked
+    date: Wed, 07 Oct 2026 21:58:06 GMT
+    keep-alive: timeout=60
+    connection: keep-alive
+  body:
+    type: json
+    content: |-
+      [
+        {
+          "appointmentDate": "2026-10-20",
+          "doctor": {
+            "dateOfBirth": "1980-04-30T22:00:00.000Z",
+            "firstName": "Jean",
+            "id": "16157faf-0052-46d0-879d-3197b2ceb1ca",
+            "lastName": "Mugisha",
+            "office": {
+              "id": "ccbbcd58-be11-4e77-a259-07b1232e669c",
+              "name": "Cardiology",
+              "officeNumber": 101
+            }
+          },
+          "id": "e516051f-ad4b-4460-af9b-1efb6380c287",
+          "patient": {
+            "dateOfBirth": "1995-02-09T22:00:00.000Z",
+            "firstName": "Alice",
+            "id": "8aeee4f7-4d39-4d9f-b9a0-8689e788a2d4",
+            "lastName": "Uwase"
+          },
+          "reason": "Follow-up",
+          "status": "SCHEDULED"
+        },
+        {
+          "appointmentDate": "2026-10-20",
+          "doctor": {
+            "dateOfBirth": "1980-04-30T22:00:00.000Z",
+            "firstName": "Jean",
+            "id": "16157faf-0052-46d0-879d-3197b2ceb1ca",
+            "lastName": "Mugisha",
+            "office": {
+              "id": "ccbbcd58-be11-4e77-a259-07b1232e669c",
+              "name": "Cardiology",
+              "officeNumber": 101
+            }
+          },
+          "id": "771bdd68-2cdb-4f7e-853a-291a51dbd16b",
+          "patient": {
+            "dateOfBirth": "1990-07-19T22:00:00.000Z",
+            "firstName": "Eric",
+            "id": "667c92f4-cb72-4695-86c0-68c724fa0e98",
+            "lastName": "Habimana"
+          },
+          "reason": "Blood pressure check",
+          "status": "CONFIRMED"
+        },
+        {
+          "appointmentDate": "2026-10-20",
+          "doctor": {
+            "dateOfBirth": "1980-04-30T22:00:00.000Z",
+            "firstName": "Jean",
+            "id": "16157faf-0052-46d0-879d-3197b2ceb1ca",
+            "lastName": "Mugisha",
+            "office": {
+              "id": "ccbbcd58-be11-4e77-a259-07b1232e669c",
+              "name": "Cardiology",
+              "officeNumber": 101
+            }
+          },
+          "id": "91b5a130-6c73-4816-acd8-74abb7b76642",
+          "patient": {
+            "dateOfBirth": "2001-11-14T22:00:00.000Z",
+            "firstName": "Grace",
+            "id": "feef9285-3361-4005-85f1-990171db7aeb",
+            "lastName": "Ingabire"
+          },
+          "reason": "Palpitations",
+          "status": "SCHEDULED"
+        }
+      ]
+order: 1791410292317

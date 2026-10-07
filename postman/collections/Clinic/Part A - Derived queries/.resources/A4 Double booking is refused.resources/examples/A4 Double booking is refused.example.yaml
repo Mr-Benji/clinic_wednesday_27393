@@ -1,0 +1,29 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/api/appointments/save?patientId={{patientId}}&doctorId={{doctorId}}"
+  method: POST
+  headers:
+    Content-Type: application/json
+  queryParams:
+    patientId: "{{patientId}}"
+    doctorId: "{{doctorId}}"
+  body:
+    type: json
+    content: |-
+      {
+          "appointmentDate": "2026-10-20",
+          "reason": "Second booking"
+      }
+response:
+  statusCode: 409
+  statusText: ""
+  headers:
+    content-type: text/plain;charset=UTF-8
+    content-length: "37"
+    date: Wed, 07 Oct 2026 21:58:51 GMT
+    keep-alive: timeout=60
+    connection: keep-alive
+  body:
+    type: text
+    content: Doctor is already booked on that date
+order: 1791410345768

@@ -1,0 +1,23 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/api/patients/{{patientId}}"
+  method: GET
+response:
+  statusCode: 200
+  statusText: ""
+  headers:
+    content-type: application/json
+    transfer-encoding: chunked
+    date: Wed, 07 Oct 2026 21:39:16 GMT
+    keep-alive: timeout=60
+    connection: keep-alive
+  body:
+    type: json
+    content: |-
+      {
+        "dateOfBirth": "1995-02-09T22:00:00.000Z",
+        "firstName": "Alice",
+        "id": "8aeee4f7-4d39-4d9f-b9a0-8689e788a2d4",
+        "lastName": "Uwase"
+      }
+order: 1791409745087

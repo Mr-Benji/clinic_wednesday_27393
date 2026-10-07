@@ -1,0 +1,27 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/api/patients/save"
+  method: POST
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: |-
+      {
+          "firstName": "Test",
+          "lastName": "Patient",
+          "dateOfBirth": "2000-01-01"
+      }
+response:
+  statusCode: 200
+  statusText: ""
+  headers:
+    content-type: text/plain;charset=UTF-8
+    content-length: "26"
+    date: Wed, 07 Oct 2026 21:39:06 GMT
+    keep-alive: timeout=60
+    connection: keep-alive
+  body:
+    type: text
+    content: Patient saved successfully
+order: 1791409703315

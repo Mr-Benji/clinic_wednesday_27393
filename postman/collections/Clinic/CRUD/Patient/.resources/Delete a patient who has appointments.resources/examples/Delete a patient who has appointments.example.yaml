@@ -1,0 +1,17 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/api/patients/delete/{{patientId}}"
+  method: DELETE
+response:
+  statusCode: 409
+  statusText: ""
+  headers:
+    content-type: text/plain;charset=UTF-8
+    content-length: "24"
+    date: Wed, 07 Oct 2026 21:39:26 GMT
+    keep-alive: timeout=60
+    connection: keep-alive
+  body:
+    type: text
+    content: Patient has appointments
+order: 1791409777732

@@ -1,0 +1,33 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/api/patients/by-last-name?lastName=uwase"
+  method: GET
+  queryParams:
+    lastName: uwase
+response:
+  statusCode: 200
+  statusText: ""
+  headers:
+    content-type: application/json
+    transfer-encoding: chunked
+    date: Wed, 07 Oct 2026 21:54:46 GMT
+    keep-alive: timeout=60
+    connection: keep-alive
+  body:
+    type: json
+    content: |-
+      [
+        {
+          "dateOfBirth": "1995-02-09T22:00:00.000Z",
+          "firstName": "Alice",
+          "id": "8aeee4f7-4d39-4d9f-b9a0-8689e788a2d4",
+          "lastName": "Uwase"
+        },
+        {
+          "dateOfBirth": "1998-06-02T22:00:00.000Z",
+          "firstName": "Diane",
+          "id": "a827e6e4-6a7d-48c3-b2d2-f24fa31cf292",
+          "lastName": "Uwase"
+        }
+      ]
+order: 1791410089810

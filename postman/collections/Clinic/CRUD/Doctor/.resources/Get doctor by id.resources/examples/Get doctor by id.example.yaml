@@ -1,0 +1,28 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/api/doctors/{{doctorId}}"
+  method: GET
+response:
+  statusCode: 200
+  statusText: ""
+  headers:
+    content-type: application/json
+    transfer-encoding: chunked
+    date: Wed, 07 Oct 2026 21:38:45 GMT
+    keep-alive: timeout=60
+    connection: keep-alive
+  body:
+    type: json
+    content: |-
+      {
+        "dateOfBirth": "1980-04-30T22:00:00.000Z",
+        "firstName": "Jean",
+        "id": "16157faf-0052-46d0-879d-3197b2ceb1ca",
+        "lastName": "Mugisha",
+        "office": {
+          "id": "ccbbcd58-be11-4e77-a259-07b1232e669c",
+          "name": "Cardiology",
+          "officeNumber": 101
+        }
+      }
+order: 1791409598806

@@ -1,0 +1,55 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/api/patients/all"
+  method: GET
+response:
+  statusCode: 200
+  statusText: ""
+  headers:
+    content-type: application/json
+    transfer-encoding: chunked
+    date: Wed, 07 Oct 2026 21:39:11 GMT
+    keep-alive: timeout=60
+    connection: keep-alive
+  body:
+    type: json
+    content: |-
+      [
+        {
+          "dateOfBirth": "1995-02-09T22:00:00.000Z",
+          "firstName": "Alice",
+          "id": "8aeee4f7-4d39-4d9f-b9a0-8689e788a2d4",
+          "lastName": "Uwase"
+        },
+        {
+          "dateOfBirth": "1998-06-02T22:00:00.000Z",
+          "firstName": "Diane",
+          "id": "a827e6e4-6a7d-48c3-b2d2-f24fa31cf292",
+          "lastName": "Uwase"
+        },
+        {
+          "dateOfBirth": "1990-07-19T22:00:00.000Z",
+          "firstName": "Eric",
+          "id": "667c92f4-cb72-4695-86c0-68c724fa0e98",
+          "lastName": "Habimana"
+        },
+        {
+          "dateOfBirth": "2001-11-14T22:00:00.000Z",
+          "firstName": "Grace",
+          "id": "feef9285-3361-4005-85f1-990171db7aeb",
+          "lastName": "Ingabire"
+        },
+        {
+          "dateOfBirth": "1987-04-07T22:00:00.000Z",
+          "firstName": "Kevin",
+          "id": "643200a0-77f0-4ed7-9708-397de8edf144",
+          "lastName": "Nshimiyimana"
+        },
+        {
+          "dateOfBirth": "1999-12-31T22:00:00.000Z",
+          "firstName": "Test",
+          "id": "355f27cf-1891-45f7-b792-c44c68f2ad6a",
+          "lastName": "Patient"
+        }
+      ]
+order: 1791409727328

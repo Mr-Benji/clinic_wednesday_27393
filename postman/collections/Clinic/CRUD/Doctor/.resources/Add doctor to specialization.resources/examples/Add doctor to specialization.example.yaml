@@ -1,0 +1,17 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/api/specializations/{{tempSpecializationId}}/add-doctor/{{tempDoctorId}}"
+  method: POST
+response:
+  statusCode: 200
+  statusText: ""
+  headers:
+    content-type: text/plain;charset=UTF-8
+    content-length: "43"
+    date: Wed, 07 Oct 2026 21:39:00 GMT
+    keep-alive: timeout=60
+    connection: keep-alive
+  body:
+    type: text
+    content: Doctor added to specialization successfully
+order: 1791409685877

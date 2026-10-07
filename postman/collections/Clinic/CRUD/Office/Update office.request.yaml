@@ -1,0 +1,21 @@
+$kind: http-request
+url: "{{baseUrl}}/api/offices/update/{{tempOfficeId}}"
+method: PUT
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+        "name": "Test office updated",
+        "officeNumber": 105
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status code is 200", function () {
+          pm.response.to.have.status(200);
+      });
+    language: text/javascript
+examples: .resources/Update office.resources/examples
+order: 6000

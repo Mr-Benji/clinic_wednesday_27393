@@ -1,0 +1,17 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/api/patients/delete/{{tempPatientId}}"
+  method: DELETE
+response:
+  statusCode: 200
+  statusText: ""
+  headers:
+    content-type: text/plain;charset=UTF-8
+    content-length: "28"
+    date: Wed, 07 Oct 2026 21:40:20 GMT
+    keep-alive: timeout=60
+    connection: keep-alive
+  body:
+    type: text
+    content: Patient deleted successfully
+order: 1791410015802

@@ -1,0 +1,28 @@
+$kind: http-request
+url: "{{baseUrl}}/api/appointments/save?patientId={{patientId}}&doctorId={{doctorId}}"
+method: POST
+headers:
+  Content-Type: application/json
+queryParams:
+  patientId: "{{patientId}}"
+  doctorId: "{{doctorId}}"
+body:
+  type: json
+  content: |-
+    {
+        "appointmentDate": "2026-10-20",
+        "reason": "Second booking"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status code is 409", function () {
+          pm.response.to.have.status(409);
+      });
+
+      pm.test("Message", function () {
+          pm.expect(pm.response.text()).to.eql("Doctor is already booked on that date");
+      });
+    language: text/javascript
+examples: .resources/A4 Double booking is refused.resources/examples
+order: 8000

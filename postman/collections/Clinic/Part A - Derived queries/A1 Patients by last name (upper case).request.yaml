@@ -1,0 +1,14 @@
+$kind: http-request
+url: "{{baseUrl}}/api/patients/by-last-name?lastName=UWASE"
+method: GET
+queryParams:
+  lastName: UWASE
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status code is 200", function () {
+          pm.response.to.have.status(200);
+      });
+    language: text/javascript
+examples: .resources/A1 Patients by last name (upper case).resources/examples
+order: 2000

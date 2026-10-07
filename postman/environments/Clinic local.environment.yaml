@@ -1,0 +1,16 @@
+name: Clinic local
+values:
+  - key: baseUrl
+    value: 'http://localhost:8082'
+  - key: officeId
+    value: ccbbcd58-be11-4e77-a259-07b1232e669c
+  - key: doctorId
+    value: 16157faf-0052-46d0-879d-3197b2ceb1ca
+  - key: doctorNoOfficeId
+    value: 5e3f5ab8-eff1-46bc-8610-ddeaa5c77db5
+  - key: patientId
+    value: 8aeee4f7-4d39-4d9f-b9a0-8689e788a2d4
+  - key: specializationId
+    value: ddd00864-7b25-466b-8525-1eeb9b27242b
+  - key: appointmentId
+    value: 1af453a9-fd97-496f-9fcc-2ee9dae14085

@@ -1,0 +1,3940 @@
+{
+	"info": {
+		"_postman_id": "10b87ff8-8d26-4d4c-9c47-86563a93c680",
+		"name": "Clinic",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CRUD",
+			"item": [
+				{
+					"name": "Office",
+					"item": [
+						{
+							"name": "Save office",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/offices/save",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"offices",
+										"save"
+									]
+								},
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Test office\",\n    \"officeNumber\": 105\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								}
+							},
+							"response": [
+								{
+									"name": "Save office",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/offices/save",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"offices",
+												"save"
+											]
+										},
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"Test office\",\n    \"officeNumber\": 105\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										}
+									},
+									"status": "",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "content-type",
+											"value": "text/plain;charset=UTF-8"
+										},
+										{
+											"key": "content-length",
+											"value": "25"
+										},
+										{
+											"key": "date",
+											"value": "Wed, 07 Oct 2026 21:42:47 GMT"
+										},
+										{
+											"key": "keep-alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "Office saved successfully"
+								}
+							],
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										]
+									}
+								}
+							]
+						},
+						{
+							"name": "Save office with an existing number",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/offices/save",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"offices",
+										"save"
+									]
+								},
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Duplicate\",\n    \"officeNumber\": 101\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								}
+							},
+							"response": [
+								{
+									"name": "Save office with an existing number",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/offices/save",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"offices",
+												"save"
+											]
+										},
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"Duplicate\",\n    \"officeNumber\": 101\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										}
+									},
+									"status": "",
+									"code": 409,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "content-type",
+											"value": "text/plain;charset=UTF-8"
+										},
+										{
+											"key": "content-length",
+											"value": "23"
+										},
+										{
+											"key": "date",
+											"value": "Wed, 07 Oct 2026 21:37:40 GMT"
+										},
+										{
+											"key": "keep-alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "Office is already exist"
+								}
+							],
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"Status code is 409\", function () {",
+											"    pm.response.to.have.status(409);",
+											"});"
+										]
+									}
+								}
+							]
+						},
+						{
+							"name": "Get all offices",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/offices/all",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"offices",
+										"all"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Get all offices",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/offices/all",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"offices",
+												"all"
+											]
+										}
+									},
+									"status": "",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "content-type",
+											"value": "application/json"
+										},
+										{
+											"key": "transfer-encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "date",
+											"value": "Wed, 07 Oct 2026 21:43:56 GMT"
+										},
+										{
+											"key": "keep-alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"id\": \"ccbbcd58-be11-4e77-a259-07b1232e669c\",\n    \"name\": \"Cardiology\",\n    \"officeNumber\": 101\n  },\n  {\n    \"id\": \"35550fd0-c349-4ebf-8af4-e34c8e5519fa\",\n    \"name\": \"Cardiology\",\n    \"officeNumber\": 103\n  },\n  {\n    \"id\": \"697ce044-b470-4152-9e93-1af5bd4d3127\",\n    \"name\": \"Cardiology\",\n    \"officeNumber\": 104\n  },\n  {\n    \"id\": \"846e679f-d6c5-470b-ae9a-aa8e82172d63\",\n    \"name\": \"Cardiology\",\n    \"officeNumber\": 1120\n  },\n  {\n    \"id\": \"4b4e4157-95c7-47a8-8c41-87106f19a1c8\",\n    \"name\": \"Pediatrics\",\n    \"officeNumber\": 102\n  },\n  {\n    \"id\": \"291d0643-41f6-4bbd-87ee-080340713da1\",\n    \"name\": \"Test office\",\n    \"officeNumber\": 105\n  }\n]"
+								}
+							],
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"const found = pm.response.json().find(function (item) { return item.name === \"Test office\"; });",
+											"pm.test(\"Test record is in the list\", function () {",
+											"    pm.expect(found).to.not.be.undefined;",
+											"});",
+											"if (found) { pm.collectionVariables.set(\"tempOfficeId\", found.id); }"
+										]
+									}
+								}
+							]
+						},
+						{
+							"name": "Get office by id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/offices/{{officeId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"offices",
+										"{{officeId}}"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Get office by id",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/offices/{{officeId}}",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"offices",
+												"{{officeId}}"
+											]
+										}
+									},
+									"status": "",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "content-type",
+											"value": "application/json"
+										},
+										{
+											"key": "transfer-encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "date",
+											"value": "Wed, 07 Oct 2026 21:37:53 GMT"
+										},
+										{
+											"key": "keep-alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"ccbbcd58-be11-4e77-a259-07b1232e669c\",\n  \"name\": \"Cardiology\",\n  \"officeNumber\": 101\n}"
+								}
+							],
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										]
+									}
+								}
+							]
+						},
+						{
+							"name": "Search offices by name",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/offices/search?name=card",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"offices",
+										"search"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "card"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Search offices by name",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/offices/search?name=card",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"offices",
+												"search"
+											],
+											"query": [
+												{
+													"key": "name",
+													"value": "card"
+												}
+											]
+										}
+									},
+									"status": "",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "content-type",
+											"value": "application/json"
+										},
+										{
+											"key": "transfer-encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "date",
+											"value": "Wed, 07 Oct 2026 21:37:58 GMT"
+										},
+										{
+											"key": "keep-alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"id\": \"ccbbcd58-be11-4e77-a259-07b1232e669c\",\n    \"name\": \"Cardiology\",\n    \"officeNumber\": 101\n  },\n  {\n    \"id\": \"35550fd0-c349-4ebf-8af4-e34c8e5519fa\",\n    \"name\": \"Cardiology\",\n    \"officeNumber\": 103\n  },\n  {\n    \"id\": \"697ce044-b470-4152-9e93-1af5bd4d3127\",\n    \"name\": \"Cardiology\",\n    \"officeNumber\": 104\n  },\n  {\n    \"id\": \"846e679f-d6c5-470b-ae9a-aa8e82172d63\",\n    \"name\": \"Cardiology\",\n    \"officeNumber\": 1120\n  }\n]"
+								}
+							],
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										]
+									}
+								}
+							]
+						},
+						{
+							"name": "Update office",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/offices/update/{{tempOfficeId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"offices",
+										"update",
+										"{{tempOfficeId}}"
+									]
+								},
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Test office updated\",\n    \"officeNumber\": 105\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								}
+							},
+							"response": [
+								{
+									"name": "Update office",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/offices/update/{{tempOfficeId}}",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"offices",
+												"update",
+												"{{tempOfficeId}}"
+											]
+										},
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"Test office updated\",\n    \"officeNumber\": 105\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										}
+									},
+									"status": "",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "content-type",
+											"value": "text/plain;charset=UTF-8"
+										},
+										{
+											"key": "content-length",
+											"value": "27"
+										},
+										{
+											"key": "date",
+											"value": "Wed, 07 Oct 2026 21:38:02 GMT"
+										},
+										{
+											"key": "keep-alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "Office updated successfully"
+								}
+							],
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										]
+									}
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Specialization",
+					"item": [
+						{
+							"name": "Save specialization",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/specializations/save",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"specializations",
+										"save"
+									]
+								},
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Test specialization\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								}
+							},
+							"response": [
+								{
+									"name": "Save specialization",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/specializations/save",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"specializations",
+												"save"
+											]
+										},
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"Test specialization\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										}
+									},
+									"status": "",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "content-type",
+											"value": "text/plain;charset=UTF-8"
+										},
+										{
+											"key": "content-length",
+											"value": "33"
+										},
+										{
+											"key": "date",
+											"value": "Wed, 07 Oct 2026 21:38:07 GMT"
+										},
+										{
+											"key": "keep-alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "Specialization saved successfully"
+								}
+							],
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										]
+									}
+								}
+							]
+						},
+						{
+							"name": "Get all specializations",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/specializations/all",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"specializations",
+										"all"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Get all specializations",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/specializations/all",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"specializations",
+												"all"
+											]
+										}
+									},
+									"status": "",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "content-type",
+											"value": "application/json"
+										},
+										{
+											"key": "transfer-encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "date",
+											"value": "Wed, 07 Oct 2026 21:38:13 GMT"
+										},
+										{
+											"key": "keep-alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"id\": \"ddd00864-7b25-466b-8525-1eeb9b27242b\",\n    \"name\": \"Cardiology\"\n  },\n  {\n    \"id\": \"02b4fbeb-d92b-422b-bd60-f711f53cb8d7\",\n    \"name\": \"Pediatrics\"\n  },\n  {\n    \"id\": \"129f3e7d-1167-4ff2-8a5f-1894a35d2975\",\n    \"name\": \"Dermatology\"\n  },\n  {\n    \"id\": \"3fac6c30-fcf7-4eee-920d-8f6cd5977a34\",\n    \"name\": \"Neurology\"\n  },\n  {\n    \"id\": \"a5c39640-9ca2-47f5-98cf-59cfdde5709d\",\n    \"name\": \"Test specialization\"\n  }\n]"
+								}
+							],
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"const found = pm.response.json().find(function (item) { return item.name === \"Test specialization\"; });",
+											"pm.test(\"Test record is in the list\", function () {",
+											"    pm.expect(found).to.not.be.undefined;",
+											"});",
+											"if (found) { pm.collectionVariables.set(\"tempSpecializationId\", found.id); }"
+										]
+									}
+								}
+							]
+						},
+						{
+							"name": "Get specialization by id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/specializations/{{specializationId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"specializations",
+										"{{specializationId}}"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Get specialization by id",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/specializations/{{specializationId}}",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"specializations",
+												"{{specializationId}}"
+											]
+										}
+									},
+									"status": "",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "content-type",
+											"value": "application/json"
+										},
+										{
+											"key": "transfer-encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "date",
+											"value": "Wed, 07 Oct 2026 21:38:16 GMT"
+										},
+										{
+											"key": "keep-alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"ddd00864-7b25-466b-8525-1eeb9b27242b\",\n  \"name\": \"Cardiology\"\n}"
+								}
+							],
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										]
+									}
+								}
+							]
+						},
+						{
+							"name": "Update specialization",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/specializations/update/{{tempSpecializationId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"specializations",
+										"update",
+										"{{tempSpecializationId}}"
+									]
+								},
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Test specialization updated\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								}
+							},
+							"response": [
+								{
+									"name": "Update specialization",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/specializations/update/{{tempSpecializationId}}",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"specializations",
+												"update",
+												"{{tempSpecializationId}}"
+											]
+										},
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"Test specialization updated\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										}
+									},
+									"status": "",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "content-type",
+											"value": "text/plain;charset=UTF-8"
+										},
+										{
+											"key": "content-length",
+											"value": "35"
+										},
+										{
+											"key": "date",
+											"value": "Wed, 07 Oct 2026 21:38:21 GMT"
+										},
+										{
+											"key": "keep-alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "Specialization updated successfully"
+								}
+							],
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										]
+									}
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Doctor",
+					"item": [
+						{
+							"name": "Save doctor",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/doctors/save",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"doctors",
+										"save"
+									]
+								},
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstName\": \"Test\",\n    \"lastName\": \"Doctor\",\n    \"dateOfBirth\": \"1990-01-01\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								}
+							},
+							"response": [
+								{
+									"name": "Save doctor",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/doctors/save",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"doctors",
+												"save"
+											]
+										},
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"firstName\": \"Test\",\n    \"lastName\": \"Doctor\",\n    \"dateOfBirth\": \"1990-01-01\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										}
+									},
+									"status": "",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "content-type",
+											"value": "text/plain;charset=UTF-8"
+										},
+										{
+											"key": "content-length",
+											"value": "25"
+										},
+										{
+											"key": "date",
+											"value": "Wed, 07 Oct 2026 21:38:28 GMT"
+										},
+										{
+											"key": "keep-alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "Doctor saved successfully"
+								}
+							],
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										]
+									}
+								}
+							]
+						},
+						{
+							"name": "Save the same doctor again",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/doctors/save",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"doctors",
+										"save"
+									]
+								},
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstName\": \"Test\",\n    \"lastName\": \"Doctor\",\n    \"dateOfBirth\": \"1990-01-01\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								}
+							},
+							"response": [
+								{
+									"name": "Save the same doctor again",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/doctors/save",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"doctors",
+												"save"
+											]
+										},
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"firstName\": \"Test\",\n    \"lastName\": \"Doctor\",\n    \"dateOfBirth\": \"1990-01-01\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										}
+									},
+									"status": "",
+									"code": 409,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "content-type",
+											"value": "text/plain;charset=UTF-8"
+										},
+										{
+											"key": "content-length",
+											"value": "75"
+										},
+										{
+											"key": "date",
+											"value": "Wed, 07 Oct 2026 21:38:32 GMT"
+										},
+										{
+											"key": "keep-alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "Doctor with the same first name, last name and date of birth already exists"
+								}
+							],
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"Status code is 409\", function () {",
+											"    pm.response.to.have.status(409);",
+											"});"
+										]
+									}
+								}
+							]
+						},
+						{
+							"name": "Get all doctors",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/doctors/all",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"doctors",
+										"all"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Get all doctors",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/doctors/all",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"doctors",
+												"all"
+											]
+										}
+									},
+									"status": "",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "content-type",
+											"value": "application/json"
+										},
+										{
+											"key": "transfer-encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "date",
+											"value": "Wed, 07 Oct 2026 21:38:40 GMT"
+										},
+										{
+											"key": "keep-alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"dateOfBirth\": \"1980-04-30T22:00:00.000Z\",\n    \"firstName\": \"Jean\",\n    \"id\": \"16157faf-0052-46d0-879d-3197b2ceb1ca\",\n    \"lastName\": \"Mugisha\",\n    \"office\": {\n      \"id\": \"ccbbcd58-be11-4e77-a259-07b1232e669c\",\n      \"name\": \"Cardiology\",\n      \"officeNumber\": 101\n    }\n  },\n  {\n    \"dateOfBirth\": \"1985-09-11T22:00:00.000Z\",\n    \"firstName\": \"Claudine\",\n    \"id\": \"edc2c7d7-436c-4616-800f-1f01cddb0f01\",\n    \"lastName\": \"Mukamana\",\n    \"office\": {\n      \"id\": \"4b4e4157-95c7-47a8-8c41-87106f19a1c8\",\n      \"name\": \"Pediatrics\",\n      \"officeNumber\": 102\n    }\n  },\n  {\n    \"dateOfBirth\": \"1978-03-24T22:00:00.000Z\",\n    \"firstName\": \"Patrick\",\n    \"id\": \"5e3f5ab8-eff1-46bc-8610-ddeaa5c77db5\",\n    \"lastName\": \"Niyonzima\",\n    \"office\": null\n  },\n  {\n    \"dateOfBirth\": \"1989-12-31T22:00:00.000Z\",\n    \"firstName\": \"Test\",\n    \"id\": \"e954a5d9-f09b-458f-ae85-304a77ad1e7c\",\n    \"lastName\": \"Doctor\",\n    \"office\": null\n  }\n]"
+								}
+							],
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"const found = pm.response.json().find(function (item) { return item.lastName === \"Doctor\"; });",
+											"pm.test(\"Test record is in the list\", function () {",
+											"    pm.expect(found).to.not.be.undefined;",
+											"});",
+											"if (found) { pm.collectionVariables.set(\"tempDoctorId\", found.id); }"
+										]
+									}
+								}
+							]
+						},
+						{
+							"name": "Get doctor by id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/doctors/{{doctorId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"doctors",
+										"{{doctorId}}"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Get doctor by id",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/doctors/{{doctorId}}",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"doctors",
+												"{{doctorId}}"
+											]
+										}
+									},
+									"status": "",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "content-type",
+											"value": "application/json"
+										},
+										{
+											"key": "transfer-encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "date",
+											"value": "Wed, 07 Oct 2026 21:38:45 GMT"
+										},
+										{
+											"key": "keep-alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"dateOfBirth\": \"1980-04-30T22:00:00.000Z\",\n  \"firstName\": \"Jean\",\n  \"id\": \"16157faf-0052-46d0-879d-3197b2ceb1ca\",\n  \"lastName\": \"Mugisha\",\n  \"office\": {\n    \"id\": \"ccbbcd58-be11-4e77-a259-07b1232e669c\",\n    \"name\": \"Cardiology\",\n    \"officeNumber\": 101\n  }\n}"
+								}
+							],
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										]
+									}
+								}
+							]
+						},
+						{
+							"name": "Update doctor",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/doctors/update/{{tempDoctorId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"doctors",
+										"update",
+										"{{tempDoctorId}}"
+									]
+								},
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstName\": \"Test\",\n    \"lastName\": \"Doctor\",\n    \"dateOfBirth\": \"1990-02-02\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								}
+							},
+							"response": [
+								{
+									"name": "Update doctor",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/doctors/update/{{tempDoctorId}}",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"doctors",
+												"update",
+												"{{tempDoctorId}}"
+											]
+										},
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"firstName\": \"Test\",\n    \"lastName\": \"Doctor\",\n    \"dateOfBirth\": \"1990-02-02\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										}
+									},
+									"status": "",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "content-type",
+											"value": "text/plain;charset=UTF-8"
+										},
+										{
+											"key": "content-length",
+											"value": "27"
+										},
+										{
+											"key": "date",
+											"value": "Wed, 07 Oct 2026 21:38:51 GMT"
+										},
+										{
+											"key": "keep-alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "Doctor updated successfully"
+								}
+							],
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										]
+									}
+								}
+							]
+						},
+						{
+							"name": "Assign an office that is taken",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/doctors/update/{{tempDoctorId}}?officeId={{officeId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"doctors",
+										"update",
+										"{{tempDoctorId}}"
+									],
+									"query": [
+										{
+											"key": "officeId",
+											"value": "{{officeId}}"
+										}
+									]
+								},
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstName\": \"Test\",\n    \"lastName\": \"Doctor\",\n    \"dateOfBirth\": \"1990-02-02\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								}
+							},
+							"response": [
+								{
+									"name": "Assign an office that is taken",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/doctors/update/{{tempDoctorId}}?officeId={{officeId}}",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"doctors",
+												"update",
+												"{{tempDoctorId}}"
+											],
+											"query": [
+												{
+													"key": "officeId",
+													"value": "{{officeId}}"
+												}
+											]
+										},
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"firstName\": \"Test\",\n    \"lastName\": \"Doctor\",\n    \"dateOfBirth\": \"1990-02-02\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										}
+									},
+									"status": "",
+									"code": 409,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "content-type",
+											"value": "text/plain;charset=UTF-8"
+										},
+										{
+											"key": "content-length",
+											"value": "44"
+										},
+										{
+											"key": "date",
+											"value": "Wed, 07 Oct 2026 21:38:55 GMT"
+										},
+										{
+											"key": "keep-alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "Office is already assigned to another doctor"
+								}
+							],
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"Status code is 409\", function () {",
+											"    pm.response.to.have.status(409);",
+											"});"
+										]
+									}
+								}
+							]
+						},
+						{
+							"name": "Add doctor to specialization",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/specializations/{{tempSpecializationId}}/add-doctor/{{tempDoctorId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"specializations",
+										"{{tempSpecializationId}}",
+										"add-doctor",
+										"{{tempDoctorId}}"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Add doctor to specialization",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/specializations/{{tempSpecializationId}}/add-doctor/{{tempDoctorId}}",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"specializations",
+												"{{tempSpecializationId}}",
+												"add-doctor",
+												"{{tempDoctorId}}"
+											]
+										}
+									},
+									"status": "",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "content-type",
+											"value": "text/plain;charset=UTF-8"
+										},
+										{
+											"key": "content-length",
+											"value": "43"
+										},
+										{
+											"key": "date",
+											"value": "Wed, 07 Oct 2026 21:39:00 GMT"
+										},
+										{
+											"key": "keep-alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "Doctor added to specialization successfully"
+								}
+							],
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										]
+									}
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Patient",
+					"item": [
+						{
+							"name": "Save patient",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/patients/save",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"patients",
+										"save"
+									]
+								},
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstName\": \"Test\",\n    \"lastName\": \"Patient\",\n    \"dateOfBirth\": \"2000-01-01\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								}
+							},
+							"response": [
+								{
+									"name": "Save patient",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/patients/save",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"patients",
+												"save"
+											]
+										},
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"firstName\": \"Test\",\n    \"lastName\": \"Patient\",\n    \"dateOfBirth\": \"2000-01-01\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										}
+									},
+									"status": "",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "content-type",
+											"value": "text/plain;charset=UTF-8"
+										},
+										{
+											"key": "content-length",
+											"value": "26"
+										},
+										{
+											"key": "date",
+											"value": "Wed, 07 Oct 2026 21:39:06 GMT"
+										},
+										{
+											"key": "keep-alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "Patient saved successfully"
+								}
+							],
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										]
+									}
+								}
+							]
+						},
+						{
+							"name": "Get all patients",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/patients/all",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"patients",
+										"all"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Get all patients",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/patients/all",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"patients",
+												"all"
+											]
+										}
+									},
+									"status": "",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "content-type",
+											"value": "application/json"
+										},
+										{
+											"key": "transfer-encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "date",
+											"value": "Wed, 07 Oct 2026 21:39:11 GMT"
+										},
+										{
+											"key": "keep-alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"dateOfBirth\": \"1995-02-09T22:00:00.000Z\",\n    \"firstName\": \"Alice\",\n    \"id\": \"8aeee4f7-4d39-4d9f-b9a0-8689e788a2d4\",\n    \"lastName\": \"Uwase\"\n  },\n  {\n    \"dateOfBirth\": \"1998-06-02T22:00:00.000Z\",\n    \"firstName\": \"Diane\",\n    \"id\": \"a827e6e4-6a7d-48c3-b2d2-f24fa31cf292\",\n    \"lastName\": \"Uwase\"\n  },\n  {\n    \"dateOfBirth\": \"1990-07-19T22:00:00.000Z\",\n    \"firstName\": \"Eric\",\n    \"id\": \"667c92f4-cb72-4695-86c0-68c724fa0e98\",\n    \"lastName\": \"Habimana\"\n  },\n  {\n    \"dateOfBirth\": \"2001-11-14T22:00:00.000Z\",\n    \"firstName\": \"Grace\",\n    \"id\": \"feef9285-3361-4005-85f1-990171db7aeb\",\n    \"lastName\": \"Ingabire\"\n  },\n  {\n    \"dateOfBirth\": \"1987-04-07T22:00:00.000Z\",\n    \"firstName\": \"Kevin\",\n    \"id\": \"643200a0-77f0-4ed7-9708-397de8edf144\",\n    \"lastName\": \"Nshimiyimana\"\n  },\n  {\n    \"dateOfBirth\": \"1999-12-31T22:00:00.000Z\",\n    \"firstName\": \"Test\",\n    \"id\": \"355f27cf-1891-45f7-b792-c44c68f2ad6a\",\n    \"lastName\": \"Patient\"\n  }\n]"
+								}
+							],
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"const found = pm.response.json().find(function (item) { return item.lastName === \"Patient\"; });",
+											"pm.test(\"Test record is in the list\", function () {",
+											"    pm.expect(found).to.not.be.undefined;",
+											"});",
+											"if (found) { pm.collectionVariables.set(\"tempPatientId\", found.id); }"
+										]
+									}
+								}
+							]
+						},
+						{
+							"name": "Get patient by id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/patients/{{patientId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"patients",
+										"{{patientId}}"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Get patient by id",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/patients/{{patientId}}",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"patients",
+												"{{patientId}}"
+											]
+										}
+									},
+									"status": "",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "content-type",
+											"value": "application/json"
+										},
+										{
+											"key": "transfer-encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "date",
+											"value": "Wed, 07 Oct 2026 21:39:16 GMT"
+										},
+										{
+											"key": "keep-alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"dateOfBirth\": \"1995-02-09T22:00:00.000Z\",\n  \"firstName\": \"Alice\",\n  \"id\": \"8aeee4f7-4d39-4d9f-b9a0-8689e788a2d4\",\n  \"lastName\": \"Uwase\"\n}"
+								}
+							],
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										]
+									}
+								}
+							]
+						},
+						{
+							"name": "Update patient",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/patients/update/{{tempPatientId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"patients",
+										"update",
+										"{{tempPatientId}}"
+									]
+								},
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstName\": \"Test\",\n    \"lastName\": \"Patient\",\n    \"dateOfBirth\": \"2000-02-02\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								}
+							},
+							"response": [
+								{
+									"name": "Update patient",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/patients/update/{{tempPatientId}}",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"patients",
+												"update",
+												"{{tempPatientId}}"
+											]
+										},
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"firstName\": \"Test\",\n    \"lastName\": \"Patient\",\n    \"dateOfBirth\": \"2000-02-02\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										}
+									},
+									"status": "",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "content-type",
+											"value": "text/plain;charset=UTF-8"
+										},
+										{
+											"key": "content-length",
+											"value": "28"
+										},
+										{
+											"key": "date",
+											"value": "Wed, 07 Oct 2026 21:39:22 GMT"
+										},
+										{
+											"key": "keep-alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "Patient updated successfully"
+								}
+							],
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										]
+									}
+								}
+							]
+						},
+						{
+							"name": "Delete a patient who has appointments",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/patients/delete/{{patientId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"patients",
+										"delete",
+										"{{patientId}}"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Delete a patient who has appointments",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/patients/delete/{{patientId}}",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"patients",
+												"delete",
+												"{{patientId}}"
+											]
+										}
+									},
+									"status": "",
+									"code": 409,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "content-type",
+											"value": "text/plain;charset=UTF-8"
+										},
+										{
+											"key": "content-length",
+											"value": "24"
+										},
+										{
+											"key": "date",
+											"value": "Wed, 07 Oct 2026 21:39:26 GMT"
+										},
+										{
+											"key": "keep-alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "Patient has appointments"
+								}
+							],
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"Status code is 409\", function () {",
+											"    pm.response.to.have.status(409);",
+											"});"
+										]
+									}
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Appointment",
+					"item": [
+						{
+							"name": "Save appointment",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/appointments/save?patientId={{tempPatientId}}&doctorId={{tempDoctorId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"appointments",
+										"save"
+									],
+									"query": [
+										{
+											"key": "patientId",
+											"value": "{{tempPatientId}}"
+										},
+										{
+											"key": "doctorId",
+											"value": "{{tempDoctorId}}"
+										}
+									]
+								},
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"appointmentDate\": \"2026-12-01\",\n    \"reason\": \"Postman test\",\n    \"status\": \"SCHEDULED\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								}
+							},
+							"response": [
+								{
+									"name": "Save appointment",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/appointments/save?patientId={{tempPatientId}}&doctorId={{tempDoctorId}}",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"appointments",
+												"save"
+											],
+											"query": [
+												{
+													"key": "patientId",
+													"value": "{{tempPatientId}}"
+												},
+												{
+													"key": "doctorId",
+													"value": "{{tempDoctorId}}"
+												}
+											]
+										},
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"appointmentDate\": \"2026-12-01\",\n    \"reason\": \"Postman test\",\n    \"status\": \"SCHEDULED\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										}
+									},
+									"status": "",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "content-type",
+											"value": "text/plain;charset=UTF-8"
+										},
+										{
+											"key": "content-length",
+											"value": "30"
+										},
+										{
+											"key": "date",
+											"value": "Wed, 07 Oct 2026 21:39:36 GMT"
+										},
+										{
+											"key": "keep-alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "Appointment saved successfully"
+								}
+							],
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										]
+									}
+								}
+							]
+						},
+						{
+							"name": "Save appointment without a date",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/appointments/save?patientId={{tempPatientId}}&doctorId={{tempDoctorId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"appointments",
+										"save"
+									],
+									"query": [
+										{
+											"key": "patientId",
+											"value": "{{tempPatientId}}"
+										},
+										{
+											"key": "doctorId",
+											"value": "{{tempDoctorId}}"
+										}
+									]
+								},
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"reason\": \"No date\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								}
+							},
+							"response": [
+								{
+									"name": "Save appointment without a date",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/appointments/save?patientId={{tempPatientId}}&doctorId={{tempDoctorId}}",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"appointments",
+												"save"
+											],
+											"query": [
+												{
+													"key": "patientId",
+													"value": "{{tempPatientId}}"
+												},
+												{
+													"key": "doctorId",
+													"value": "{{tempDoctorId}}"
+												}
+											]
+										},
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"reason\": \"No date\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										}
+									},
+									"status": "",
+									"code": 400,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "content-type",
+											"value": "text/plain;charset=UTF-8"
+										},
+										{
+											"key": "content-length",
+											"value": "28"
+										},
+										{
+											"key": "date",
+											"value": "Wed, 07 Oct 2026 21:39:41 GMT"
+										},
+										{
+											"key": "connection",
+											"value": "close"
+										}
+									],
+									"cookie": [],
+									"body": "Appointment date is required"
+								}
+							],
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});"
+										]
+									}
+								}
+							]
+						},
+						{
+							"name": "Get all appointments",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/appointments/all",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"appointments",
+										"all"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Get all appointments",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/appointments/all",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"appointments",
+												"all"
+											]
+										}
+									},
+									"status": "",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "content-type",
+											"value": "application/json"
+										},
+										{
+											"key": "transfer-encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "date",
+											"value": "Wed, 07 Oct 2026 21:39:46 GMT"
+										},
+										{
+											"key": "keep-alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"appointmentDate\": \"2026-10-05\",\n    \"doctor\": {\n      \"dateOfBirth\": \"1980-04-30T22:00:00.000Z\",\n      \"firstName\": \"Jean\",\n      \"id\": \"16157faf-0052-46d0-879d-3197b2ceb1ca\",\n      \"lastName\": \"Mugisha\",\n      \"office\": {\n        \"id\": \"ccbbcd58-be11-4e77-a259-07b1232e669c\",\n        \"name\": \"Cardiology\",\n        \"officeNumber\": 101\n      }\n    },\n    \"id\": \"1af453a9-fd97-496f-9fcc-2ee9dae14085\",\n    \"patient\": {\n      \"dateOfBirth\": \"1995-02-09T22:00:00.000Z\",\n      \"firstName\": \"Alice\",\n      \"id\": \"8aeee4f7-4d39-4d9f-b9a0-8689e788a2d4\",\n      \"lastName\": \"Uwase\"\n    },\n    \"reason\": \"Chest pain\",\n    \"status\": \"COMPLETED\"\n  },\n  {\n    \"appointmentDate\": \"2026-10-08\",\n    \"doctor\": {\n      \"dateOfBirth\": \"1985-09-11T22:00:00.000Z\",\n      \"firstName\": \"Claudine\",\n      \"id\": \"edc2c7d7-436c-4616-800f-1f01cddb0f01\",\n      \"lastName\": \"Mukamana\",\n      \"office\": {\n        \"id\": \"4b4e4157-95c7-47a8-8c41-87106f19a1c8\",\n        \"name\": \"Pediatrics\",\n        \"officeNumber\": 102\n      }\n    },\n    \"id\": \"63f3cbb9-7f98-4602-bca1-ce7fb7b9236d\",\n    \"patient\": {\n      \"dateOfBirth\": \"1998-06-02T22:00:00.000Z\",\n      \"firstName\": \"Diane\",\n      \"id\": \"a827e6e4-6a7d-48c3-b2d2-f24fa31cf292\",\n      \"lastName\": \"Uwase\"\n    },\n    \"reason\": \"Acne treatment\",\n    \"status\": \"CANCELLED\"\n  },\n  {\n    \"appointmentDate\": \"2026-10-12\",\n    \"doctor\": {\n      \"dateOfBirth\": \"1978-03-24T22:00:00.000Z\",\n      \"firstName\": \"Patrick\",\n      \"id\": \"5e3f5ab8-eff1-46bc-8610-ddeaa5c77db5\",\n      \"lastName\": \"Niyonzima\",\n      \"office\": null\n    },\n    \"id\": \"0a1fe0ab-b07e-4041-aa9b-83dee5dbe32e\",\n    \"patient\": {\n      \"dateOfBirth\": \"1987-04-07T22:00:00.000Z\",\n      \"firstName\": \"Kevin\",\n      \"id\": \"643200a0-77f0-4ed7-9708-397de8edf144\",\n      \"lastName\": \"Nshimiyimana\"\n    },\n    \"reason\": \"ECG test\",\n    \"status\": \"CANCELLED\"\n  },\n  {\n    \"appointmentDate\": \"2026-10-14\",\n    \"doctor\": {\n      \"dateOfBirth\": \"1985-09-11T22:00:00.000Z\",\n      \"firstName\": \"Claudine\",\n      \"id\": \"edc2c7d7-436c-4616-800f-1f01cddb0f01\",\n      \"lastName\": \"Mukamana\",\n      \"office\": {\n        \"id\": \"4b4e4157-95c7-47a8-8c41-87106f19a1c8\",\n        \"name\": \"Pediatrics\",\n        \"officeNumber\": 102\n      }\n    },\n    \"id\": \"4c61b215-c800-4c89-b7e3-c5368bed9f66\",\n    \"patient\": {\n      \"dateOfBirth\": \"1995-02-09T22:00:00.000Z\",\n      \"firstName\": \"Alice\",\n      \"id\": \"8aeee4f7-4d39-4d9f-b9a0-8689e788a2d4\",\n      \"lastName\": \"Uwase\"\n    },\n    \"reason\": \"Skin rash\",\n    \"status\": \"COMPLETED\"\n  },\n  {\n    \"appointmentDate\": \"2026-10-20\",\n    \"doctor\": {\n      \"dateOfBirth\": \"1980-04-30T22:00:00.000Z\",\n      \"firstName\": \"Jean\",\n      \"id\": \"16157faf-0052-46d0-879d-3197b2ceb1ca\",\n      \"lastName\": \"Mugisha\",\n      \"office\": {\n        \"id\": \"ccbbcd58-be11-4e77-a259-07b1232e669c\",\n        \"name\": \"Cardiology\",\n        \"officeNumber\": 101\n      }\n    },\n    \"id\": \"e516051f-ad4b-4460-af9b-1efb6380c287\",\n    \"patient\": {\n      \"dateOfBirth\": \"1995-02-09T22:00:00.000Z\",\n      \"firstName\": \"Alice\",\n      \"id\": \"8aeee4f7-4d39-4d9f-b9a0-8689e788a2d4\",\n      \"lastName\": \"Uwase\"\n    },\n    \"reason\": \"Follow-up\",\n    \"status\": \"SCHEDULED\"\n  },\n  {\n    \"appointmentDate\": \"2026-10-20\",\n    \"doctor\": {\n      \"dateOfBirth\": \"1980-04-30T22:00:00.000Z\",\n      \"firstName\": \"Jean\",\n      \"id\": \"16157faf-0052-46d0-879d-3197b2ceb1ca\",\n      \"lastName\": \"Mugisha\",\n      \"office\": {\n        \"id\": \"ccbbcd58-be11-4e77-a259-07b1232e669c\",\n        \"name\": \"Cardiology\",\n        \"officeNumber\": 101\n      }\n    },\n    \"id\": \"771bdd68-2cdb-4f7e-853a-291a51dbd16b\",\n    \"patient\": {\n      \"dateOfBirth\": \"1990-07-19T22:00:00.000Z\",\n      \"firstName\": \"Eric\",\n      \"id\": \"667c92f4-cb72-4695-86c0-68c724fa0e98\",\n      \"lastName\": \"Habimana\"\n    },\n    \"reason\": \"Blood pressure check\",\n    \"status\": \"CONFIRMED\"\n  },\n  {\n    \"appointmentDate\": \"2026-10-20\",\n    \"doctor\": {\n      \"dateOfBirth\": \"1980-04-30T22:00:00.000Z\",\n      \"firstName\": \"Jean\",\n      \"id\": \"16157faf-0052-46d0-879d-3197b2ceb1ca\",\n      \"lastName\": \"Mugisha\",\n      \"office\": {\n        \"id\": \"ccbbcd58-be11-4e77-a259-07b1232e669c\",\n        \"name\": \"Cardiology\",\n        \"officeNumber\": 101\n      }\n    },\n    \"id\": \"91b5a130-6c73-4816-acd8-74abb7b76642\",\n    \"patient\": {\n      \"dateOfBirth\": \"2001-11-14T22:00:00.000Z\",\n      \"firstName\": \"Grace\",\n      \"id\": \"feef9285-3361-4005-85f1-990171db7aeb\",\n      \"lastName\": \"Ingabire\"\n    },\n    \"reason\": \"Palpitations\",\n    \"status\": \"SCHEDULED\"\n  },\n  {\n    \"appointmentDate\": \"2026-11-04\",\n    \"doctor\": {\n      \"dateOfBirth\": \"1978-03-24T22:00:00.000Z\",\n      \"firstName\": \"Patrick\",\n      \"id\": \"5e3f5ab8-eff1-46bc-8610-ddeaa5c77db5\",\n      \"lastName\": \"Niyonzima\",\n      \"office\": null\n    },\n    \"id\": \"a9b517e4-f048-4b45-b6eb-e47130a7d738\",\n    \"patient\": {\n      \"dateOfBirth\": \"1990-07-19T22:00:00.000Z\",\n      \"firstName\": \"Eric\",\n      \"id\": \"667c92f4-cb72-4695-86c0-68c724fa0e98\",\n      \"lastName\": \"Habimana\"\n    },\n    \"reason\": \"Annual checkup\",\n    \"status\": \"SCHEDULED\"\n  },\n  {\n    \"appointmentDate\": \"2026-11-10\",\n    \"doctor\": {\n      \"dateOfBirth\": \"1985-09-11T22:00:00.000Z\",\n      \"firstName\": \"Claudine\",\n      \"id\": \"edc2c7d7-436c-4616-800f-1f01cddb0f01\",\n      \"lastName\": \"Mukamana\",\n      \"office\": {\n        \"id\": \"4b4e4157-95c7-47a8-8c41-87106f19a1c8\",\n        \"name\": \"Pediatrics\",\n        \"officeNumber\": 102\n      }\n    },\n    \"id\": \"9fb788e8-0df1-4585-896e-f59db4874cbb\",\n    \"patient\": {\n      \"dateOfBirth\": \"1995-02-09T22:00:00.000Z\",\n      \"firstName\": \"Alice\",\n      \"id\": \"8aeee4f7-4d39-4d9f-b9a0-8689e788a2d4\",\n      \"lastName\": \"Uwase\"\n    },\n    \"reason\": \"Skin check\",\n    \"status\": \"CONFIRMED\"\n  },\n  {\n    \"appointmentDate\": \"2026-11-18\",\n    \"doctor\": {\n      \"dateOfBirth\": \"1980-04-30T22:00:00.000Z\",\n      \"firstName\": \"Jean\",\n      \"id\": \"16157faf-0052-46d0-879d-3197b2ceb1ca\",\n      \"lastName\": \"Mugisha\",\n      \"office\": {\n        \"id\": \"ccbbcd58-be11-4e77-a259-07b1232e669c\",\n        \"name\": \"Cardiology\",\n        \"officeNumber\": 101\n      }\n    },\n    \"id\": \"56ca883e-373f-4b23-9501-82b774f7c557\",\n    \"patient\": {\n      \"dateOfBirth\": \"1998-06-02T22:00:00.000Z\",\n      \"firstName\": \"Diane\",\n      \"id\": \"a827e6e4-6a7d-48c3-b2d2-f24fa31cf292\",\n      \"lastName\": \"Uwase\"\n    },\n    \"reason\": \"Heart screening\",\n    \"status\": \"COMPLETED\"\n  },\n  {\n    \"appointmentDate\": \"2026-12-01\",\n    \"doctor\": {\n      \"dateOfBirth\": \"1990-02-01T22:00:00.000Z\",\n      \"firstName\": \"Test\",\n      \"id\": \"e954a5d9-f09b-458f-ae85-304a77ad1e7c\",\n      \"lastName\": \"Doctor\",\n      \"office\": null\n    },\n    \"id\": \"6197a32c-78f3-431f-9035-eddaf205e8ad\",\n    \"patient\": {\n      \"dateOfBirth\": \"2000-02-01T22:00:00.000Z\",\n      \"firstName\": \"Test\",\n      \"id\": \"355f27cf-1891-45f7-b792-c44c68f2ad6a\",\n      \"lastName\": \"Patient\"\n    },\n    \"reason\": \"Postman test\",\n    \"status\": \"SCHEDULED\"\n  }\n]"
+								}
+							],
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"const found = pm.response.json().find(function (item) { return item.reason === \"Postman test\"; });",
+											"pm.test(\"Test record is in the list\", function () {",
+											"    pm.expect(found).to.not.be.undefined;",
+											"});",
+											"if (found) { pm.collectionVariables.set(\"tempAppointmentId\", found.id); }"
+										]
+									}
+								}
+							]
+						},
+						{
+							"name": "Get appointment by id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/appointments/{{appointmentId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"appointments",
+										"{{appointmentId}}"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Get appointment by id",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/appointments/{{appointmentId}}",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"appointments",
+												"{{appointmentId}}"
+											]
+										}
+									},
+									"status": "",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "content-type",
+											"value": "application/json"
+										},
+										{
+											"key": "transfer-encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "date",
+											"value": "Wed, 07 Oct 2026 21:41:04 GMT"
+										},
+										{
+											"key": "keep-alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"appointmentDate\": \"2026-10-05\",\n  \"doctor\": {\n    \"dateOfBirth\": \"1980-04-30T22:00:00.000Z\",\n    \"firstName\": \"Jean\",\n    \"id\": \"16157faf-0052-46d0-879d-3197b2ceb1ca\",\n    \"lastName\": \"Mugisha\",\n    \"office\": {\n      \"id\": \"ccbbcd58-be11-4e77-a259-07b1232e669c\",\n      \"name\": \"Cardiology\",\n      \"officeNumber\": 101\n    }\n  },\n  \"id\": \"1af453a9-fd97-496f-9fcc-2ee9dae14085\",\n  \"patient\": {\n    \"dateOfBirth\": \"1995-02-09T22:00:00.000Z\",\n    \"firstName\": \"Alice\",\n    \"id\": \"8aeee4f7-4d39-4d9f-b9a0-8689e788a2d4\",\n    \"lastName\": \"Uwase\"\n  },\n  \"reason\": \"Chest pain\",\n  \"status\": \"COMPLETED\"\n}"
+								}
+							],
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										]
+									}
+								}
+							]
+						},
+						{
+							"name": "Update appointment",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/appointments/update/{{tempAppointmentId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"appointments",
+										"update",
+										"{{tempAppointmentId}}"
+									]
+								},
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"appointmentDate\": \"2026-12-02\",\n    \"reason\": \"Postman test\",\n    \"status\": \"CONFIRMED\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								}
+							},
+							"response": [
+								{
+									"name": "Update appointment",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/appointments/update/{{tempAppointmentId}}",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"appointments",
+												"update",
+												"{{tempAppointmentId}}"
+											]
+										},
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"appointmentDate\": \"2026-12-02\",\n    \"reason\": \"Postman test\",\n    \"status\": \"CONFIRMED\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										}
+									},
+									"status": "",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "content-type",
+											"value": "text/plain;charset=UTF-8"
+										},
+										{
+											"key": "content-length",
+											"value": "32"
+										},
+										{
+											"key": "date",
+											"value": "Wed, 07 Oct 2026 21:39:55 GMT"
+										},
+										{
+											"key": "keep-alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "Appointment updated successfully"
+								}
+							],
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										]
+									}
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Cleanup (deletes the test records)",
+					"item": [
+						{
+							"name": "Delete appointment",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/appointments/delete/{{tempAppointmentId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"appointments",
+										"delete",
+										"{{tempAppointmentId}}"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Delete appointment",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/appointments/delete/{{tempAppointmentId}}",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"appointments",
+												"delete",
+												"{{tempAppointmentId}}"
+											]
+										}
+									},
+									"status": "",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "content-type",
+											"value": "text/plain;charset=UTF-8"
+										},
+										{
+											"key": "content-length",
+											"value": "32"
+										},
+										{
+											"key": "date",
+											"value": "Wed, 07 Oct 2026 21:40:02 GMT"
+										},
+										{
+											"key": "keep-alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "Appointment deleted successfully"
+								}
+							],
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										]
+									}
+								}
+							]
+						},
+						{
+							"name": "Delete specialization",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/specializations/delete/{{tempSpecializationId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"specializations",
+										"delete",
+										"{{tempSpecializationId}}"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Delete specialization",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/specializations/delete/{{tempSpecializationId}}",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"specializations",
+												"delete",
+												"{{tempSpecializationId}}"
+											]
+										}
+									},
+									"status": "",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "content-type",
+											"value": "text/plain;charset=UTF-8"
+										},
+										{
+											"key": "content-length",
+											"value": "35"
+										},
+										{
+											"key": "date",
+											"value": "Wed, 07 Oct 2026 21:40:09 GMT"
+										},
+										{
+											"key": "keep-alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "Specialization deleted successfully"
+								}
+							],
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										]
+									}
+								}
+							]
+						},
+						{
+							"name": "Delete doctor",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/doctors/delete/{{tempDoctorId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"doctors",
+										"delete",
+										"{{tempDoctorId}}"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Delete doctor",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/doctors/delete/{{tempDoctorId}}",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"doctors",
+												"delete",
+												"{{tempDoctorId}}"
+											]
+										}
+									},
+									"status": "",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "content-type",
+											"value": "text/plain;charset=UTF-8"
+										},
+										{
+											"key": "content-length",
+											"value": "27"
+										},
+										{
+											"key": "date",
+											"value": "Wed, 07 Oct 2026 21:40:14 GMT"
+										},
+										{
+											"key": "keep-alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "Doctor deleted successfully"
+								}
+							],
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										]
+									}
+								}
+							]
+						},
+						{
+							"name": "Delete patient",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/patients/delete/{{tempPatientId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"patients",
+										"delete",
+										"{{tempPatientId}}"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Delete patient",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/patients/delete/{{tempPatientId}}",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"patients",
+												"delete",
+												"{{tempPatientId}}"
+											]
+										}
+									},
+									"status": "",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "content-type",
+											"value": "text/plain;charset=UTF-8"
+										},
+										{
+											"key": "content-length",
+											"value": "28"
+										},
+										{
+											"key": "date",
+											"value": "Wed, 07 Oct 2026 21:40:20 GMT"
+										},
+										{
+											"key": "keep-alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "Patient deleted successfully"
+								}
+							],
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										]
+									}
+								}
+							]
+						},
+						{
+							"name": "Delete office",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/offices/delete/{{tempOfficeId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"offices",
+										"delete",
+										"{{tempOfficeId}}"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Delete office",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/offices/delete/{{tempOfficeId}}",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"offices",
+												"delete",
+												"{{tempOfficeId}}"
+											]
+										}
+									},
+									"status": "",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "content-type",
+											"value": "text/plain;charset=UTF-8"
+										},
+										{
+											"key": "content-length",
+											"value": "27"
+										},
+										{
+											"key": "date",
+											"value": "Wed, 07 Oct 2026 21:40:25 GMT"
+										},
+										{
+											"key": "keep-alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "Office deleted successfully"
+								}
+							],
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										]
+									}
+								}
+							]
+						},
+						{
+							"name": "Get deleted patient",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/patients/{{tempPatientId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"patients",
+										"{{tempPatientId}}"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Get deleted patient",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/patients/{{tempPatientId}}",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"patients",
+												"{{tempPatientId}}"
+											]
+										}
+									},
+									"status": "",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "content-type",
+											"value": "text/plain;charset=UTF-8"
+										},
+										{
+											"key": "content-length",
+											"value": "17"
+										},
+										{
+											"key": "date",
+											"value": "Wed, 07 Oct 2026 21:40:30 GMT"
+										},
+										{
+											"key": "keep-alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "Patient not found"
+								}
+							],
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {",
+											"    pm.response.to.have.status(404);",
+											"});"
+										]
+									}
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Part A - Derived queries",
+			"item": [
+				{
+					"name": "A1 Patients by last name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/patients/by-last-name?lastName=uwase",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"patients",
+								"by-last-name"
+							],
+							"query": [
+								{
+									"key": "lastName",
+									"value": "uwase"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "A1 Patients by last name",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/patients/by-last-name?lastName=uwase",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"patients",
+										"by-last-name"
+									],
+									"query": [
+										{
+											"key": "lastName",
+											"value": "uwase"
+										}
+									]
+								}
+							},
+							"status": "",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json"
+								},
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "date",
+									"value": "Wed, 07 Oct 2026 21:54:46 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"dateOfBirth\": \"1995-02-09T22:00:00.000Z\",\n    \"firstName\": \"Alice\",\n    \"id\": \"8aeee4f7-4d39-4d9f-b9a0-8689e788a2d4\",\n    \"lastName\": \"Uwase\"\n  },\n  {\n    \"dateOfBirth\": \"1998-06-02T22:00:00.000Z\",\n    \"firstName\": \"Diane\",\n    \"id\": \"a827e6e4-6a7d-48c3-b2d2-f24fa31cf292\",\n    \"lastName\": \"Uwase\"\n  }\n]"
+						}
+					],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"const names = pm.response.json().map(function (p) { return p.firstName; });",
+									"pm.test(\"Sorted by first name\", function () {",
+									"    pm.expect(names).to.eql(names.slice().sort());",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "A1 Patients by last name (upper case)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/patients/by-last-name?lastName=UWASE",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"patients",
+								"by-last-name"
+							],
+							"query": [
+								{
+									"key": "lastName",
+									"value": "UWASE"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "A1 Patients by last name (upper case)",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/patients/by-last-name?lastName=UWASE",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"patients",
+										"by-last-name"
+									],
+									"query": [
+										{
+											"key": "lastName",
+											"value": "UWASE"
+										}
+									]
+								}
+							},
+							"status": "",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json"
+								},
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "date",
+									"value": "Wed, 07 Oct 2026 21:55:16 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"dateOfBirth\": \"1995-02-09T22:00:00.000Z\",\n    \"firstName\": \"Alice\",\n    \"id\": \"8aeee4f7-4d39-4d9f-b9a0-8689e788a2d4\",\n    \"lastName\": \"Uwase\"\n  },\n  {\n    \"dateOfBirth\": \"1998-06-02T22:00:00.000Z\",\n    \"firstName\": \"Diane\",\n    \"id\": \"a827e6e4-6a7d-48c3-b2d2-f24fa31cf292\",\n    \"lastName\": \"Uwase\"\n  }\n]"
+						}
+					],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "A1 Patients by last name (no match)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/patients/by-last-name?lastName=nobody",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"patients",
+								"by-last-name"
+							],
+							"query": [
+								{
+									"key": "lastName",
+									"value": "nobody"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "A1 Patients by last name (no match)",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/patients/by-last-name?lastName=nobody",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"patients",
+										"by-last-name"
+									],
+									"query": [
+										{
+											"key": "lastName",
+											"value": "nobody"
+										}
+									]
+								}
+							},
+							"status": "",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json"
+								},
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "date",
+									"value": "Wed, 07 Oct 2026 21:55:49 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[]"
+						}
+					],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Empty list\", function () {",
+									"    pm.expect(pm.response.json()).to.eql([]);",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "A2 Appointments by status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/appointments/by-status?status=SCHEDULED",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"appointments",
+								"by-status"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "SCHEDULED"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "A2 Appointments by status",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/appointments/by-status?status=SCHEDULED",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"appointments",
+										"by-status"
+									],
+									"query": [
+										{
+											"key": "status",
+											"value": "SCHEDULED"
+										}
+									]
+								}
+							},
+							"status": "",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json"
+								},
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "date",
+									"value": "Wed, 07 Oct 2026 21:56:21 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"appointmentDate\": \"2026-10-20\",\n    \"doctor\": {\n      \"dateOfBirth\": \"1980-04-30T22:00:00.000Z\",\n      \"firstName\": \"Jean\",\n      \"id\": \"16157faf-0052-46d0-879d-3197b2ceb1ca\",\n      \"lastName\": \"Mugisha\",\n      \"office\": {\n        \"id\": \"ccbbcd58-be11-4e77-a259-07b1232e669c\",\n        \"name\": \"Cardiology\",\n        \"officeNumber\": 101\n      }\n    },\n    \"id\": \"e516051f-ad4b-4460-af9b-1efb6380c287\",\n    \"patient\": {\n      \"dateOfBirth\": \"1995-02-09T22:00:00.000Z\",\n      \"firstName\": \"Alice\",\n      \"id\": \"8aeee4f7-4d39-4d9f-b9a0-8689e788a2d4\",\n      \"lastName\": \"Uwase\"\n    },\n    \"reason\": \"Follow-up\",\n    \"status\": \"SCHEDULED\"\n  },\n  {\n    \"appointmentDate\": \"2026-10-20\",\n    \"doctor\": {\n      \"dateOfBirth\": \"1980-04-30T22:00:00.000Z\",\n      \"firstName\": \"Jean\",\n      \"id\": \"16157faf-0052-46d0-879d-3197b2ceb1ca\",\n      \"lastName\": \"Mugisha\",\n      \"office\": {\n        \"id\": \"ccbbcd58-be11-4e77-a259-07b1232e669c\",\n        \"name\": \"Cardiology\",\n        \"officeNumber\": 101\n      }\n    },\n    \"id\": \"91b5a130-6c73-4816-acd8-74abb7b76642\",\n    \"patient\": {\n      \"dateOfBirth\": \"2001-11-14T22:00:00.000Z\",\n      \"firstName\": \"Grace\",\n      \"id\": \"feef9285-3361-4005-85f1-990171db7aeb\",\n      \"lastName\": \"Ingabire\"\n    },\n    \"reason\": \"Palpitations\",\n    \"status\": \"SCHEDULED\"\n  },\n  {\n    \"appointmentDate\": \"2026-11-04\",\n    \"doctor\": {\n      \"dateOfBirth\": \"1978-03-24T22:00:00.000Z\",\n      \"firstName\": \"Patrick\",\n      \"id\": \"5e3f5ab8-eff1-46bc-8610-ddeaa5c77db5\",\n      \"lastName\": \"Niyonzima\",\n      \"office\": null\n    },\n    \"id\": \"a9b517e4-f048-4b45-b6eb-e47130a7d738\",\n    \"patient\": {\n      \"dateOfBirth\": \"1990-07-19T22:00:00.000Z\",\n      \"firstName\": \"Eric\",\n      \"id\": \"667c92f4-cb72-4695-86c0-68c724fa0e98\",\n      \"lastName\": \"Habimana\"\n    },\n    \"reason\": \"Annual checkup\",\n    \"status\": \"SCHEDULED\"\n  }\n]"
+						}
+					],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "A2 Appointments by status (completed)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/appointments/by-status?status=COMPLETED",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"appointments",
+								"by-status"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "COMPLETED"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "A2 Appointments by status (completed)",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/appointments/by-status?status=COMPLETED",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"appointments",
+										"by-status"
+									],
+									"query": [
+										{
+											"key": "status",
+											"value": "COMPLETED"
+										}
+									]
+								}
+							},
+							"status": "",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json"
+								},
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "date",
+									"value": "Wed, 07 Oct 2026 21:57:00 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"appointmentDate\": \"2026-10-05\",\n    \"doctor\": {\n      \"dateOfBirth\": \"1980-04-30T22:00:00.000Z\",\n      \"firstName\": \"Jean\",\n      \"id\": \"16157faf-0052-46d0-879d-3197b2ceb1ca\",\n      \"lastName\": \"Mugisha\",\n      \"office\": {\n        \"id\": \"ccbbcd58-be11-4e77-a259-07b1232e669c\",\n        \"name\": \"Cardiology\",\n        \"officeNumber\": 101\n      }\n    },\n    \"id\": \"1af453a9-fd97-496f-9fcc-2ee9dae14085\",\n    \"patient\": {\n      \"dateOfBirth\": \"1995-02-09T22:00:00.000Z\",\n      \"firstName\": \"Alice\",\n      \"id\": \"8aeee4f7-4d39-4d9f-b9a0-8689e788a2d4\",\n      \"lastName\": \"Uwase\"\n    },\n    \"reason\": \"Chest pain\",\n    \"status\": \"COMPLETED\"\n  },\n  {\n    \"appointmentDate\": \"2026-10-14\",\n    \"doctor\": {\n      \"dateOfBirth\": \"1985-09-11T22:00:00.000Z\",\n      \"firstName\": \"Claudine\",\n      \"id\": \"edc2c7d7-436c-4616-800f-1f01cddb0f01\",\n      \"lastName\": \"Mukamana\",\n      \"office\": {\n        \"id\": \"4b4e4157-95c7-47a8-8c41-87106f19a1c8\",\n        \"name\": \"Pediatrics\",\n        \"officeNumber\": 102\n      }\n    },\n    \"id\": \"4c61b215-c800-4c89-b7e3-c5368bed9f66\",\n    \"patient\": {\n      \"dateOfBirth\": \"1995-02-09T22:00:00.000Z\",\n      \"firstName\": \"Alice\",\n      \"id\": \"8aeee4f7-4d39-4d9f-b9a0-8689e788a2d4\",\n      \"lastName\": \"Uwase\"\n    },\n    \"reason\": \"Skin rash\",\n    \"status\": \"COMPLETED\"\n  },\n  {\n    \"appointmentDate\": \"2026-11-18\",\n    \"doctor\": {\n      \"dateOfBirth\": \"1980-04-30T22:00:00.000Z\",\n      \"firstName\": \"Jean\",\n      \"id\": \"16157faf-0052-46d0-879d-3197b2ceb1ca\",\n      \"lastName\": \"Mugisha\",\n      \"office\": {\n        \"id\": \"ccbbcd58-be11-4e77-a259-07b1232e669c\",\n        \"name\": \"Cardiology\",\n        \"officeNumber\": 101\n      }\n    },\n    \"id\": \"56ca883e-373f-4b23-9501-82b774f7c557\",\n    \"patient\": {\n      \"dateOfBirth\": \"1998-06-02T22:00:00.000Z\",\n      \"firstName\": \"Diane\",\n      \"id\": \"a827e6e4-6a7d-48c3-b2d2-f24fa31cf292\",\n      \"lastName\": \"Uwase\"\n    },\n    \"reason\": \"Heart screening\",\n    \"status\": \"COMPLETED\"\n  }\n]"
+						}
+					],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "A3 Appointments in October",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/appointments/between?start=2026-10-01&end=2026-10-31",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"appointments",
+								"between"
+							],
+							"query": [
+								{
+									"key": "start",
+									"value": "2026-10-01"
+								},
+								{
+									"key": "end",
+									"value": "2026-10-31"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "A3 Appointments in October",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/appointments/between?start=2026-10-01&end=2026-10-31",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"appointments",
+										"between"
+									],
+									"query": [
+										{
+											"key": "start",
+											"value": "2026-10-01"
+										},
+										{
+											"key": "end",
+											"value": "2026-10-31"
+										}
+									]
+								}
+							},
+							"status": "",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json"
+								},
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "date",
+									"value": "Wed, 07 Oct 2026 21:57:37 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"appointmentDate\": \"2026-10-05\",\n    \"doctor\": {\n      \"dateOfBirth\": \"1980-04-30T22:00:00.000Z\",\n      \"firstName\": \"Jean\",\n      \"id\": \"16157faf-0052-46d0-879d-3197b2ceb1ca\",\n      \"lastName\": \"Mugisha\",\n      \"office\": {\n        \"id\": \"ccbbcd58-be11-4e77-a259-07b1232e669c\",\n        \"name\": \"Cardiology\",\n        \"officeNumber\": 101\n      }\n    },\n    \"id\": \"1af453a9-fd97-496f-9fcc-2ee9dae14085\",\n    \"patient\": {\n      \"dateOfBirth\": \"1995-02-09T22:00:00.000Z\",\n      \"firstName\": \"Alice\",\n      \"id\": \"8aeee4f7-4d39-4d9f-b9a0-8689e788a2d4\",\n      \"lastName\": \"Uwase\"\n    },\n    \"reason\": \"Chest pain\",\n    \"status\": \"COMPLETED\"\n  },\n  {\n    \"appointmentDate\": \"2026-10-08\",\n    \"doctor\": {\n      \"dateOfBirth\": \"1985-09-11T22:00:00.000Z\",\n      \"firstName\": \"Claudine\",\n      \"id\": \"edc2c7d7-436c-4616-800f-1f01cddb0f01\",\n      \"lastName\": \"Mukamana\",\n      \"office\": {\n        \"id\": \"4b4e4157-95c7-47a8-8c41-87106f19a1c8\",\n        \"name\": \"Pediatrics\",\n        \"officeNumber\": 102\n      }\n    },\n    \"id\": \"63f3cbb9-7f98-4602-bca1-ce7fb7b9236d\",\n    \"patient\": {\n      \"dateOfBirth\": \"1998-06-02T22:00:00.000Z\",\n      \"firstName\": \"Diane\",\n      \"id\": \"a827e6e4-6a7d-48c3-b2d2-f24fa31cf292\",\n      \"lastName\": \"Uwase\"\n    },\n    \"reason\": \"Acne treatment\",\n    \"status\": \"CANCELLED\"\n  },\n  {\n    \"appointmentDate\": \"2026-10-12\",\n    \"doctor\": {\n      \"dateOfBirth\": \"1978-03-24T22:00:00.000Z\",\n      \"firstName\": \"Patrick\",\n      \"id\": \"5e3f5ab8-eff1-46bc-8610-ddeaa5c77db5\",\n      \"lastName\": \"Niyonzima\",\n      \"office\": null\n    },\n    \"id\": \"0a1fe0ab-b07e-4041-aa9b-83dee5dbe32e\",\n    \"patient\": {\n      \"dateOfBirth\": \"1987-04-07T22:00:00.000Z\",\n      \"firstName\": \"Kevin\",\n      \"id\": \"643200a0-77f0-4ed7-9708-397de8edf144\",\n      \"lastName\": \"Nshimiyimana\"\n    },\n    \"reason\": \"ECG test\",\n    \"status\": \"CANCELLED\"\n  },\n  {\n    \"appointmentDate\": \"2026-10-14\",\n    \"doctor\": {\n      \"dateOfBirth\": \"1985-09-11T22:00:00.000Z\",\n      \"firstName\": \"Claudine\",\n      \"id\": \"edc2c7d7-436c-4616-800f-1f01cddb0f01\",\n      \"lastName\": \"Mukamana\",\n      \"office\": {\n        \"id\": \"4b4e4157-95c7-47a8-8c41-87106f19a1c8\",\n        \"name\": \"Pediatrics\",\n        \"officeNumber\": 102\n      }\n    },\n    \"id\": \"4c61b215-c800-4c89-b7e3-c5368bed9f66\",\n    \"patient\": {\n      \"dateOfBirth\": \"1995-02-09T22:00:00.000Z\",\n      \"firstName\": \"Alice\",\n      \"id\": \"8aeee4f7-4d39-4d9f-b9a0-8689e788a2d4\",\n      \"lastName\": \"Uwase\"\n    },\n    \"reason\": \"Skin rash\",\n    \"status\": \"COMPLETED\"\n  },\n  {\n    \"appointmentDate\": \"2026-10-20\",\n    \"doctor\": {\n      \"dateOfBirth\": \"1980-04-30T22:00:00.000Z\",\n      \"firstName\": \"Jean\",\n      \"id\": \"16157faf-0052-46d0-879d-3197b2ceb1ca\",\n      \"lastName\": \"Mugisha\",\n      \"office\": {\n        \"id\": \"ccbbcd58-be11-4e77-a259-07b1232e669c\",\n        \"name\": \"Cardiology\",\n        \"officeNumber\": 101\n      }\n    },\n    \"id\": \"e516051f-ad4b-4460-af9b-1efb6380c287\",\n    \"patient\": {\n      \"dateOfBirth\": \"1995-02-09T22:00:00.000Z\",\n      \"firstName\": \"Alice\",\n      \"id\": \"8aeee4f7-4d39-4d9f-b9a0-8689e788a2d4\",\n      \"lastName\": \"Uwase\"\n    },\n    \"reason\": \"Follow-up\",\n    \"status\": \"SCHEDULED\"\n  },\n  {\n    \"appointmentDate\": \"2026-10-20\",\n    \"doctor\": {\n      \"dateOfBirth\": \"1980-04-30T22:00:00.000Z\",\n      \"firstName\": \"Jean\",\n      \"id\": \"16157faf-0052-46d0-879d-3197b2ceb1ca\",\n      \"lastName\": \"Mugisha\",\n      \"office\": {\n        \"id\": \"ccbbcd58-be11-4e77-a259-07b1232e669c\",\n        \"name\": \"Cardiology\",\n        \"officeNumber\": 101\n      }\n    },\n    \"id\": \"771bdd68-2cdb-4f7e-853a-291a51dbd16b\",\n    \"patient\": {\n      \"dateOfBirth\": \"1990-07-19T22:00:00.000Z\",\n      \"firstName\": \"Eric\",\n      \"id\": \"667c92f4-cb72-4695-86c0-68c724fa0e98\",\n      \"lastName\": \"Habimana\"\n    },\n    \"reason\": \"Blood pressure check\",\n    \"status\": \"CONFIRMED\"\n  },\n  {\n    \"appointmentDate\": \"2026-10-20\",\n    \"doctor\": {\n      \"dateOfBirth\": \"1980-04-30T22:00:00.000Z\",\n      \"firstName\": \"Jean\",\n      \"id\": \"16157faf-0052-46d0-879d-3197b2ceb1ca\",\n      \"lastName\": \"Mugisha\",\n      \"office\": {\n        \"id\": \"ccbbcd58-be11-4e77-a259-07b1232e669c\",\n        \"name\": \"Cardiology\",\n        \"officeNumber\": 101\n      }\n    },\n    \"id\": \"91b5a130-6c73-4816-acd8-74abb7b76642\",\n    \"patient\": {\n      \"dateOfBirth\": \"2001-11-14T22:00:00.000Z\",\n      \"firstName\": \"Grace\",\n      \"id\": \"feef9285-3361-4005-85f1-990171db7aeb\",\n      \"lastName\": \"Ingabire\"\n    },\n    \"reason\": \"Palpitations\",\n    \"status\": \"SCHEDULED\"\n  }\n]"
+						}
+					],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "A3 Appointments on one day",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/appointments/between?start=2026-10-20&end=2026-10-20",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"appointments",
+								"between"
+							],
+							"query": [
+								{
+									"key": "start",
+									"value": "2026-10-20"
+								},
+								{
+									"key": "end",
+									"value": "2026-10-20"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "A3 Appointments on one day",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/appointments/between?start=2026-10-20&end=2026-10-20",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"appointments",
+										"between"
+									],
+									"query": [
+										{
+											"key": "start",
+											"value": "2026-10-20"
+										},
+										{
+											"key": "end",
+											"value": "2026-10-20"
+										}
+									]
+								}
+							},
+							"status": "",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json"
+								},
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "date",
+									"value": "Wed, 07 Oct 2026 21:58:06 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"appointmentDate\": \"2026-10-20\",\n    \"doctor\": {\n      \"dateOfBirth\": \"1980-04-30T22:00:00.000Z\",\n      \"firstName\": \"Jean\",\n      \"id\": \"16157faf-0052-46d0-879d-3197b2ceb1ca\",\n      \"lastName\": \"Mugisha\",\n      \"office\": {\n        \"id\": \"ccbbcd58-be11-4e77-a259-07b1232e669c\",\n        \"name\": \"Cardiology\",\n        \"officeNumber\": 101\n      }\n    },\n    \"id\": \"e516051f-ad4b-4460-af9b-1efb6380c287\",\n    \"patient\": {\n      \"dateOfBirth\": \"1995-02-09T22:00:00.000Z\",\n      \"firstName\": \"Alice\",\n      \"id\": \"8aeee4f7-4d39-4d9f-b9a0-8689e788a2d4\",\n      \"lastName\": \"Uwase\"\n    },\n    \"reason\": \"Follow-up\",\n    \"status\": \"SCHEDULED\"\n  },\n  {\n    \"appointmentDate\": \"2026-10-20\",\n    \"doctor\": {\n      \"dateOfBirth\": \"1980-04-30T22:00:00.000Z\",\n      \"firstName\": \"Jean\",\n      \"id\": \"16157faf-0052-46d0-879d-3197b2ceb1ca\",\n      \"lastName\": \"Mugisha\",\n      \"office\": {\n        \"id\": \"ccbbcd58-be11-4e77-a259-07b1232e669c\",\n        \"name\": \"Cardiology\",\n        \"officeNumber\": 101\n      }\n    },\n    \"id\": \"771bdd68-2cdb-4f7e-853a-291a51dbd16b\",\n    \"patient\": {\n      \"dateOfBirth\": \"1990-07-19T22:00:00.000Z\",\n      \"firstName\": \"Eric\",\n      \"id\": \"667c92f4-cb72-4695-86c0-68c724fa0e98\",\n      \"lastName\": \"Habimana\"\n    },\n    \"reason\": \"Blood pressure check\",\n    \"status\": \"CONFIRMED\"\n  },\n  {\n    \"appointmentDate\": \"2026-10-20\",\n    \"doctor\": {\n      \"dateOfBirth\": \"1980-04-30T22:00:00.000Z\",\n      \"firstName\": \"Jean\",\n      \"id\": \"16157faf-0052-46d0-879d-3197b2ceb1ca\",\n      \"lastName\": \"Mugisha\",\n      \"office\": {\n        \"id\": \"ccbbcd58-be11-4e77-a259-07b1232e669c\",\n        \"name\": \"Cardiology\",\n        \"officeNumber\": 101\n      }\n    },\n    \"id\": \"91b5a130-6c73-4816-acd8-74abb7b76642\",\n    \"patient\": {\n      \"dateOfBirth\": \"2001-11-14T22:00:00.000Z\",\n      \"firstName\": \"Grace\",\n      \"id\": \"feef9285-3361-4005-85f1-990171db7aeb\",\n      \"lastName\": \"Ingabire\"\n    },\n    \"reason\": \"Palpitations\",\n    \"status\": \"SCHEDULED\"\n  }\n]"
+						}
+					],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "A4 Double booking is refused",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/appointments/save?patientId={{patientId}}&doctorId={{doctorId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"appointments",
+								"save"
+							],
+							"query": [
+								{
+									"key": "patientId",
+									"value": "{{patientId}}"
+								},
+								{
+									"key": "doctorId",
+									"value": "{{doctorId}}"
+								}
+							]
+						},
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"appointmentDate\": \"2026-10-20\",\n    \"reason\": \"Second booking\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					},
+					"response": [
+						{
+							"name": "A4 Double booking is refused",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/appointments/save?patientId={{patientId}}&doctorId={{doctorId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"appointments",
+										"save"
+									],
+									"query": [
+										{
+											"key": "patientId",
+											"value": "{{patientId}}"
+										},
+										{
+											"key": "doctorId",
+											"value": "{{doctorId}}"
+										}
+									]
+								},
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"appointmentDate\": \"2026-10-20\",\n    \"reason\": \"Second booking\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								}
+							},
+							"status": "",
+							"code": 409,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "content-length",
+									"value": "37"
+								},
+								{
+									"key": "date",
+									"value": "Wed, 07 Oct 2026 21:58:51 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "Doctor is already booked on that date"
+						}
+					],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 409\", function () {",
+									"    pm.response.to.have.status(409);",
+									"});",
+									"",
+									"pm.test(\"Message\", function () {",
+									"    pm.expect(pm.response.text()).to.eql(\"Doctor is already booked on that date\");",
+									"});"
+								]
+							}
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "tempOfficeId",
+			"value": ""
+		},
+		{
+			"key": "tempSpecializationId",
+			"value": ""
+		},
+		{
+			"key": "tempDoctorId",
+			"value": ""
+		},
+		{
+			"key": "tempPatientId",
+			"value": ""
+		},
+		{
+			"key": "tempAppointmentId",
+			"value": ""
+		}
+	]
+}

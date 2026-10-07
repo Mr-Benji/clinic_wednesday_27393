@@ -1,0 +1,55 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/api/doctors/all"
+  method: GET
+response:
+  statusCode: 200
+  statusText: ""
+  headers:
+    content-type: application/json
+    transfer-encoding: chunked
+    date: Wed, 07 Oct 2026 21:38:40 GMT
+    keep-alive: timeout=60
+    connection: keep-alive
+  body:
+    type: json
+    content: |-
+      [
+        {
+          "dateOfBirth": "1980-04-30T22:00:00.000Z",
+          "firstName": "Jean",
+          "id": "16157faf-0052-46d0-879d-3197b2ceb1ca",
+          "lastName": "Mugisha",
+          "office": {
+            "id": "ccbbcd58-be11-4e77-a259-07b1232e669c",
+            "name": "Cardiology",
+            "officeNumber": 101
+          }
+        },
+        {
+          "dateOfBirth": "1985-09-11T22:00:00.000Z",
+          "firstName": "Claudine",
+          "id": "edc2c7d7-436c-4616-800f-1f01cddb0f01",
+          "lastName": "Mukamana",
+          "office": {
+            "id": "4b4e4157-95c7-47a8-8c41-87106f19a1c8",
+            "name": "Pediatrics",
+            "officeNumber": 102
+          }
+        },
+        {
+          "dateOfBirth": "1978-03-24T22:00:00.000Z",
+          "firstName": "Patrick",
+          "id": "5e3f5ab8-eff1-46bc-8610-ddeaa5c77db5",
+          "lastName": "Niyonzima",
+          "office": null
+        },
+        {
+          "dateOfBirth": "1989-12-31T22:00:00.000Z",
+          "firstName": "Test",
+          "id": "e954a5d9-f09b-458f-ae85-304a77ad1e7c",
+          "lastName": "Doctor",
+          "office": null
+        }
+      ]
+order: 1791409585523

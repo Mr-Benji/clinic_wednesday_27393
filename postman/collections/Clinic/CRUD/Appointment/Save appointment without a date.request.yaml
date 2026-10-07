@@ -1,0 +1,23 @@
+$kind: http-request
+url: "{{baseUrl}}/api/appointments/save?patientId={{tempPatientId}}&doctorId={{tempDoctorId}}"
+method: POST
+headers:
+  Content-Type: application/json
+queryParams:
+  patientId: "{{tempPatientId}}"
+  doctorId: "{{tempDoctorId}}"
+body:
+  type: json
+  content: |-
+    {
+        "reason": "No date"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status code is 400", function () {
+          pm.response.to.have.status(400);
+      });
+    language: text/javascript
+examples: .resources/Save appointment without a date.resources/examples
+order: 2000

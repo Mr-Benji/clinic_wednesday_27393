@@ -1,0 +1,17 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/api/patients/{{tempPatientId}}"
+  method: GET
+response:
+  statusCode: 404
+  statusText: ""
+  headers:
+    content-type: text/plain;charset=UTF-8
+    content-length: "17"
+    date: Wed, 07 Oct 2026 21:40:30 GMT
+    keep-alive: timeout=60
+    connection: keep-alive
+  body:
+    type: text
+    content: Patient not found
+order: 1791410058490

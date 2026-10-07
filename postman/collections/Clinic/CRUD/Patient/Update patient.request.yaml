@@ -1,0 +1,22 @@
+$kind: http-request
+url: "{{baseUrl}}/api/patients/update/{{tempPatientId}}"
+method: PUT
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+        "firstName": "Test",
+        "lastName": "Patient",
+        "dateOfBirth": "2000-02-02"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status code is 200", function () {
+          pm.response.to.have.status(200);
+      });
+    language: text/javascript
+examples: .resources/Update patient.resources/examples
+order: 4000

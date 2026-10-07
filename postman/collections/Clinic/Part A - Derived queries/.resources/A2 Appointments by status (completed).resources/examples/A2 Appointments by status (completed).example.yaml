@@ -1,0 +1,90 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/api/appointments/by-status?status=COMPLETED"
+  method: GET
+  queryParams:
+    status: COMPLETED
+response:
+  statusCode: 200
+  statusText: ""
+  headers:
+    content-type: application/json
+    transfer-encoding: chunked
+    date: Wed, 07 Oct 2026 21:57:00 GMT
+    keep-alive: timeout=60
+    connection: keep-alive
+  body:
+    type: json
+    content: |-
+      [
+        {
+          "appointmentDate": "2026-10-05",
+          "doctor": {
+            "dateOfBirth": "1980-04-30T22:00:00.000Z",
+            "firstName": "Jean",
+            "id": "16157faf-0052-46d0-879d-3197b2ceb1ca",
+            "lastName": "Mugisha",
+            "office": {
+              "id": "ccbbcd58-be11-4e77-a259-07b1232e669c",
+              "name": "Cardiology",
+              "officeNumber": 101
+            }
+          },
+          "id": "1af453a9-fd97-496f-9fcc-2ee9dae14085",
+          "patient": {
+            "dateOfBirth": "1995-02-09T22:00:00.000Z",
+            "firstName": "Alice",
+            "id": "8aeee4f7-4d39-4d9f-b9a0-8689e788a2d4",
+            "lastName": "Uwase"
+          },
+          "reason": "Chest pain",
+          "status": "COMPLETED"
+        },
+        {
+          "appointmentDate": "2026-10-14",
+          "doctor": {
+            "dateOfBirth": "1985-09-11T22:00:00.000Z",
+            "firstName": "Claudine",
+            "id": "edc2c7d7-436c-4616-800f-1f01cddb0f01",
+            "lastName": "Mukamana",
+            "office": {
+              "id": "4b4e4157-95c7-47a8-8c41-87106f19a1c8",
+              "name": "Pediatrics",
+              "officeNumber": 102
+            }
+          },
+          "id": "4c61b215-c800-4c89-b7e3-c5368bed9f66",
+          "patient": {
+            "dateOfBirth": "1995-02-09T22:00:00.000Z",
+            "firstName": "Alice",
+            "id": "8aeee4f7-4d39-4d9f-b9a0-8689e788a2d4",
+            "lastName": "Uwase"
+          },
+          "reason": "Skin rash",
+          "status": "COMPLETED"
+        },
+        {
+          "appointmentDate": "2026-11-18",
+          "doctor": {
+            "dateOfBirth": "1980-04-30T22:00:00.000Z",
+            "firstName": "Jean",
+            "id": "16157faf-0052-46d0-879d-3197b2ceb1ca",
+            "lastName": "Mugisha",
+            "office": {
+              "id": "ccbbcd58-be11-4e77-a259-07b1232e669c",
+              "name": "Cardiology",
+              "officeNumber": 101
+            }
+          },
+          "id": "56ca883e-373f-4b23-9501-82b774f7c557",
+          "patient": {
+            "dateOfBirth": "1998-06-02T22:00:00.000Z",
+            "firstName": "Diane",
+            "id": "a827e6e4-6a7d-48c3-b2d2-f24fa31cf292",
+            "lastName": "Uwase"
+          },
+          "reason": "Heart screening",
+          "status": "COMPLETED"
+        }
+      ]
+order: 1791410223227

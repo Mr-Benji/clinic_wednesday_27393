@@ -1,0 +1,19 @@
+$kind: http-request
+url: "{{baseUrl}}/api/patients/by-last-name?lastName=uwase"
+method: GET
+queryParams:
+  lastName: uwase
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status code is 200", function () {
+          pm.response.to.have.status(200);
+      });
+
+      const names = pm.response.json().map(function (p) { return p.firstName; });
+      pm.test("Sorted by first name", function () {
+          pm.expect(names).to.eql(names.slice().sort());
+      });
+    language: text/javascript
+examples: .resources/A1 Patients by last name.resources/examples
+order: 1000

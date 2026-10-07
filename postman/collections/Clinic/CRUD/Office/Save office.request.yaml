@@ -1,0 +1,21 @@
+$kind: http-request
+url: "{{baseUrl}}/api/offices/save"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+        "name": "Test office",
+        "officeNumber": 105
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status code is 200", function () {
+          pm.response.to.have.status(200);
+      });
+    language: text/javascript
+examples: .resources/Save office.resources/examples
+order: 1000

@@ -1,0 +1,8 @@
+$kind: collection
+description: ""
+variables:
+  tempOfficeId: ""
+  tempSpecializationId: ""
+  tempDoctorId: ""
+  tempPatientId: ""
+  tempAppointmentId: ""

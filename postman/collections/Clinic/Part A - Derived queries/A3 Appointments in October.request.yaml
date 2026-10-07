@@ -1,0 +1,15 @@
+$kind: http-request
+url: "{{baseUrl}}/api/appointments/between?start=2026-10-01&end=2026-10-31"
+method: GET
+queryParams:
+  start: 2026-10-01
+  end: 2026-10-31
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status code is 200", function () {
+          pm.response.to.have.status(200);
+      });
+    language: text/javascript
+examples: .resources/A3 Appointments in October.resources/examples
+order: 6000

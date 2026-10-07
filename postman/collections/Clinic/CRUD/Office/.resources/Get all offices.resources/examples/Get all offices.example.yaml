@@ -1,0 +1,49 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/api/offices/all"
+  method: GET
+response:
+  statusCode: 200
+  statusText: ""
+  headers:
+    content-type: application/json
+    transfer-encoding: chunked
+    date: Wed, 07 Oct 2026 21:43:56 GMT
+    keep-alive: timeout=60
+    connection: keep-alive
+  body:
+    type: json
+    content: |-
+      [
+        {
+          "id": "ccbbcd58-be11-4e77-a259-07b1232e669c",
+          "name": "Cardiology",
+          "officeNumber": 101
+        },
+        {
+          "id": "35550fd0-c349-4ebf-8af4-e34c8e5519fa",
+          "name": "Cardiology",
+          "officeNumber": 103
+        },
+        {
+          "id": "697ce044-b470-4152-9e93-1af5bd4d3127",
+          "name": "Cardiology",
+          "officeNumber": 104
+        },
+        {
+          "id": "846e679f-d6c5-470b-ae9a-aa8e82172d63",
+          "name": "Cardiology",
+          "officeNumber": 1120
+        },
+        {
+          "id": "4b4e4157-95c7-47a8-8c41-87106f19a1c8",
+          "name": "Pediatrics",
+          "officeNumber": 102
+        },
+        {
+          "id": "291d0643-41f6-4bbd-87ee-080340713da1",
+          "name": "Test office",
+          "officeNumber": 105
+        }
+      ]
+order: 1791409441111
