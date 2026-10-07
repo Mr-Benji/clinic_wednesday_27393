@@ -1,5 +1,6 @@
 package kigali.clinic.rw.controller;
 
+import java.time.LocalDate;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import kigali.clinic.rw.domain.Appointment;
+import kigali.clinic.rw.domain.AppointmentStatus;
 import kigali.clinic.rw.service.AppointmentService;
 
 
@@ -38,6 +40,21 @@ public class AppointmentController {
     @GetMapping(value="/all")
     public ResponseEntity<?> getAllAppointments(){
         return new ResponseEntity<>(appointmentServ.getAllAppointments(), HttpStatus.OK);
+    }
+
+    // e.g. /api/appointments/by-status?status=SCHEDULED
+    @GetMapping(value="/by-status")
+    public ResponseEntity<?> getAppointmentsByStatus(@RequestParam AppointmentStatus status){
+        return new ResponseEntity<>(appointmentServ.getAppointmentsByStatus(status), HttpStatus.OK);
+    }
+
+    // e.g. /api/appointments/between?start=2026-10-01&end=2026-10-31
+    @GetMapping(value="/between")
+    public ResponseEntity<?> getAppointmentsBetween(@RequestParam String start, @RequestParam String end){
+
+        LocalDate startDate = LocalDate.parse(start);
+        LocalDate endDate = LocalDate.parse(end);
+        return new ResponseEntity<>(appointmentServ.getAppointmentsBetween(startDate, endDate), HttpStatus.OK);
     }
 
     @GetMapping(value="/{id}")

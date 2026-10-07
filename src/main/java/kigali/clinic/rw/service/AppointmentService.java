@@ -1,5 +1,6 @@
 package kigali.clinic.rw.service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
@@ -43,6 +44,13 @@ public class AppointmentService {
             return "Doctor not found";
         }
 
+        // a doctor can not have two active appointments on the same date
+        boolean booked = appointmentRepo.existsByDoctorIdAndAppointmentDateAndStatusNot(
+                doctorId, appointment.getAppointmentDate(), AppointmentStatus.CANCELLED);
+        if(booked){
+            return "Doctor is already booked on that date";
+        }
+
         if(appointment.getStatus() == null){
             appointment.setStatus(AppointmentStatus.SCHEDULED);
         }
@@ -55,6 +63,14 @@ public class AppointmentService {
 
     public List<Appointment> getAllAppointments(){
         return appointmentRepo.findAll();
+    }
+
+    public List<Appointment> getAppointmentsByStatus(AppointmentStatus status){
+        return appointmentRepo.findByStatusOrderByAppointmentDateAsc(status);
+    }
+
+    public List<Appointment> getAppointmentsBetween(LocalDate start, LocalDate end){
+        return appointmentRepo.findByAppointmentDateBetweenOrderByAppointmentDateAsc(start, end);
     }
 
     public Appointment getAppointmentById(UUID id){

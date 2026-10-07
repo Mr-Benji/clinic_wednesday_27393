@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import kigali.clinic.rw.domain.Patient;
@@ -36,6 +37,12 @@ public class PatientController {
     @GetMapping(value="/all")
     public ResponseEntity<?> getAllPatients(){
         return new ResponseEntity<>(patientServ.getAllPatients(), HttpStatus.OK);
+    }
+
+    // e.g. /api/patients/by-last-name?lastName=uwase
+    @GetMapping(value="/by-last-name")
+    public ResponseEntity<?> getPatientsByLastName(@RequestParam String lastName){
+        return new ResponseEntity<>(patientServ.getPatientsByLastName(lastName), HttpStatus.OK);
     }
 
     @GetMapping(value="/{id}")

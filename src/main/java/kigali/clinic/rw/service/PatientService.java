@@ -32,6 +32,10 @@ public class PatientService {
         return patientRepo.findById(id).orElse(null);
     }
 
+    public List<Patient> getPatientsByLastName(String lastName){
+        return patientRepo.findByLastNameIgnoreCaseOrderByFirstNameAsc(lastName);
+    }
+
     public String updatePatient(UUID id, Patient patient){
 
         Patient existing = patientRepo.findById(id).orElse(null);
