@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -85,6 +87,18 @@ public class AppointmentService {
                 AppointmentStatus.CANCELLED, AppointmentStatus.COMPLETED);
 
         return cancelled + " appointments cancelled";
+    }
+
+    public Page<Appointment> getAppointmentsPage(Pageable pageable){
+        return appointmentRepo.findAll(pageable);
+    }
+
+    @Transactional
+    public String deleteCancelledBefore(LocalDate date){
+
+        int deleted = appointmentRepo.deleteByStatusBefore(AppointmentStatus.CANCELLED, date);
+
+        return deleted + " appointments deleted";
     }
 
     public Appointment getAppointmentById(UUID id){

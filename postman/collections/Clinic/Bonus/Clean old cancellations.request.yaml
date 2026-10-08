@@ -1,0 +1,17 @@
+$kind: http-request
+url: "{{baseUrl}}/api/appointments/cancelled-before?date=2026-10-15"
+method: DELETE
+queryParams:
+  date: 2026-10-15
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status code is 200", function () {
+          pm.response.to.have.status(200);
+      });
+
+      pm.test("Message gives the number deleted", function () {
+          pm.expect(pm.response.text()).to.match(/^\d+ appointments deleted$/);
+      });
+    language: text/javascript
+order: 2000

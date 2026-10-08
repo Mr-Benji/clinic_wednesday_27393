@@ -4,6 +4,9 @@ import java.time.LocalDate;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -68,6 +71,30 @@ public class AppointmentController {
     public ResponseEntity<?> cancelDoctorDay(@RequestParam UUID doctorId, @RequestParam String date){
 
         String returnedMessage = appointmentServ.cancelDoctorDay(doctorId, LocalDate.parse(date));
+        return new ResponseEntity<>(returnedMessage, HttpStatus.OK);
+    }
+
+    // e.g. /api/appointments/page?page=0&size=5&sort=appointmentDate,desc
+    @GetMapping(value="/page")
+    public ResponseEntity<?> getAppointmentsPage(@RequestParam int page, @RequestParam int size,
+            @RequestParam String sort){
+
+        // sort comes as "field,direction"
+        String[] sortParts = sort.split(",");
+        Sort.Direction direction = Sort.Direction.ASC;
+        if(sortParts.length > 1){
+            direction = Sort.Direction.fromString(sortParts[1]);
+        }
+        Pageable pageable = PageRequest.of(page, size, Sort.by(direction, sortParts[0]));
+
+        return new ResponseEntity<>(appointmentServ.getAppointmentsPage(pageable), HttpStatus.OK);
+    }
+
+    // e.g. /api/appointments/cancelled-before?date=2026-10-15
+    @DeleteMapping(value="/cancelled-before")
+    public ResponseEntity<?> deleteCancelledBefore(@RequestParam String date){
+
+        String returnedMessage = appointmentServ.deleteCancelledBefore(LocalDate.parse(date));
         return new ResponseEntity<>(returnedMessage, HttpStatus.OK);
     }
 

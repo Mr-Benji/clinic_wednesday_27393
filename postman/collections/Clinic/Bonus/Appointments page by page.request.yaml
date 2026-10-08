@@ -1,0 +1,27 @@
+$kind: http-request
+url: "{{baseUrl}}/api/appointments/page?page=0&size=5&sort=appointmentDate,desc"
+method: GET
+queryParams:
+  page: "0"
+  size: "5"
+  sort: appointmentDate,desc
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status code is 200", function () {
+          pm.response.to.have.status(200);
+      });
+
+      const body = pm.response.json();
+      pm.test("Shows total pages and total elements", function () {
+          pm.expect(body.page).to.have.property("totalPages");
+          pm.expect(body.page).to.have.property("totalElements");
+      });
+
+      const dates = body.content.map(function (a) { return a.appointmentDate; });
+      pm.test("At most 5 per page, newest first", function () {
+          pm.expect(dates.length).to.be.at.most(5);
+          pm.expect(dates).to.eql(dates.slice().sort().reverse());
+      });
+    language: text/javascript
+order: 1000

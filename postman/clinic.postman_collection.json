@@ -4813,6 +4813,111 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Bonus",
+			"item": [
+				{
+					"name": "Appointments page by page",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/appointments/page?page=0&size=5&sort=appointmentDate,desc",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"appointments",
+								"page"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "5"
+								},
+								{
+									"key": "sort",
+									"value": "appointmentDate,desc"
+								}
+							]
+						}
+					},
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"const body = pm.response.json();",
+									"pm.test(\"Shows total pages and total elements\", function () {",
+									"    pm.expect(body.page).to.have.property(\"totalPages\");",
+									"    pm.expect(body.page).to.have.property(\"totalElements\");",
+									"});",
+									"",
+									"const dates = body.content.map(function (a) { return a.appointmentDate; });",
+									"pm.test(\"At most 5 per page, newest first\", function () {",
+									"    pm.expect(dates.length).to.be.at.most(5);",
+									"    pm.expect(dates).to.eql(dates.slice().sort().reverse());",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "Clean old cancellations",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/appointments/cancelled-before?date=2026-10-15",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"appointments",
+								"cancelled-before"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "2026-10-15"
+								}
+							]
+						}
+					},
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Message gives the number deleted\", function () {",
+									"    pm.expect(pm.response.text()).to.match(/^\\d+ appointments deleted$/);",
+									"});"
+								]
+							}
+						}
+					]
+				}
+			]
 		}
 	],
 	"variable": [
