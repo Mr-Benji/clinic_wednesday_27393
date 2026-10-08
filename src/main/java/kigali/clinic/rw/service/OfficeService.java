@@ -5,6 +5,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Limit;
 import org.springframework.stereotype.Service;
 
 import kigali.clinic.rw.domain.Office;
@@ -35,6 +36,15 @@ public class OfficeService {
 
     public Optional<Office> getOfficeById(UUID id) {
         return officeRepo.findById(id);
+    }
+
+    // name, number and appointment count of the busiest office, empty when there are no appointments
+    public Optional<Object[]> getBusiestOffice() {
+        List<Object[]> rows = officeRepo.findBusiestOffices(Limit.of(1));
+        if (rows.isEmpty()) {
+            return Optional.empty();
+        }
+        return Optional.of(rows.get(0));
     }
 
     public String updateOffice(UUID id, Office newData) {

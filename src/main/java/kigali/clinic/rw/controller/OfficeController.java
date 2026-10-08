@@ -45,6 +45,16 @@ public class OfficeController {
         return new ResponseEntity<>(officeServ.searchOfficesByName(name), HttpStatus.OK);
     }
 
+    @GetMapping(value="/busiest")
+    public ResponseEntity<?> getBusiestOffice(){
+
+        Object[] busiest = officeServ.getBusiestOffice().orElse(null);
+        if(busiest == null){
+            return new ResponseEntity<>("No appointments yet", HttpStatus.OK);
+        }
+        return new ResponseEntity<>(busiest, HttpStatus.OK);
+    }
+
     @GetMapping(value="/{id}")
     public ResponseEntity<?> getOfficeById(@PathVariable UUID id){
 

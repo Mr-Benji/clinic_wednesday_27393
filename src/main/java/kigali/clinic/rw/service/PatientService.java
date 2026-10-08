@@ -40,6 +40,10 @@ public class PatientService {
         return patientRepo.findPatientsOfDoctor(doctorId);
     }
 
+    public List<Patient> getFrequentPatients(long min){
+        return patientRepo.findFrequentPatients(min);
+    }
+
     public String updatePatient(UUID id, Patient patient){
 
         Patient existing = patientRepo.findById(id).orElse(null);

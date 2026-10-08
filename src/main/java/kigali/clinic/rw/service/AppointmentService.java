@@ -6,6 +6,7 @@ import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import kigali.clinic.rw.domain.Appointment;
 import kigali.clinic.rw.domain.AppointmentStatus;
@@ -71,6 +72,19 @@ public class AppointmentService {
 
     public List<Appointment> getAppointmentsBetween(LocalDate start, LocalDate end){
         return appointmentRepo.findByAppointmentDateBetweenOrderByAppointmentDateAsc(start, end);
+    }
+
+    public List<Object[]> countAppointmentsByStatus(){
+        return appointmentRepo.countAppointmentsByStatus();
+    }
+
+    @Transactional
+    public String cancelDoctorDay(UUID doctorId, LocalDate date){
+
+        int cancelled = appointmentRepo.cancelDoctorDay(doctorId, date,
+                AppointmentStatus.CANCELLED, AppointmentStatus.COMPLETED);
+
+        return cancelled + " appointments cancelled";
     }
 
     public Appointment getAppointmentById(UUID id){

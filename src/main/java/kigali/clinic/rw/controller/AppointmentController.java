@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -55,6 +56,19 @@ public class AppointmentController {
         LocalDate startDate = LocalDate.parse(start);
         LocalDate endDate = LocalDate.parse(end);
         return new ResponseEntity<>(appointmentServ.getAppointmentsBetween(startDate, endDate), HttpStatus.OK);
+    }
+
+    @GetMapping(value="/stats/by-status")
+    public ResponseEntity<?> countAppointmentsByStatus(){
+        return new ResponseEntity<>(appointmentServ.countAppointmentsByStatus(), HttpStatus.OK);
+    }
+
+    // e.g. /api/appointments/cancel-day?doctorId=...&date=2026-10-20
+    @PatchMapping(value="/cancel-day")
+    public ResponseEntity<?> cancelDoctorDay(@RequestParam UUID doctorId, @RequestParam String date){
+
+        String returnedMessage = appointmentServ.cancelDoctorDay(doctorId, LocalDate.parse(date));
+        return new ResponseEntity<>(returnedMessage, HttpStatus.OK);
     }
 
     @GetMapping(value="/{id}")

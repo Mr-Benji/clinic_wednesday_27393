@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -28,4 +29,14 @@ public interface AppointmentRepository extends JpaRepository<Appointment, UUID> 
     // A4: true when the doctor has an appointment on that date whose status is not the given one
     boolean existsByDoctorIdAndAppointmentDateAndStatusNot(UUID doctorId, LocalDate appointmentDate,
             AppointmentStatus status);
+
+    // C1: number of appointments for each status
+    @Query("SELECT a.status, COUNT(a) FROM Appointment a GROUP BY a.status")
+    List<Object[]> countAppointmentsByStatus();
+
+    // C4: cancels every appointment of the doctor on that date, except the completed ones
+    @Modifying(clearAutomatically = true)
+    @Query("UPDATE Appointment a SET a.status = :cancelled WHERE a.doctor.id = :doctorId AND a.appointmentDate = :date AND a.status <> :completed")
+    int cancelDoctorDay(@Param("doctorId") UUID doctorId, @Param("date") LocalDate date,
+            @Param("cancelled") AppointmentStatus cancelled, @Param("completed") AppointmentStatus completed);
 }

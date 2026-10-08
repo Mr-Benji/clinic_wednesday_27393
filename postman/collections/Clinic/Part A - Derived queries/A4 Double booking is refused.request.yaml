@@ -10,7 +10,7 @@ body:
   type: json
   content: |-
     {
-        "appointmentDate": "2026-10-20",
+        "appointmentDate": "2026-11-18",
         "reason": "Second booking"
     }
 scripts:

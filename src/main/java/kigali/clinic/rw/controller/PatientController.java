@@ -58,6 +58,12 @@ public class PatientController {
         return new ResponseEntity<>(patientServ.getPatientsOfDoctor(doctorId), HttpStatus.OK);
     }
 
+    // e.g. /api/patients/frequent?min=3
+    @GetMapping(value="/frequent")
+    public ResponseEntity<?> getFrequentPatients(@RequestParam long min){
+        return new ResponseEntity<>(patientServ.getFrequentPatients(min), HttpStatus.OK);
+    }
+
     @GetMapping(value="/{id}")
     public ResponseEntity<?> getPatientById(@PathVariable UUID id){
 
