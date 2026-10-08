@@ -3857,7 +3857,7 @@
 								},
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"appointmentDate\": \"2026-10-20\",\n    \"reason\": \"Second booking\"\n}",
+									"raw": "{\n    \"appointmentDate\": \"2026-11-18\",\n    \"reason\": \"Second booking\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -3879,7 +3879,7 @@
 								},
 								{
 									"key": "date",
-									"value": "Wed, 07 Oct 2026 21:58:51 GMT"
+									"value": "Thu, 08 Oct 2026 06:51:13 GMT"
 								},
 								{
 									"key": "keep-alive",
@@ -3940,7 +3940,59 @@
 							]
 						}
 					},
-					"response": [],
+					"response": [
+						{
+							"name": "B1 Doctors by specialization",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/doctors/by-specialization?name=cardiology",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"doctors",
+										"by-specialization"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "cardiology"
+										}
+									]
+								}
+							},
+							"status": "",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json"
+								},
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 08 Oct 2026 06:34:56 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"dateOfBirth\": \"1980-04-30T22:00:00.000Z\",\n    \"firstName\": \"Jean\",\n    \"id\": \"16157faf-0052-46d0-879d-3197b2ceb1ca\",\n    \"lastName\": \"Mugisha\",\n    \"office\": {\n      \"id\": \"ccbbcd58-be11-4e77-a259-07b1232e669c\",\n      \"name\": \"Cardiology\",\n      \"officeNumber\": 101\n    }\n  },\n  {\n    \"dateOfBirth\": \"1978-03-24T22:00:00.000Z\",\n    \"firstName\": \"Patrick\",\n    \"id\": \"5e3f5ab8-eff1-46bc-8610-ddeaa5c77db5\",\n    \"lastName\": \"Niyonzima\",\n    \"office\": null\n  }\n]"
+						}
+					],
 					"event": [
 						{
 							"listen": "test",
@@ -3982,7 +4034,59 @@
 							]
 						}
 					},
-					"response": [],
+					"response": [
+						{
+							"name": "B1 Doctors by specialization (upper case)",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/doctors/by-specialization?name=CARDIOLOGY",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"doctors",
+										"by-specialization"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "CARDIOLOGY"
+										}
+									]
+								}
+							},
+							"status": "",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json"
+								},
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 08 Oct 2026 06:35:35 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"dateOfBirth\": \"1980-04-30T22:00:00.000Z\",\n    \"firstName\": \"Jean\",\n    \"id\": \"16157faf-0052-46d0-879d-3197b2ceb1ca\",\n    \"lastName\": \"Mugisha\",\n    \"office\": {\n      \"id\": \"ccbbcd58-be11-4e77-a259-07b1232e669c\",\n      \"name\": \"Cardiology\",\n      \"officeNumber\": 101\n    }\n  },\n  {\n    \"dateOfBirth\": \"1978-03-24T22:00:00.000Z\",\n    \"firstName\": \"Patrick\",\n    \"id\": \"5e3f5ab8-eff1-46bc-8610-ddeaa5c77db5\",\n    \"lastName\": \"Niyonzima\",\n    \"office\": null\n  }\n]"
+						}
+					],
 					"event": [
 						{
 							"listen": "test",
@@ -4014,7 +4118,53 @@
 							]
 						}
 					},
-					"response": [],
+					"response": [
+						{
+							"name": "B2 Doctors without an office",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/doctors/without-office",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"doctors",
+										"without-office"
+									]
+								}
+							},
+							"status": "",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json"
+								},
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 08 Oct 2026 06:36:24 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"dateOfBirth\": \"1978-03-24T22:00:00.000Z\",\n    \"firstName\": \"Patrick\",\n    \"id\": \"5e3f5ab8-eff1-46bc-8610-ddeaa5c77db5\",\n    \"lastName\": \"Niyonzima\",\n    \"office\": null\n  }\n]"
+						}
+					],
 					"event": [
 						{
 							"listen": "test",
@@ -4056,7 +4206,53 @@
 							]
 						}
 					},
-					"response": [],
+					"response": [
+						{
+							"name": "B3 Unused specializations",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/specializations/unused",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"specializations",
+										"unused"
+									]
+								}
+							},
+							"status": "",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json"
+								},
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 08 Oct 2026 06:37:03 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"id\": \"3fac6c30-fcf7-4eee-920d-8f6cd5977a34\",\n    \"name\": \"Neurology\"\n  }\n]"
+						}
+					],
 					"event": [
 						{
 							"listen": "test",
@@ -4094,7 +4290,54 @@
 							]
 						}
 					},
-					"response": [],
+					"response": [
+						{
+							"name": "B4 Patients of a doctor",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/patients/of-doctor/{{doctorId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"patients",
+										"of-doctor",
+										"{{doctorId}}"
+									]
+								}
+							},
+							"status": "",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json"
+								},
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 08 Oct 2026 06:37:48 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"dateOfBirth\": \"1990-07-19T22:00:00.000Z\",\n    \"firstName\": \"Eric\",\n    \"id\": \"667c92f4-cb72-4695-86c0-68c724fa0e98\",\n    \"lastName\": \"Habimana\"\n  },\n  {\n    \"dateOfBirth\": \"1995-02-09T22:00:00.000Z\",\n    \"firstName\": \"Alice\",\n    \"id\": \"8aeee4f7-4d39-4d9f-b9a0-8689e788a2d4\",\n    \"lastName\": \"Uwase\"\n  },\n  {\n    \"dateOfBirth\": \"1998-06-02T22:00:00.000Z\",\n    \"firstName\": \"Diane\",\n    \"id\": \"a827e6e4-6a7d-48c3-b2d2-f24fa31cf292\",\n    \"lastName\": \"Uwase\"\n  },\n  {\n    \"dateOfBirth\": \"2001-11-14T22:00:00.000Z\",\n    \"firstName\": \"Grace\",\n    \"id\": \"feef9285-3361-4005-85f1-990171db7aeb\",\n    \"lastName\": \"Ingabire\"\n  }\n]"
+						}
+					],
 					"event": [
 						{
 							"listen": "test",
@@ -4132,7 +4375,54 @@
 							]
 						}
 					},
-					"response": [],
+					"response": [
+						{
+							"name": "B4 Patients of an unknown doctor",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/patients/of-doctor/00000000-0000-0000-0000-000000000000",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"patients",
+										"of-doctor",
+										"00000000-0000-0000-0000-000000000000"
+									]
+								}
+							},
+							"status": "",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "content-length",
+									"value": "38"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 08 Oct 2026 06:38:37 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "The doctor with that id does not exist"
+						}
+					],
 					"event": [
 						{
 							"listen": "test",
@@ -4174,7 +4464,54 @@
 							]
 						}
 					},
-					"response": [],
+					"response": [
+						{
+							"name": "C1 Appointments per status",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/appointments/stats/by-status",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"appointments",
+										"stats",
+										"by-status"
+									]
+								}
+							},
+							"status": "",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json"
+								},
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 08 Oct 2026 06:39:49 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  [\n    \"SCHEDULED\",\n    3\n  ],\n  [\n    \"CONFIRMED\",\n    2\n  ],\n  [\n    \"COMPLETED\",\n    3\n  ],\n  [\n    \"CANCELLED\",\n    2\n  ]\n]"
+						}
+					],
 					"event": [
 						{
 							"listen": "test",
@@ -4219,7 +4556,59 @@
 							]
 						}
 					},
-					"response": [],
+					"response": [
+						{
+							"name": "C2 Frequent patients",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/patients/frequent?min=3",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"patients",
+										"frequent"
+									],
+									"query": [
+										{
+											"key": "min",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"status": "",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json"
+								},
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 08 Oct 2026 06:40:29 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"dateOfBirth\": \"1995-02-09T22:00:00.000Z\",\n    \"firstName\": \"Alice\",\n    \"id\": \"8aeee4f7-4d39-4d9f-b9a0-8689e788a2d4\",\n    \"lastName\": \"Uwase\"\n  }\n]"
+						}
+					],
 					"event": [
 						{
 							"listen": "test",
@@ -4255,7 +4644,53 @@
 							]
 						}
 					},
-					"response": [],
+					"response": [
+						{
+							"name": "C3 Busiest office",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/offices/busiest",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"offices",
+										"busiest"
+									]
+								}
+							},
+							"status": "",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json"
+								},
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 08 Oct 2026 06:41:30 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  \"Cardiology\",\n  101,\n  5\n]"
+						}
+					],
 					"event": [
 						{
 							"listen": "test",
@@ -4302,7 +4737,63 @@
 							]
 						}
 					},
-					"response": [],
+					"response": [
+						{
+							"name": "C4 Doctor is absent",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/appointments/cancel-day?doctorId={{doctorId}}&date=2026-10-20",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"appointments",
+										"cancel-day"
+									],
+									"query": [
+										{
+											"key": "doctorId",
+											"value": "{{doctorId}}"
+										},
+										{
+											"key": "date",
+											"value": "2026-10-20"
+										}
+									]
+								}
+							},
+							"status": "",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "content-length",
+									"value": "24"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 08 Oct 2026 06:42:11 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "3 appointments cancelled"
+						}
+					],
 					"event": [
 						{
 							"listen": "test",

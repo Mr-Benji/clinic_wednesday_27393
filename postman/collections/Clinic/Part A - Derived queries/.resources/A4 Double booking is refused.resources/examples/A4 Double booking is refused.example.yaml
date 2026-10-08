@@ -11,7 +11,7 @@ request:
     type: json
     content: |-
       {
-          "appointmentDate": "2026-10-20",
+          "appointmentDate": "2026-11-18",
           "reason": "Second booking"
       }
 response:
@@ -20,10 +20,10 @@ response:
   headers:
     content-type: text/plain;charset=UTF-8
     content-length: "37"
-    date: Wed, 07 Oct 2026 21:58:51 GMT
+    date: Thu, 08 Oct 2026 06:51:13 GMT
     keep-alive: timeout=60
     connection: keep-alive
   body:
     type: text
     content: Doctor is already booked on that date
-order: 1791410345768
+order: 1791442297512

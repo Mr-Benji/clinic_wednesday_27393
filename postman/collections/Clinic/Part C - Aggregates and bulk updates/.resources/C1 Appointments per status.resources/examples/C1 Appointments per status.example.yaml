@@ -1,0 +1,35 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/api/appointments/stats/by-status"
+  method: GET
+response:
+  statusCode: 200
+  statusText: ""
+  headers:
+    content-type: application/json
+    transfer-encoding: chunked
+    date: Thu, 08 Oct 2026 06:39:49 GMT
+    keep-alive: timeout=60
+    connection: keep-alive
+  body:
+    type: json
+    content: |-
+      [
+        [
+          "SCHEDULED",
+          3
+        ],
+        [
+          "CONFIRMED",
+          2
+        ],
+        [
+          "COMPLETED",
+          3
+        ],
+        [
+          "CANCELLED",
+          2
+        ]
+      ]
+order: 1791441594810

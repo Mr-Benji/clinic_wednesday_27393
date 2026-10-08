@@ -15,4 +15,5 @@ scripts:
           });
       });
     language: text/javascript
+examples: .resources/C1 Appointments per status.resources/examples
 order: 1000

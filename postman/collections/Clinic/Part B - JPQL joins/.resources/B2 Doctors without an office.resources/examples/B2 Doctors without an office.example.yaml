@@ -1,0 +1,26 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/api/doctors/without-office"
+  method: GET
+response:
+  statusCode: 200
+  statusText: ""
+  headers:
+    content-type: application/json
+    transfer-encoding: chunked
+    date: Thu, 08 Oct 2026 06:36:24 GMT
+    keep-alive: timeout=60
+    connection: keep-alive
+  body:
+    type: json
+    content: |-
+      [
+        {
+          "dateOfBirth": "1978-03-24T22:00:00.000Z",
+          "firstName": "Patrick",
+          "id": "5e3f5ab8-eff1-46bc-8610-ddeaa5c77db5",
+          "lastName": "Niyonzima",
+          "office": null
+        }
+      ]
+order: 1791441387750

@@ -1,0 +1,39 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/api/doctors/by-specialization?name=cardiology"
+  method: GET
+  queryParams:
+    name: cardiology
+response:
+  statusCode: 200
+  statusText: ""
+  headers:
+    content-type: application/json
+    transfer-encoding: chunked
+    date: Thu, 08 Oct 2026 06:34:56 GMT
+    keep-alive: timeout=60
+    connection: keep-alive
+  body:
+    type: json
+    content: |-
+      [
+        {
+          "dateOfBirth": "1980-04-30T22:00:00.000Z",
+          "firstName": "Jean",
+          "id": "16157faf-0052-46d0-879d-3197b2ceb1ca",
+          "lastName": "Mugisha",
+          "office": {
+            "id": "ccbbcd58-be11-4e77-a259-07b1232e669c",
+            "name": "Cardiology",
+            "officeNumber": 101
+          }
+        },
+        {
+          "dateOfBirth": "1978-03-24T22:00:00.000Z",
+          "firstName": "Patrick",
+          "id": "5e3f5ab8-eff1-46bc-8610-ddeaa5c77db5",
+          "lastName": "Niyonzima",
+          "office": null
+        }
+      ]
+order: 1791441298873

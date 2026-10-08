@@ -1,0 +1,20 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/api/appointments/cancel-day?doctorId={{doctorId}}&date=2026-10-20"
+  method: PATCH
+  queryParams:
+    doctorId: "{{doctorId}}"
+    date: 2026-10-20
+response:
+  statusCode: 200
+  statusText: ""
+  headers:
+    content-type: text/plain;charset=UTF-8
+    content-length: "24"
+    date: Thu, 08 Oct 2026 06:42:11 GMT
+    keep-alive: timeout=60
+    connection: keep-alive
+  body:
+    type: text
+    content: 3 appointments cancelled
+order: 1791441736963

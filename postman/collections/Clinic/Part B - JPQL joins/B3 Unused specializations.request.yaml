@@ -13,4 +13,5 @@ scripts:
           pm.expect(names).to.include("Neurology");
       });
     language: text/javascript
+examples: .resources/B3 Unused specializations.resources/examples
 order: 4000

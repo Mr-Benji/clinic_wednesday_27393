@@ -1,0 +1,43 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/api/patients/of-doctor/{{doctorId}}"
+  method: GET
+response:
+  statusCode: 200
+  statusText: ""
+  headers:
+    content-type: application/json
+    transfer-encoding: chunked
+    date: Thu, 08 Oct 2026 06:37:48 GMT
+    keep-alive: timeout=60
+    connection: keep-alive
+  body:
+    type: json
+    content: |-
+      [
+        {
+          "dateOfBirth": "1990-07-19T22:00:00.000Z",
+          "firstName": "Eric",
+          "id": "667c92f4-cb72-4695-86c0-68c724fa0e98",
+          "lastName": "Habimana"
+        },
+        {
+          "dateOfBirth": "1995-02-09T22:00:00.000Z",
+          "firstName": "Alice",
+          "id": "8aeee4f7-4d39-4d9f-b9a0-8689e788a2d4",
+          "lastName": "Uwase"
+        },
+        {
+          "dateOfBirth": "1998-06-02T22:00:00.000Z",
+          "firstName": "Diane",
+          "id": "a827e6e4-6a7d-48c3-b2d2-f24fa31cf292",
+          "lastName": "Uwase"
+        },
+        {
+          "dateOfBirth": "2001-11-14T22:00:00.000Z",
+          "firstName": "Grace",
+          "id": "feef9285-3361-4005-85f1-990171db7aeb",
+          "lastName": "Ingabire"
+        }
+      ]
+order: 1791441471198
