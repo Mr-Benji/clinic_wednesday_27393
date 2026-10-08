@@ -1,6 +1,6 @@
 package kigali.clinic.rw.domain;
 
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -31,7 +31,7 @@ public class Patient {
     private String lastName;
 
     @Column (name="date_of_birth")
-    private Date dateOfBirth;
+    private LocalDate dateOfBirth;
 
     // ignored in JSON to avoid the Patient -> Appointment -> Patient loop
     @JsonIgnore
@@ -58,11 +58,11 @@ public class Patient {
         this.lastName = lastName;
     }
 
-    public Date getDateOfBirth() {
+    public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 

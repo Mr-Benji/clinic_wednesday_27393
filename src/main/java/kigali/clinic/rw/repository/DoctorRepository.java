@@ -1,6 +1,6 @@
 package kigali.clinic.rw.repository;
 
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
@@ -21,7 +21,7 @@ public interface DoctorRepository extends JpaRepository<Doctor, UUID> {
     // doctors with the same first name, last name (case insensitive) and date of birth
     @Query("SELECT d FROM Doctor d WHERE LOWER(d.firstName) = LOWER(:firstName) AND LOWER(d.lastName) = LOWER(:lastName) AND d.dateOfBirth = :dateOfBirth")
     List<Doctor> findByFullNameAndDateOfBirth(@Param("firstName") String firstName, @Param("lastName") String lastName,
-            @Param("dateOfBirth") Date dateOfBirth);
+            @Param("dateOfBirth") LocalDate dateOfBirth);
 
     // B1: doctors holding the specialization with the given name (case insensitive)
     @Query("SELECT d FROM Doctor d JOIN d.specializations s WHERE LOWER(s.name) = LOWER(:name)")
