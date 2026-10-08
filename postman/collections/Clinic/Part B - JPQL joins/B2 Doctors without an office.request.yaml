@@ -1,0 +1,21 @@
+$kind: http-request
+url: "{{baseUrl}}/api/doctors/without-office"
+method: GET
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status code is 200", function () {
+          pm.response.to.have.status(200);
+      });
+
+      const doctors = pm.response.json();
+      pm.test("No doctor has an office", function () {
+          doctors.forEach(function (d) { pm.expect(d.office).to.be.oneOf([null, undefined]); });
+      });
+
+      const lastNames = doctors.map(function (d) { return d.lastName; });
+      pm.test("Sorted by last name", function () {
+          pm.expect(lastNames).to.eql(lastNames.slice().sort());
+      });
+    language: text/javascript
+order: 3000

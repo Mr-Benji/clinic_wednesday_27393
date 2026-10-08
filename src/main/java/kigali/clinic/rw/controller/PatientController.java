@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import kigali.clinic.rw.domain.Patient;
+import kigali.clinic.rw.service.DoctorService;
 import kigali.clinic.rw.service.PatientService;
 
 
@@ -26,6 +27,9 @@ public class PatientController {
 
     @Autowired
     private PatientService patientServ;
+
+    @Autowired
+    private DoctorService doctorServ;
 
     @PostMapping(value="/save")
     public ResponseEntity<?> savePatient(@RequestBody Patient patient){
@@ -43,6 +47,15 @@ public class PatientController {
     @GetMapping(value="/by-last-name")
     public ResponseEntity<?> getPatientsByLastName(@RequestParam String lastName){
         return new ResponseEntity<>(patientServ.getPatientsByLastName(lastName), HttpStatus.OK);
+    }
+
+    @GetMapping(value="/of-doctor/{doctorId}")
+    public ResponseEntity<?> getPatientsOfDoctor(@PathVariable UUID doctorId){
+
+        if(doctorServ.getDoctorById(doctorId) == null){
+            return new ResponseEntity<>("The doctor with that id does not exist", HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(patientServ.getPatientsOfDoctor(doctorId), HttpStatus.OK);
     }
 
     @GetMapping(value="/{id}")

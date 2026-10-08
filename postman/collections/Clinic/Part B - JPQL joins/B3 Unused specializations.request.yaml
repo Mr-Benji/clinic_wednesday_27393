@@ -1,0 +1,16 @@
+$kind: http-request
+url: "{{baseUrl}}/api/specializations/unused"
+method: GET
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status code is 200", function () {
+          pm.response.to.have.status(200);
+      });
+
+      pm.test("Neurology is unused", function () {
+          const names = pm.response.json().map(function (s) { return s.name; });
+          pm.expect(names).to.include("Neurology");
+      });
+    language: text/javascript
+order: 4000

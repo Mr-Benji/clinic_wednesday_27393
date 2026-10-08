@@ -22,4 +22,12 @@ public interface DoctorRepository extends JpaRepository<Doctor, UUID> {
     @Query("SELECT d FROM Doctor d WHERE LOWER(d.firstName) = LOWER(:firstName) AND LOWER(d.lastName) = LOWER(:lastName) AND d.dateOfBirth = :dateOfBirth")
     List<Doctor> findByFullNameAndDateOfBirth(@Param("firstName") String firstName, @Param("lastName") String lastName,
             @Param("dateOfBirth") Date dateOfBirth);
+
+    // B1: doctors holding the specialization with the given name (case insensitive)
+    @Query("SELECT d FROM Doctor d JOIN d.specializations s WHERE LOWER(s.name) = LOWER(:name)")
+    List<Doctor> findDoctorsBySpecializationName(@Param("name") String name);
+
+    // B2: doctors with no office assigned, sorted by last name
+    @Query("SELECT d FROM Doctor d WHERE d.office IS NULL ORDER BY d.lastName ASC")
+    List<Doctor> findDoctorsWithoutOffice();
 }

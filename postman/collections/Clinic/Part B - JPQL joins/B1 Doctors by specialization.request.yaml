@@ -1,0 +1,17 @@
+$kind: http-request
+url: "{{baseUrl}}/api/doctors/by-specialization?name=cardiology"
+method: GET
+queryParams:
+  name: cardiology
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status code is 200", function () {
+          pm.response.to.have.status(200);
+      });
+
+      pm.test("Returns a list", function () {
+          pm.expect(pm.response.json()).to.be.an("array");
+      });
+    language: text/javascript
+order: 1000

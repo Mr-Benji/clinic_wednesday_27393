@@ -38,6 +38,11 @@ public class SpecializationController {
         return new ResponseEntity<>(specializationServ.getAllSpecializations(), HttpStatus.OK);
     }
 
+    @GetMapping(value="/unused")
+    public ResponseEntity<?> getUnusedSpecializations(){
+        return new ResponseEntity<>(specializationServ.getUnusedSpecializations(), HttpStatus.OK);
+    }
+
     @GetMapping(value="/{id}")
     public ResponseEntity<?> getSpecializationById(@PathVariable UUID id){
 

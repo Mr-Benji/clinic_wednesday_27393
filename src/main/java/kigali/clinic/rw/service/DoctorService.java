@@ -47,6 +47,14 @@ public class DoctorService {
         return doctorRepo.findById(id).orElse(null);
     }
 
+    public List<Doctor> getDoctorsBySpecialization(String name){
+        return doctorRepo.findDoctorsBySpecializationName(name);
+    }
+
+    public List<Doctor> getDoctorsWithoutOffice(){
+        return doctorRepo.findDoctorsWithoutOffice();
+    }
+
     public String updateDoctor(UUID id, Doctor doctor, UUID officeId){
 
         Doctor existing = doctorRepo.findById(id).orElse(null);
