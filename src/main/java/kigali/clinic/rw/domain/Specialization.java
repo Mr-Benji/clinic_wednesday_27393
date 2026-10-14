@@ -11,8 +11,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 
 @Entity 
@@ -37,12 +35,7 @@ public class Specialization {
          this.name = name;
      }
 
-     @ManyToMany 
-     @JoinTable (
-        name = "doctor_specialization",
-        joinColumns = @JoinColumn (name="specialization_id"),
-        inverseJoinColumns = @JoinColumn (name="doctor_id")
-     )
+     @ManyToMany (mappedBy = "specializations")
      private List<Doctor> doctors = new ArrayList<>();
 
      // ignored in JSON to avoid the Specialization -> Doctor -> Specialization loop

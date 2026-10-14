@@ -33,6 +33,9 @@ public class Patient {
     @Column (name="date_of_birth")
     private LocalDate dateOfBirth;
 
+    @Column (name="ss_number", unique = true)
+    private String ssNumber;
+
     // ignored in JSON to avoid the Patient -> Appointment -> Patient loop
     @JsonIgnore
     @OneToMany (mappedBy = "patient")
@@ -64,6 +67,14 @@ public class Patient {
 
     public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
+    }
+
+    public String getSsNumber() {
+        return ssNumber;
+    }
+
+    public void setSsNumber(String ssNumber) {
+        this.ssNumber = ssNumber;
     }
 
     public List<Appointment> getAppointments() {

@@ -13,6 +13,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
@@ -39,8 +40,13 @@ public class Doctor {
     @JoinColumn (name="office_id", unique = true)
     private Office office;
 
-    @JsonIgnore
-    @ManyToMany (mappedBy = "doctors")
+    // Doctor owns the link, so doctor_specialization is updated when the doctor is saved
+    @ManyToMany
+    @JoinTable (
+        name = "doctor_specialization",
+        joinColumns = @JoinColumn (name="doctor_id"),
+        inverseJoinColumns = @JoinColumn (name="specialization_id")
+    )
     private List<Specialization> specializations = new ArrayList<>();
 
     // ignored in JSON to avoid the Doctor -> Appointment -> Doctor loop

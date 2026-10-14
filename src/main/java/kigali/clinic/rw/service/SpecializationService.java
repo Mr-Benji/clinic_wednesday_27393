@@ -54,19 +54,24 @@ public class SpecializationService {
         return "Specialization updated successfully";
     }
 
-    // the rows in doctor_specialization are removed with it, the doctors stay
+    // the doctors keep existing, only their link to this specialization is removed
+    @Transactional
     public String deleteSpecialization(UUID id){
 
         Specialization existing = specializationRepo.findById(id).orElse(null);
         if(existing == null){
             return "Specialization not found";
         }
+        for(Doctor doctor : existing.getDoctors()){
+            doctor.getSpecializations().remove(existing);
+            doctorRepo.save(doctor);
+        }
         specializationRepo.delete(existing);
 
         return "Specialization deleted successfully";
     }
 
-    // Specialization owns the join table, so the doctor is added on this side
+    // Doctor owns the join table, so the link is added on the doctor side
     @Transactional
     public String addDoctor(UUID specializationId, UUID doctorId){
 
@@ -80,11 +85,11 @@ public class SpecializationService {
             return "Doctor not found";
         }
 
-        if(specialization.getDoctors().contains(doctor)){
+        if(doctor.getSpecializations().contains(specialization)){
             return "Doctor already has this specialization";
         }
-        specialization.getDoctors().add(doctor);
-        specializationRepo.save(specialization);
+        doctor.getSpecializations().add(specialization);
+        doctorRepo.save(doctor);
 
         return "Doctor added to specialization successfully";
     }
