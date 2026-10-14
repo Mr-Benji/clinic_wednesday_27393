@@ -124,6 +124,29 @@ public class DoctorService {
         return "Specialization added to the doctor";
     }
 
+    // only the row in doctor_specialization is removed, the specialization stays
+    @Transactional
+    public String removeSpecialization(UUID doctorId, UUID specializationId){
+
+        Doctor doctor = doctorRepo.findById(doctorId).orElse(null);
+        if(doctor == null){
+            return "The doctor with that id does not exist";
+        }
+
+        Specialization specialization = specializationRepo.findById(specializationId).orElse(null);
+        if(specialization == null){
+            return "That specialization does not exist";
+        }
+
+        if(!doctor.getSpecializations().contains(specialization)){
+            return "The doctor does not have that specialization";
+        }
+        doctor.getSpecializations().remove(specialization);
+        doctorRepo.save(doctor);
+
+        return "Specialization removed from the doctor";
+    }
+
     // returns an error message, or null when the office was assigned
     private String assignOffice(Doctor doctor, UUID officeId, UUID doctorId){
 

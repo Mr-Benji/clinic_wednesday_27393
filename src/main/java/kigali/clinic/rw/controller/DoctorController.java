@@ -89,6 +89,19 @@ public class DoctorController {
         }
     }
 
+    @DeleteMapping(value="/{doctorId}/specializations/{specializationId}")
+    public ResponseEntity<?> removeSpecialization(@PathVariable UUID doctorId, @PathVariable UUID specializationId){
+
+        String returnedMessage = doctorServ.removeSpecialization(doctorId, specializationId);
+        if(returnedMessage.equals("Specialization removed from the doctor")){
+            return new ResponseEntity<>(returnedMessage, HttpStatus.OK);
+        }else if(returnedMessage.endsWith("does not exist")){
+            return new ResponseEntity<>(returnedMessage, HttpStatus.NOT_FOUND);
+        }else{
+            return new ResponseEntity<>(returnedMessage, HttpStatus.CONFLICT);
+        }
+    }
+
     private ResponseEntity<?> toResponse(String message){
 
         if(message.endsWith("successfully")){
