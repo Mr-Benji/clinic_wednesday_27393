@@ -1,0 +1,15 @@
+$kind: http-request
+url: "{{baseUrl}}/api/doctors/{{doctorNoOfficeId}}/specializations/00000000-0000-0000-0000-000000000000"
+method: PUT
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status code is 404", function () {
+          pm.response.to.have.status(404);
+      });
+
+      pm.test("Message", function () {
+          pm.expect(pm.response.text()).to.eql("That specialization does not exist");
+      });
+    language: text/javascript
+order: 5000

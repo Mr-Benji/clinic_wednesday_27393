@@ -14,3 +14,5 @@ values:
     value: ddd00864-7b25-466b-8525-1eeb9b27242b
   - key: appointmentId
     value: 1af453a9-fd97-496f-9fcc-2ee9dae14085
+  - key: unusedSpecializationId
+    value: 3fac6c30-fcf7-4eee-920d-8f6cd5977a34

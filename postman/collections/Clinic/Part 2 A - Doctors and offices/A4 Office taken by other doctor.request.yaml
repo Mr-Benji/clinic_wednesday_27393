@@ -1,0 +1,15 @@
+$kind: http-request
+url: "{{baseUrl}}/api/doctors/{{doctorNoOfficeId}}/office?officeNumber=101"
+method: PATCH
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status code is 409", function () {
+          pm.response.to.have.status(409);
+      });
+
+      pm.test("Message", function () {
+          pm.expect(pm.response.text()).to.eql("That office is taken by other doctor");
+      });
+    language: text/javascript
+order: 12000

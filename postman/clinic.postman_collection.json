@@ -4918,6 +4918,604 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Part 2 A - Doctors and offices",
+			"item": [
+				{
+					"name": "A3 Free offices",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/offices/free",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"offices",
+								"free"
+							]
+						}
+					},
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Only office 104 is free\", function () {",
+									"    const numbers = pm.response.json().map(o => o.officeNumber);",
+									"    pm.expect(numbers).to.eql([104]);",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "A1 Add a specialization to a doctor",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/doctors/{{doctorNoOfficeId}}/specializations/{{unusedSpecializationId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"doctors",
+								"{{doctorNoOfficeId}}",
+								"specializations",
+								"{{unusedSpecializationId}}"
+							]
+						}
+					},
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Message\", function () {",
+									"    pm.expect(pm.response.text()).to.eql(\"Specialization added to the doctor\");",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "A1 Add the same specialization again",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/doctors/{{doctorNoOfficeId}}/specializations/{{unusedSpecializationId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"doctors",
+								"{{doctorNoOfficeId}}",
+								"specializations",
+								"{{unusedSpecializationId}}"
+							]
+						}
+					},
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 409\", function () {",
+									"    pm.response.to.have.status(409);",
+									"});",
+									"",
+									"pm.test(\"Message\", function () {",
+									"    pm.expect(pm.response.text()).to.eql(\"The doctor already has that specialization\");",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "A1 Unknown doctor",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/doctors/00000000-0000-0000-0000-000000000000/specializations/{{unusedSpecializationId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"doctors",
+								"00000000-0000-0000-0000-000000000000",
+								"specializations",
+								"{{unusedSpecializationId}}"
+							]
+						}
+					},
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"",
+									"pm.test(\"Message\", function () {",
+									"    pm.expect(pm.response.text()).to.eql(\"The doctor with that id does not exist\");",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "A1 Unknown specialization",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/doctors/{{doctorNoOfficeId}}/specializations/00000000-0000-0000-0000-000000000000",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"doctors",
+								"{{doctorNoOfficeId}}",
+								"specializations",
+								"00000000-0000-0000-0000-000000000000"
+							]
+						}
+					},
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"",
+									"pm.test(\"Message\", function () {",
+									"    pm.expect(pm.response.text()).to.eql(\"That specialization does not exist\");",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "A2 Remove a specialization from a doctor",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/doctors/{{doctorNoOfficeId}}/specializations/{{unusedSpecializationId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"doctors",
+								"{{doctorNoOfficeId}}",
+								"specializations",
+								"{{unusedSpecializationId}}"
+							]
+						}
+					},
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Message\", function () {",
+									"    pm.expect(pm.response.text()).to.eql(\"Specialization removed from the doctor\");",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "A2 Remove it again",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/doctors/{{doctorNoOfficeId}}/specializations/{{unusedSpecializationId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"doctors",
+								"{{doctorNoOfficeId}}",
+								"specializations",
+								"{{unusedSpecializationId}}"
+							]
+						}
+					},
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 409\", function () {",
+									"    pm.response.to.have.status(409);",
+									"});",
+									"",
+									"pm.test(\"Message\", function () {",
+									"    pm.expect(pm.response.text()).to.eql(\"The doctor does not have that specialization\");",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "A2 Unknown doctor",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/doctors/00000000-0000-0000-0000-000000000000/specializations/{{unusedSpecializationId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"doctors",
+								"00000000-0000-0000-0000-000000000000",
+								"specializations",
+								"{{unusedSpecializationId}}"
+							]
+						}
+					},
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"",
+									"pm.test(\"Message\", function () {",
+									"    pm.expect(pm.response.text()).to.eql(\"The doctor with that id does not exist\");",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "A2 Unknown specialization",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/doctors/{{doctorNoOfficeId}}/specializations/00000000-0000-0000-0000-000000000000",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"doctors",
+								"{{doctorNoOfficeId}}",
+								"specializations",
+								"00000000-0000-0000-0000-000000000000"
+							]
+						}
+					},
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"",
+									"pm.test(\"Message\", function () {",
+									"    pm.expect(pm.response.text()).to.eql(\"That specialization does not exist\");",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "A4 Unknown office number",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/doctors/{{doctorNoOfficeId}}/office?officeNumber=999",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"doctors",
+								"{{doctorNoOfficeId}}",
+								"office"
+							],
+							"query": [
+								{
+									"key": "officeNumber",
+									"value": "999"
+								}
+							]
+						}
+					},
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"",
+									"pm.test(\"Message\", function () {",
+									"    pm.expect(pm.response.text()).to.eql(\"The office with that office number does not exist\");",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "A4 Unknown doctor",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/doctors/00000000-0000-0000-0000-000000000000/office?officeNumber=104",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"doctors",
+								"00000000-0000-0000-0000-000000000000",
+								"office"
+							],
+							"query": [
+								{
+									"key": "officeNumber",
+									"value": "104"
+								}
+							]
+						}
+					},
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"",
+									"pm.test(\"Message\", function () {",
+									"    pm.expect(pm.response.text()).to.eql(\"The doctor with that id does not exist\");",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "A4 Office taken by other doctor",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/doctors/{{doctorNoOfficeId}}/office?officeNumber=101",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"doctors",
+								"{{doctorNoOfficeId}}",
+								"office"
+							],
+							"query": [
+								{
+									"key": "officeNumber",
+									"value": "101"
+								}
+							]
+						}
+					},
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 409\", function () {",
+									"    pm.response.to.have.status(409);",
+									"});",
+									"",
+									"pm.test(\"Message\", function () {",
+									"    pm.expect(pm.response.text()).to.eql(\"That office is taken by other doctor\");",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "A4 Move doctor to office 104",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/doctors/{{doctorNoOfficeId}}/office?officeNumber=104",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"doctors",
+								"{{doctorNoOfficeId}}",
+								"office"
+							],
+							"query": [
+								{
+									"key": "officeNumber",
+									"value": "104"
+								}
+							]
+						}
+					},
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Message\", function () {",
+									"    pm.expect(pm.response.text()).to.eql(\"Office changed successfully\");",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "A3 Free offices after the move",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/offices/free",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"offices",
+								"free"
+							]
+						}
+					},
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Office 103 is free now\", function () {",
+									"    const numbers = pm.response.json().map(o => o.officeNumber);",
+									"    pm.expect(numbers).to.eql([103]);",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "A4 Move doctor back to office 103",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/doctors/{{doctorNoOfficeId}}/office?officeNumber=103",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"doctors",
+								"{{doctorNoOfficeId}}",
+								"office"
+							],
+							"query": [
+								{
+									"key": "officeNumber",
+									"value": "103"
+								}
+							]
+						}
+					},
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Message\", function () {",
+									"    pm.expect(pm.response.text()).to.eql(\"Office changed successfully\");",
+									"});"
+								]
+							}
+						}
+					]
+				}
+			]
 		}
 	],
 	"variable": [

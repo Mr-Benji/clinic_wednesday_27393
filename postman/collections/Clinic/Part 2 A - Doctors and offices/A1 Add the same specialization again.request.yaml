@@ -1,0 +1,15 @@
+$kind: http-request
+url: "{{baseUrl}}/api/doctors/{{doctorNoOfficeId}}/specializations/{{unusedSpecializationId}}"
+method: PUT
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status code is 409", function () {
+          pm.response.to.have.status(409);
+      });
+
+      pm.test("Message", function () {
+          pm.expect(pm.response.text()).to.eql("The doctor already has that specialization");
+      });
+    language: text/javascript
+order: 3000
