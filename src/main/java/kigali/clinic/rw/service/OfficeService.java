@@ -34,6 +34,10 @@ public class OfficeService {
         return officeRepo.findByName(name);
     }
 
+    public List<Office> getFreeOffices() {
+        return officeRepo.findFreeOffices();
+    }
+
     public Optional<Office> getOfficeById(UUID id) {
         return officeRepo.findById(id);
     }
