@@ -147,6 +147,28 @@ public class DoctorService {
         return "Specialization removed from the doctor";
     }
 
+    // the old office becomes free once the doctor is saved with the new one
+    public String changeOffice(UUID doctorId, int officeNumber){
+
+        Doctor doctor = doctorRepo.findById(doctorId).orElse(null);
+        if(doctor == null){
+            return "The doctor with that id does not exist";
+        }
+
+        Office office = officeRepo.findByOfficeNumber(officeNumber);
+        if(office == null){
+            return "The office with that office number does not exist";
+        }
+
+        if(doctorRepo.existsByOfficeAndIdNot(office, doctorId)){
+            return "That office is taken by other doctor";
+        }
+        doctor.setOffice(office);
+        doctorRepo.save(doctor);
+
+        return "Office changed successfully";
+    }
+
     // returns an error message, or null when the office was assigned
     private String assignOffice(Doctor doctor, UUID officeId, UUID doctorId){
 

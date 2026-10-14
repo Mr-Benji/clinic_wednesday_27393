@@ -10,6 +10,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import kigali.clinic.rw.domain.Doctor;
+import kigali.clinic.rw.domain.Office;
 
 @Repository
 public interface DoctorRepository extends JpaRepository<Doctor, UUID> {
@@ -30,4 +31,7 @@ public interface DoctorRepository extends JpaRepository<Doctor, UUID> {
     // B2: doctors with no office assigned, sorted by last name
     @Query("SELECT d FROM Doctor d WHERE d.office IS NULL ORDER BY d.lastName ASC")
     List<Doctor> findDoctorsWithoutOffice();
+
+    // A4: true when the office belongs to a doctor other than the given one
+    boolean existsByOfficeAndIdNot(Office office, UUID id);
 }
