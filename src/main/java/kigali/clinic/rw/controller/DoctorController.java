@@ -76,6 +76,19 @@ public class DoctorController {
         return toResponse(returnedMessage);
     }
 
+    @PutMapping(value="/{doctorId}/specializations/{specializationId}")
+    public ResponseEntity<?> addSpecialization(@PathVariable UUID doctorId, @PathVariable UUID specializationId){
+
+        String returnedMessage = doctorServ.addSpecialization(doctorId, specializationId);
+        if(returnedMessage.equals("Specialization added to the doctor")){
+            return new ResponseEntity<>(returnedMessage, HttpStatus.OK);
+        }else if(returnedMessage.endsWith("does not exist")){
+            return new ResponseEntity<>(returnedMessage, HttpStatus.NOT_FOUND);
+        }else{
+            return new ResponseEntity<>(returnedMessage, HttpStatus.CONFLICT);
+        }
+    }
+
     private ResponseEntity<?> toResponse(String message){
 
         if(message.endsWith("successfully")){

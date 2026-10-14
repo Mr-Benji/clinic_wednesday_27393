@@ -9,8 +9,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import kigali.clinic.rw.domain.Doctor;
 import kigali.clinic.rw.domain.Office;
+import kigali.clinic.rw.domain.Specialization;
 import kigali.clinic.rw.repository.DoctorRepository;
 import kigali.clinic.rw.repository.OfficeRepository;
+import kigali.clinic.rw.repository.SpecializationRepository;
 
 @Service
 public class DoctorService {
@@ -20,6 +22,9 @@ public class DoctorService {
 
     @Autowired
     private OfficeRepository officeRepo;
+
+    @Autowired
+    private SpecializationRepository specializationRepo;
 
 
     public String saveDoctor(Doctor doctor, UUID officeId){
@@ -95,6 +100,28 @@ public class DoctorService {
         doctorRepo.delete(existing);
 
         return "Doctor deleted successfully";
+    }
+
+    @Transactional
+    public String addSpecialization(UUID doctorId, UUID specializationId){
+
+        Doctor doctor = doctorRepo.findById(doctorId).orElse(null);
+        if(doctor == null){
+            return "The doctor with that id does not exist";
+        }
+
+        Specialization specialization = specializationRepo.findById(specializationId).orElse(null);
+        if(specialization == null){
+            return "That specialization does not exist";
+        }
+
+        if(doctor.getSpecializations().contains(specialization)){
+            return "The doctor already has that specialization";
+        }
+        doctor.getSpecializations().add(specialization);
+        doctorRepo.save(doctor);
+
+        return "Specialization added to the doctor";
     }
 
     // returns an error message, or null when the office was assigned
