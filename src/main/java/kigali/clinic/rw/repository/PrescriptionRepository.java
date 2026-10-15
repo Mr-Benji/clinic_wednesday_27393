@@ -20,4 +20,7 @@ public interface PrescriptionRepository extends JpaRepository<Prescription, UUID
     // C3: every prescription of the patient across all appointments, newest first
     @Query("SELECT p FROM Prescription p WHERE p.appointment.patient.ssNumber = :ssNumber ORDER BY p.issuedDate DESC")
     List<Prescription> findPatientHistory(@Param("ssNumber") String ssNumber);
+
+    // C4: true when the appointment has at least one prescription
+    boolean existsByAppointmentId(UUID appointmentId);
 }

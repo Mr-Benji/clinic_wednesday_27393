@@ -17,6 +17,7 @@ import kigali.clinic.rw.domain.Patient;
 import kigali.clinic.rw.repository.AppointmentRepository;
 import kigali.clinic.rw.repository.DoctorRepository;
 import kigali.clinic.rw.repository.PatientRepository;
+import kigali.clinic.rw.repository.PrescriptionRepository;
 
 @Service
 public class AppointmentService {
@@ -29,6 +30,9 @@ public class AppointmentService {
 
     @Autowired
     private DoctorRepository doctorRepo;
+
+    @Autowired
+    private PrescriptionRepository prescriptionRepo;
 
 
     public String saveAppointment(Appointment appointment, UUID patientId, UUID doctorId){
@@ -209,6 +213,10 @@ public class AppointmentService {
         Appointment existing = appointmentRepo.findById(id).orElse(null);
         if(existing == null){
             return "The appointment with that id does not exist";
+        }
+
+        if(prescriptionRepo.existsByAppointmentId(id)){
+            return "That appointment has prescriptions, delete them first";
         }
         appointmentRepo.delete(existing);
 
