@@ -112,7 +112,7 @@ public class AppointmentService {
 
         Appointment existing = appointmentRepo.findById(id).orElse(null);
         if(existing == null){
-            return "Appointment not found";
+            return "The appointment with that id does not exist";
         }
 
         if(appointment.getAppointmentDate() == null){
@@ -208,7 +208,7 @@ public class AppointmentService {
 
         Appointment existing = appointmentRepo.findById(id).orElse(null);
         if(existing == null){
-            return "Appointment not found";
+            return "The appointment with that id does not exist";
         }
         appointmentRepo.delete(existing);
 

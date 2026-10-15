@@ -103,7 +103,7 @@ public class AppointmentController {
 
         Appointment appointment = appointmentServ.getAppointmentById(id);
         if(appointment == null){
-            return new ResponseEntity<>("Appointment not found", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("The appointment with that id does not exist", HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(appointment, HttpStatus.OK);
     }
