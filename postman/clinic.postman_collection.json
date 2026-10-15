@@ -7234,6 +7234,196 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Part 2 Bonus - Reports",
+			"item": [
+				{
+					"name": "Bonus Most prescribed medicines",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/prescriptions/stats/top-medicines",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"prescriptions",
+								"stats",
+								"top-medicines"
+							]
+						}
+					},
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"One row per medicine, most prescribed first\", function () {",
+									"    const rows = pm.response.json();",
+									"    const counts = rows.map(r => r[1]);",
+									"    const names = rows.map(r => r[0]);",
+									"    pm.expect(rows.length).to.be.above(0);",
+									"    pm.expect(new Set(names).size).to.eql(names.length);",
+									"    pm.expect(counts).to.eql([...counts].sort((a, b) => b - a));",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "Bonus Doctor workload in October",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/doctors/workload?start=2026-10-01&end=2026-10-31",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"doctors",
+								"workload"
+							],
+							"query": [
+								{
+									"key": "start",
+									"value": "2026-10-01"
+								},
+								{
+									"key": "end",
+									"value": "2026-10-31"
+								}
+							]
+						}
+					},
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"First name, last name and count, busiest first, no zeros\", function () {",
+									"    const rows = pm.response.json();",
+									"    const counts = rows.map(r => r[2]);",
+									"    pm.expect(rows.length).to.be.above(0);",
+									"    rows.forEach(r => pm.expect(r.length).to.eql(3));",
+									"    counts.forEach(c => pm.expect(c).to.be.above(0));",
+									"    pm.expect(counts).to.eql([...counts].sort((a, b) => b - a));",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "Bonus Both dates are included",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/doctors/workload?start=2026-10-05&end=2026-10-05",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"doctors",
+								"workload"
+							],
+							"query": [
+								{
+									"key": "start",
+									"value": "2026-10-05"
+								},
+								{
+									"key": "end",
+									"value": "2026-10-05"
+								}
+							]
+						}
+					},
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"The appointment on the start date is counted\", function () {",
+									"    pm.expect(pm.response.json().length).to.be.above(0);",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "Bonus Workload with no completed appointments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/doctors/workload?start=2027-01-01&end=2027-01-31",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"doctors",
+								"workload"
+							],
+							"query": [
+								{
+									"key": "start",
+									"value": "2027-01-01"
+								},
+								{
+									"key": "end",
+									"value": "2027-01-31"
+								}
+							]
+						}
+					},
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Empty list\", function () {",
+									"    pm.expect(pm.response.json()).to.eql([]);",
+									"});"
+								]
+							}
+						}
+					]
+				}
+			]
 		}
 	],
 	"variable": [

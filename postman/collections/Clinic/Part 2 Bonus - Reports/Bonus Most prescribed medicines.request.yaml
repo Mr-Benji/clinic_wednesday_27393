@@ -1,0 +1,20 @@
+$kind: http-request
+url: "{{baseUrl}}/api/prescriptions/stats/top-medicines"
+method: GET
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status code is 200", function () {
+          pm.response.to.have.status(200);
+      });
+
+      pm.test("One row per medicine, most prescribed first", function () {
+          const rows = pm.response.json();
+          const counts = rows.map(r => r[1]);
+          const names = rows.map(r => r[0]);
+          pm.expect(rows.length).to.be.above(0);
+          pm.expect(new Set(names).size).to.eql(names.length);
+          pm.expect(counts).to.eql([...counts].sort((a, b) => b - a));
+      });
+    language: text/javascript
+order: 1000
