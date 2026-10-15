@@ -52,6 +52,11 @@ public class PrescriptionController {
         return new ResponseEntity<>(prescriptionServ.getPrescriptionsOfAppointment(appointment), HttpStatus.OK);
     }
 
+    @GetMapping(value="/patient/{ssNumber}")
+    public ResponseEntity<?> getPatientHistory(@PathVariable String ssNumber){
+        return new ResponseEntity<>(prescriptionServ.getPatientHistory(ssNumber), HttpStatus.OK);
+    }
+
     private ResponseEntity<?> toResponse(String message){
 
         if(message.endsWith("successfully")){
