@@ -23,4 +23,8 @@ public interface PrescriptionRepository extends JpaRepository<Prescription, UUID
 
     // C4: true when the appointment has at least one prescription
     boolean existsByAppointmentId(UUID appointmentId);
+
+    // bonus: each medicine with how many times it was prescribed, most prescribed first
+    @Query("SELECT p.medicineName, COUNT(p) FROM Prescription p GROUP BY p.medicineName ORDER BY COUNT(p) DESC")
+    List<Object[]> findTopMedicines();
 }

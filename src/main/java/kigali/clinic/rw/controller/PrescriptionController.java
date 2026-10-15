@@ -59,6 +59,11 @@ public class PrescriptionController {
         return new ResponseEntity<>(prescriptionServ.getPatientHistory(ssNumber), HttpStatus.OK);
     }
 
+    @GetMapping(value="/stats/top-medicines")
+    public ResponseEntity<?> getTopMedicines(){
+        return new ResponseEntity<>(prescriptionServ.getTopMedicines(), HttpStatus.OK);
+    }
+
     @PutMapping(value="/update/{id}")
     public ResponseEntity<?> updatePrescription(@PathVariable UUID id, @RequestBody Prescription prescription){
 

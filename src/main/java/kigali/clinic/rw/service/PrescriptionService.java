@@ -49,6 +49,10 @@ public class PrescriptionService {
         return prescriptionRepo.findPatientHistory(ssNumber);
     }
 
+    public List<Object[]> getTopMedicines(){
+        return prescriptionRepo.findTopMedicines();
+    }
+
     // only the medicine, dosage and duration can change
     public String updatePrescription(UUID id, Prescription prescription){
 
