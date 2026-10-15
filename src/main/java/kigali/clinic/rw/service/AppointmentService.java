@@ -138,9 +138,7 @@ public class AppointmentService {
 
         existing.setAppointmentDate(appointment.getAppointmentDate());
         existing.setReason(appointment.getReason());
-        if(appointment.getStatus() != null){
-            existing.setStatus(appointment.getStatus());
-        }
+        // the status is not changed here, only through the status endpoint
         appointmentRepo.save(existing);
 
         return "Appointment updated successfully";
