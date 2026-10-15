@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import kigali.clinic.rw.domain.Appointment;
 import kigali.clinic.rw.domain.AppointmentStatus;
+import kigali.clinic.rw.domain.Patient;
 
 @Repository
 public interface AppointmentRepository extends JpaRepository<Appointment, UUID> {
@@ -33,6 +34,10 @@ public interface AppointmentRepository extends JpaRepository<Appointment, UUID> 
     // D1: the doctor's appointments on that date, without the given status
     List<Appointment> findByDoctorIdAndAppointmentDateAndStatusNot(UUID doctorId, LocalDate appointmentDate,
             AppointmentStatus status);
+
+    // D2: the patient's appointments from the given date on, in one of the statuses, soonest first
+    List<Appointment> findByPatientAndAppointmentDateGreaterThanEqualAndStatusInOrderByAppointmentDateAsc(
+            Patient patient, LocalDate appointmentDate, List<AppointmentStatus> statuses);
 
     // C1: number of appointments for each status
     @Query("SELECT a.status, COUNT(a) FROM Appointment a GROUP BY a.status")

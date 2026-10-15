@@ -32,6 +32,10 @@ public class PatientService {
         return patientRepo.findById(id).orElse(null);
     }
 
+    public Patient getPatientBySsNumber(String ssNumber){
+        return patientRepo.findBySsNumber(ssNumber);
+    }
+
     public List<Patient> getPatientsByLastName(String lastName){
         return patientRepo.findByLastNameIgnoreCaseOrderByFirstNameAsc(lastName);
     }

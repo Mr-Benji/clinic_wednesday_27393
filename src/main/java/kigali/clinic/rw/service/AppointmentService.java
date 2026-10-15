@@ -88,6 +88,14 @@ public class AppointmentService {
         return appointmentRepo.findByDoctorIdAndAppointmentDateAndStatusNot(doctorId, date, AppointmentStatus.CANCELLED);
     }
 
+    // appointments from today on that are still SCHEDULED or CONFIRMED, soonest first
+    public List<Appointment> getUpcomingAppointments(Patient patient){
+
+        List<AppointmentStatus> activeStatuses = List.of(AppointmentStatus.SCHEDULED, AppointmentStatus.CONFIRMED);
+        return appointmentRepo.findByPatientAndAppointmentDateGreaterThanEqualAndStatusInOrderByAppointmentDateAsc(
+                patient, LocalDate.now(), activeStatuses);
+    }
+
     public List<Object[]> countAppointmentsByStatus(){
         return appointmentRepo.countAppointmentsByStatus();
     }
