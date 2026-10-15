@@ -83,6 +83,11 @@ public class AppointmentService {
         return appointmentRepo.findByAppointmentDateBetweenOrderByAppointmentDateAsc(start, end);
     }
 
+    // the cancelled appointments are left out of the agenda
+    public List<Appointment> getDoctorAgenda(UUID doctorId, LocalDate date){
+        return appointmentRepo.findByDoctorIdAndAppointmentDateAndStatusNot(doctorId, date, AppointmentStatus.CANCELLED);
+    }
+
     public List<Object[]> countAppointmentsByStatus(){
         return appointmentRepo.countAppointmentsByStatus();
     }

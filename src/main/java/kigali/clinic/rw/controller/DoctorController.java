@@ -1,5 +1,6 @@
 package kigali.clinic.rw.controller;
 
+import java.time.LocalDate;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import kigali.clinic.rw.domain.Doctor;
+import kigali.clinic.rw.service.AppointmentService;
 import kigali.clinic.rw.service.DoctorService;
 
 
@@ -27,6 +29,9 @@ public class DoctorController {
 
     @Autowired
     private DoctorService doctorServ;
+
+    @Autowired
+    private AppointmentService appointmentServ;
 
     @PostMapping(value="/save")
     public ResponseEntity<?> saveDoctor(@RequestBody Doctor doctor,
@@ -45,6 +50,16 @@ public class DoctorController {
     @GetMapping(value="/by-specialization")
     public ResponseEntity<?> getDoctorsBySpecialization(@RequestParam String name){
         return new ResponseEntity<>(doctorServ.getDoctorsBySpecialization(name), HttpStatus.OK);
+    }
+
+    // e.g. /api/doctors/{doctorId}/agenda?date=2026-10-20
+    @GetMapping(value="/{doctorId}/agenda")
+    public ResponseEntity<?> getDoctorAgenda(@PathVariable UUID doctorId, @RequestParam String date){
+
+        if(doctorServ.getDoctorById(doctorId) == null){
+            return new ResponseEntity<>("The doctor with that id does not exist", HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(appointmentServ.getDoctorAgenda(doctorId, LocalDate.parse(date)), HttpStatus.OK);
     }
 
     @GetMapping(value="/without-office")
