@@ -1,0 +1,17 @@
+$kind: http-request
+url: "{{baseUrl}}/api/dashboard/summary"
+method: GET
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status code is 200", function () {
+          pm.response.to.have.status(200);
+      });
+
+      pm.test("Keys in order with numbers", function () {
+          const summary = pm.response.json();
+          pm.expect(Object.keys(summary)).to.eql(["patients", "doctors", "freeOffices", "appointmentsToday", "scheduled", "prescriptions"]);
+          Object.values(summary).forEach(v => pm.expect(v).to.be.a("number"));
+      });
+    language: text/javascript
+order: 8000

@@ -6889,6 +6889,351 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Part 2 D - Agenda and reports",
+			"item": [
+				{
+					"name": "D1 Doctor agenda for a day",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/doctors/{{doctorId}}/agenda?date=2026-10-20",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"doctors",
+								"{{doctorId}}",
+								"agenda"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "2026-10-20"
+								}
+							]
+						}
+					},
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Only that day and no CANCELLED appointments\", function () {",
+									"    const appointments = pm.response.json();",
+									"    pm.expect(appointments.length).to.be.above(0);",
+									"    appointments.forEach(a => {",
+									"        pm.expect(a.appointmentDate).to.eql(\"2026-10-20\");",
+									"        pm.expect(a.status).to.not.eql(\"CANCELLED\");",
+									"    });",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "D1 Unknown doctor",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/doctors/00000000-0000-0000-0000-000000000000/agenda?date=2026-10-20",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"doctors",
+								"00000000-0000-0000-0000-000000000000",
+								"agenda"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "2026-10-20"
+								}
+							]
+						}
+					},
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"",
+									"pm.test(\"Message\", function () {",
+									"    pm.expect(pm.response.text()).to.eql(\"The doctor with that id does not exist\");",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "D2 Upcoming appointments of a patient",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/patients/SS1001/upcoming",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"patients",
+								"SS1001",
+								"upcoming"
+							]
+						}
+					},
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"From today, SCHEDULED or CONFIRMED, soonest first\", function () {",
+									"    const appointments = pm.response.json();",
+									"    const today = new Date().toISOString().slice(0, 10);",
+									"    const dates = appointments.map(a => a.appointmentDate);",
+									"    pm.expect(appointments.length).to.be.above(0);",
+									"    pm.expect(dates).to.eql([...dates].sort());",
+									"    appointments.forEach(a => {",
+									"        pm.expect(a.appointmentDate >= today).to.be.true;",
+									"        pm.expect([\"SCHEDULED\", \"CONFIRMED\"]).to.include(a.status);",
+									"    });",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "D2 Unknown patient",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/patients/SS9999/upcoming",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"patients",
+								"SS9999",
+								"upcoming"
+							]
+						}
+					},
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"",
+									"pm.test(\"Message\", function () {",
+									"    pm.expect(pm.response.text()).to.eql(\"That patient with that ssnumber does not exist\");",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "D3 Search doctors by name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/doctors/search?name=gis",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"doctors",
+								"search"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "gis"
+								}
+							]
+						}
+					},
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Finds Mugisha\", function () {",
+									"    const lastNames = pm.response.json().map(d => d.lastName);",
+									"    pm.expect(lastNames).to.include(\"Mugisha\");",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "D3 Search ignores case and sorts by last name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/doctors/search?name=MU",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"doctors",
+								"search"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "MU"
+								}
+							]
+						}
+					},
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Sorted by last name\", function () {",
+									"    const lastNames = pm.response.json().map(d => d.lastName);",
+									"    pm.expect(lastNames.length).to.be.above(1);",
+									"    pm.expect(lastNames).to.eql([...lastNames].sort());",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "D3 No doctor matches",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/doctors/search?name=zzz",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"doctors",
+								"search"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "zzz"
+								}
+							]
+						}
+					},
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Empty list\", function () {",
+									"    pm.expect(pm.response.json()).to.eql([]);",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "D4 Clinic dashboard",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/dashboard/summary",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"dashboard",
+								"summary"
+							]
+						}
+					},
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Keys in order with numbers\", function () {",
+									"    const summary = pm.response.json();",
+									"    pm.expect(Object.keys(summary)).to.eql([\"patients\", \"doctors\", \"freeOffices\", \"appointmentsToday\", \"scheduled\", \"prescriptions\"]);",
+									"    Object.values(summary).forEach(v => pm.expect(v).to.be.a(\"number\"));",
+									"});"
+								]
+							}
+						}
+					]
+				}
+			]
 		}
 	],
 	"variable": [

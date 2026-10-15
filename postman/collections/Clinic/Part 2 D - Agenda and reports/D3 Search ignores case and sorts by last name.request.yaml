@@ -1,0 +1,17 @@
+$kind: http-request
+url: "{{baseUrl}}/api/doctors/search?name=MU"
+method: GET
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status code is 200", function () {
+          pm.response.to.have.status(200);
+      });
+
+      pm.test("Sorted by last name", function () {
+          const lastNames = pm.response.json().map(d => d.lastName);
+          pm.expect(lastNames.length).to.be.above(1);
+          pm.expect(lastNames).to.eql([...lastNames].sort());
+      });
+    language: text/javascript
+order: 6000
