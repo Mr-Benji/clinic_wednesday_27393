@@ -1,5 +1,6 @@
 package kigali.clinic.rw.service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import kigali.clinic.rw.domain.AppointmentStatus;
 import kigali.clinic.rw.domain.Doctor;
 import kigali.clinic.rw.domain.Office;
 import kigali.clinic.rw.domain.Specialization;
@@ -62,6 +64,11 @@ public class DoctorService {
 
     public List<Doctor> searchDoctorsByName(String name){
         return doctorRepo.searchByName(name);
+    }
+
+    // only COMPLETED appointments count as work done
+    public List<Object[]> getWorkload(LocalDate start, LocalDate end){
+        return doctorRepo.findWorkload(AppointmentStatus.COMPLETED, start, end);
     }
 
     public String updateDoctor(UUID id, Doctor doctor, UUID officeId){

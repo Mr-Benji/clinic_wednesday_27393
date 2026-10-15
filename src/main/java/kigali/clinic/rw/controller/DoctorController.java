@@ -58,6 +58,12 @@ public class DoctorController {
         return new ResponseEntity<>(doctorServ.searchDoctorsByName(name), HttpStatus.OK);
     }
 
+    // e.g. /api/doctors/workload?start=2026-10-01&end=2026-10-31
+    @GetMapping(value="/workload")
+    public ResponseEntity<?> getWorkload(@RequestParam String start, @RequestParam String end){
+        return new ResponseEntity<>(doctorServ.getWorkload(LocalDate.parse(start), LocalDate.parse(end)), HttpStatus.OK);
+    }
+
     // e.g. /api/doctors/{doctorId}/agenda?date=2026-10-20
     @GetMapping(value="/{doctorId}/agenda")
     public ResponseEntity<?> getDoctorAgenda(@PathVariable UUID doctorId, @RequestParam String date){
