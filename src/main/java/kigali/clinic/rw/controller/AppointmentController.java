@@ -116,6 +116,14 @@ public class AppointmentController {
         return toResponse(returnedMessage);
     }
 
+    // e.g. /api/appointments/{id}/status?status=CONFIRMED
+    @PatchMapping(value="/{id}/status")
+    public ResponseEntity<?> changeStatus(@PathVariable UUID id, @RequestParam AppointmentStatus status){
+
+        String returnedMessage = appointmentServ.changeStatus(id, status);
+        return toResponse(returnedMessage);
+    }
+
     @DeleteMapping(value="/delete/{id}")
     public ResponseEntity<?> deleteAppointment(@PathVariable UUID id){
 
@@ -127,7 +135,7 @@ public class AppointmentController {
 
         if(message.endsWith("successfully")){
             return new ResponseEntity<>(message, HttpStatus.OK);
-        }else if(message.endsWith("not found")){
+        }else if(message.endsWith("not found") || message.endsWith("does not exist")){
             return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
         }else if(message.endsWith("required") || message.toLowerCase().contains("cannot")){
             return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);

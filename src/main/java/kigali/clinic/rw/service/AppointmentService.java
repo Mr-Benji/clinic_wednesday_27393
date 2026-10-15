@@ -146,6 +146,36 @@ public class AppointmentService {
         return "Appointment updated successfully";
     }
 
+    public String changeStatus(UUID id, AppointmentStatus newStatus){
+
+        Appointment appointment = appointmentRepo.findById(id).orElse(null);
+        if(appointment == null){
+            return "The appointment with that id does not exist";
+        }
+
+        AppointmentStatus currentStatus = appointment.getStatus();
+        if(!canChangeStatus(currentStatus, newStatus)){
+            return "Cannot change status from " + currentStatus + " to " + newStatus;
+        }
+        appointment.setStatus(newStatus);
+        appointmentRepo.save(appointment);
+
+        return "Appointment status updated successfully";
+    }
+
+    // SCHEDULED -> CONFIRMED or CANCELLED, CONFIRMED -> COMPLETED or CANCELLED
+    // COMPLETED and CANCELLED are final
+    private boolean canChangeStatus(AppointmentStatus current, AppointmentStatus next){
+
+        if(current == AppointmentStatus.SCHEDULED){
+            return next == AppointmentStatus.CONFIRMED || next == AppointmentStatus.CANCELLED;
+        }
+        if(current == AppointmentStatus.CONFIRMED){
+            return next == AppointmentStatus.COMPLETED || next == AppointmentStatus.CANCELLED;
+        }
+        return false;
+    }
+
     public String deleteAppointment(UUID id){
 
         Appointment existing = appointmentRepo.findById(id).orElse(null);
