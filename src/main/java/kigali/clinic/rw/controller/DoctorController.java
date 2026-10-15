@@ -52,6 +52,12 @@ public class DoctorController {
         return new ResponseEntity<>(doctorServ.getDoctorsBySpecialization(name), HttpStatus.OK);
     }
 
+    // e.g. /api/doctors/search?name=gis
+    @GetMapping(value="/search")
+    public ResponseEntity<?> searchDoctorsByName(@RequestParam String name){
+        return new ResponseEntity<>(doctorServ.searchDoctorsByName(name), HttpStatus.OK);
+    }
+
     // e.g. /api/doctors/{doctorId}/agenda?date=2026-10-20
     @GetMapping(value="/{doctorId}/agenda")
     public ResponseEntity<?> getDoctorAgenda(@PathVariable UUID doctorId, @RequestParam String date){

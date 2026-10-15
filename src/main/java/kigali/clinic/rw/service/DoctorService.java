@@ -60,6 +60,10 @@ public class DoctorService {
         return doctorRepo.findDoctorsWithoutOffice();
     }
 
+    public List<Doctor> searchDoctorsByName(String name){
+        return doctorRepo.searchByName(name);
+    }
+
     public String updateDoctor(UUID id, Doctor doctor, UUID officeId){
 
         Doctor existing = doctorRepo.findById(id).orElse(null);
