@@ -58,9 +58,8 @@ public class AppointmentService {
             return "Doctor is already booked on that date";
         }
 
-        if(appointment.getStatus() == null){
-            appointment.setStatus(AppointmentStatus.SCHEDULED);
-        }
+        // a new appointment always starts as SCHEDULED, whatever the body says
+        appointment.setStatus(AppointmentStatus.SCHEDULED);
         appointment.setPatient(patient);
         appointment.setDoctor(doctor);
         appointmentRepo.save(appointment);
