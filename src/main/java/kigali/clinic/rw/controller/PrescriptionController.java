@@ -5,9 +5,11 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -55,6 +57,20 @@ public class PrescriptionController {
     @GetMapping(value="/patient/{ssNumber}")
     public ResponseEntity<?> getPatientHistory(@PathVariable String ssNumber){
         return new ResponseEntity<>(prescriptionServ.getPatientHistory(ssNumber), HttpStatus.OK);
+    }
+
+    @PutMapping(value="/update/{id}")
+    public ResponseEntity<?> updatePrescription(@PathVariable UUID id, @RequestBody Prescription prescription){
+
+        String returnedMessage = prescriptionServ.updatePrescription(id, prescription);
+        return toResponse(returnedMessage);
+    }
+
+    @DeleteMapping(value="/delete/{id}")
+    public ResponseEntity<?> deletePrescription(@PathVariable UUID id){
+
+        String returnedMessage = prescriptionServ.deletePrescription(id);
+        return toResponse(returnedMessage);
     }
 
     private ResponseEntity<?> toResponse(String message){

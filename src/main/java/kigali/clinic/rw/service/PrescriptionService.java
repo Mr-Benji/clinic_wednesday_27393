@@ -49,4 +49,31 @@ public class PrescriptionService {
         return prescriptionRepo.findPatientHistory(ssNumber);
     }
 
+    // only the medicine, dosage and duration can change
+    public String updatePrescription(UUID id, Prescription prescription){
+
+        Prescription existing = prescriptionRepo.findById(id).orElse(null);
+        if(existing == null){
+            return "The prescription with that id does not exist";
+        }
+
+        existing.setMedicineName(prescription.getMedicineName());
+        existing.setDosage(prescription.getDosage());
+        existing.setDurationDays(prescription.getDurationDays());
+        prescriptionRepo.save(existing);
+
+        return "Prescription updated successfully";
+    }
+
+    public String deletePrescription(UUID id){
+
+        Prescription existing = prescriptionRepo.findById(id).orElse(null);
+        if(existing == null){
+            return "The prescription with that id does not exist";
+        }
+        prescriptionRepo.delete(existing);
+
+        return "Prescription deleted successfully";
+    }
+
 }
