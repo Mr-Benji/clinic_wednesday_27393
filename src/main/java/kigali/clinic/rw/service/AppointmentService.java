@@ -37,6 +37,10 @@ public class AppointmentService {
             return "Appointment date is required";
         }
 
+        if(appointment.getAppointmentDate().isBefore(LocalDate.now())){
+            return "Appointment date cannot be in the past";
+        }
+
         Patient patient = patientRepo.findById(patientId).orElse(null);
         if(patient == null){
             return "Patient not found";

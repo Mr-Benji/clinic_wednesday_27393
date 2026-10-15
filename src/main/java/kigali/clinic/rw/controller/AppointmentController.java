@@ -129,7 +129,7 @@ public class AppointmentController {
             return new ResponseEntity<>(message, HttpStatus.OK);
         }else if(message.endsWith("not found")){
             return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
-        }else if(message.endsWith("required")){
+        }else if(message.endsWith("required") || message.toLowerCase().contains("cannot")){
             return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
         }else{
             return new ResponseEntity<>(message, HttpStatus.CONFLICT);
