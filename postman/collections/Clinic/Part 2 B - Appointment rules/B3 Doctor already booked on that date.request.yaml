@@ -1,0 +1,15 @@
+$kind: http-request
+url: "{{baseUrl}}/api/appointments/{{tempAppointmentId}}/reschedule?newDate=2026-11-04"
+method: PATCH
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status code is 409", function () {
+          pm.response.to.have.status(409);
+      });
+
+      pm.test("Message", function () {
+          pm.expect(pm.response.text()).to.eql("Doctor is already booked on that date");
+      });
+    language: text/javascript
+order: 8000

@@ -1,0 +1,15 @@
+$kind: http-request
+url: "{{baseUrl}}/api/appointments/{{tempAppointmentId}}/status?status=COMPLETED"
+method: PATCH
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status code is 400", function () {
+          pm.response.to.have.status(400);
+      });
+
+      pm.test("Message", function () {
+          pm.expect(pm.response.text()).to.eql("Cannot change status from SCHEDULED to COMPLETED");
+      });
+    language: text/javascript
+order: 4000

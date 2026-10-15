@@ -1,0 +1,15 @@
+$kind: http-request
+url: "{{baseUrl}}/api/appointments/{{tempAppointmentId}}/status?status=CONFIRMED"
+method: PATCH
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status code is 200", function () {
+          pm.response.to.have.status(200);
+      });
+
+      pm.test("Message", function () {
+          pm.expect(pm.response.text()).to.eql("Appointment status updated successfully");
+      });
+    language: text/javascript
+order: 5000

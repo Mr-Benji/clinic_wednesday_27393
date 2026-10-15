@@ -5516,6 +5516,803 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Part 2 B - Appointment rules",
+			"item": [
+				{
+					"name": "B1 Booking in the past is refused",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/appointments/save?patientId={{patientId}}&doctorId={{doctorNoOfficeId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"appointments",
+								"save"
+							],
+							"query": [
+								{
+									"key": "patientId",
+									"value": "{{patientId}}"
+								},
+								{
+									"key": "doctorId",
+									"value": "{{doctorNoOfficeId}}"
+								}
+							]
+						},
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"appointmentDate\": \"2026-01-01\",\n    \"reason\": \"Postman flow test\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					},
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Message\", function () {",
+									"    pm.expect(pm.response.text()).to.eql(\"Appointment date cannot be in the past\");",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "B1 Save a new appointment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/appointments/save?patientId={{patientId}}&doctorId={{doctorNoOfficeId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"appointments",
+								"save"
+							],
+							"query": [
+								{
+									"key": "patientId",
+									"value": "{{patientId}}"
+								},
+								{
+									"key": "doctorId",
+									"value": "{{doctorNoOfficeId}}"
+								}
+							]
+						},
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"appointmentDate\": \"2026-12-01\",\n    \"reason\": \"Postman flow test\",\n    \"status\": \"COMPLETED\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					},
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Message\", function () {",
+									"    pm.expect(pm.response.text()).to.eql(\"Appointment saved successfully\");",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "B1 New appointment starts as SCHEDULED",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/appointments/all",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"appointments",
+								"all"
+							]
+						}
+					},
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Status is SCHEDULED even though the body said COMPLETED\", function () {",
+									"    const appointment = pm.response.json().find(a => a.reason === \"Postman flow test\");",
+									"    pm.expect(appointment.status).to.eql(\"SCHEDULED\");",
+									"    pm.collectionVariables.set(\"tempAppointmentId\", appointment.id);",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "B2 SCHEDULED to COMPLETED is refused",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/appointments/{{tempAppointmentId}}/status?status=COMPLETED",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"appointments",
+								"{{tempAppointmentId}}",
+								"status"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "COMPLETED"
+								}
+							]
+						}
+					},
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Message\", function () {",
+									"    pm.expect(pm.response.text()).to.eql(\"Cannot change status from SCHEDULED to COMPLETED\");",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "B2 SCHEDULED to CONFIRMED",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/appointments/{{tempAppointmentId}}/status?status=CONFIRMED",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"appointments",
+								"{{tempAppointmentId}}",
+								"status"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "CONFIRMED"
+								}
+							]
+						}
+					},
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Message\", function () {",
+									"    pm.expect(pm.response.text()).to.eql(\"Appointment status updated successfully\");",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "B2 Unknown appointment",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/appointments/00000000-0000-0000-0000-000000000000/status?status=CONFIRMED",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"appointments",
+								"00000000-0000-0000-0000-000000000000",
+								"status"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "CONFIRMED"
+								}
+							]
+						}
+					},
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"",
+									"pm.test(\"Message\", function () {",
+									"    pm.expect(pm.response.text()).to.eql(\"The appointment with that id does not exist\");",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "B3 Reschedule to a past date",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/appointments/{{tempAppointmentId}}/reschedule?newDate=2026-01-01",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"appointments",
+								"{{tempAppointmentId}}",
+								"reschedule"
+							],
+							"query": [
+								{
+									"key": "newDate",
+									"value": "2026-01-01"
+								}
+							]
+						}
+					},
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Message\", function () {",
+									"    pm.expect(pm.response.text()).to.eql(\"Appointment date cannot be in the past\");",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "B3 Doctor already booked on that date",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/appointments/{{tempAppointmentId}}/reschedule?newDate=2026-11-04",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"appointments",
+								"{{tempAppointmentId}}",
+								"reschedule"
+							],
+							"query": [
+								{
+									"key": "newDate",
+									"value": "2026-11-04"
+								}
+							]
+						}
+					},
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 409\", function () {",
+									"    pm.response.to.have.status(409);",
+									"});",
+									"",
+									"pm.test(\"Message\", function () {",
+									"    pm.expect(pm.response.text()).to.eql(\"Doctor is already booked on that date\");",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "B3 Reschedule to a free date",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/appointments/{{tempAppointmentId}}/reschedule?newDate=2026-12-02",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"appointments",
+								"{{tempAppointmentId}}",
+								"reschedule"
+							],
+							"query": [
+								{
+									"key": "newDate",
+									"value": "2026-12-02"
+								}
+							]
+						}
+					},
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Message\", function () {",
+									"    pm.expect(pm.response.text()).to.eql(\"Appointment rescheduled successfully\");",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "B3 Rescheduled appointment is SCHEDULED again",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/appointments/{{tempAppointmentId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"appointments",
+								"{{tempAppointmentId}}"
+							]
+						}
+					},
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"New date and status\", function () {",
+									"    pm.expect(pm.response.json().appointmentDate).to.eql(\"2026-12-02\");",
+									"    pm.expect(pm.response.json().status).to.eql(\"SCHEDULED\");",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "B3 Unknown appointment",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/appointments/00000000-0000-0000-0000-000000000000/reschedule?newDate=2026-12-03",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"appointments",
+								"00000000-0000-0000-0000-000000000000",
+								"reschedule"
+							],
+							"query": [
+								{
+									"key": "newDate",
+									"value": "2026-12-03"
+								}
+							]
+						}
+					},
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"",
+									"pm.test(\"Message\", function () {",
+									"    pm.expect(pm.response.text()).to.eql(\"The appointment with that id does not exist\");",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "B2 Confirm again",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/appointments/{{tempAppointmentId}}/status?status=CONFIRMED",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"appointments",
+								"{{tempAppointmentId}}",
+								"status"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "CONFIRMED"
+								}
+							]
+						}
+					},
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Message\", function () {",
+									"    pm.expect(pm.response.text()).to.eql(\"Appointment status updated successfully\");",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "B2 CONFIRMED to COMPLETED",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/appointments/{{tempAppointmentId}}/status?status=COMPLETED",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"appointments",
+								"{{tempAppointmentId}}",
+								"status"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "COMPLETED"
+								}
+							]
+						}
+					},
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Message\", function () {",
+									"    pm.expect(pm.response.text()).to.eql(\"Appointment status updated successfully\");",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "B2 COMPLETED to SCHEDULED is refused",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/appointments/{{tempAppointmentId}}/status?status=SCHEDULED",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"appointments",
+								"{{tempAppointmentId}}",
+								"status"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "SCHEDULED"
+								}
+							]
+						}
+					},
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Message\", function () {",
+									"    pm.expect(pm.response.text()).to.eql(\"Cannot change status from COMPLETED to SCHEDULED\");",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "B3 COMPLETED appointment cannot be rescheduled",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/appointments/{{tempAppointmentId}}/reschedule?newDate=2026-12-04",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"appointments",
+								"{{tempAppointmentId}}",
+								"reschedule"
+							],
+							"query": [
+								{
+									"key": "newDate",
+									"value": "2026-12-04"
+								}
+							]
+						}
+					},
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Message\", function () {",
+									"    pm.expect(pm.response.text()).to.eql(\"A COMPLETED appointment cannot be rescheduled\");",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "B2 Update does not change the status",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/appointments/update/{{tempAppointmentId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"appointments",
+								"update",
+								"{{tempAppointmentId}}"
+							]
+						},
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"appointmentDate\": \"2026-12-02\",\n    \"reason\": \"Postman flow test\",\n    \"status\": \"CANCELLED\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					},
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Message\", function () {",
+									"    pm.expect(pm.response.text()).to.eql(\"Appointment updated successfully\");",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "B2 Status is still COMPLETED",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/appointments/{{tempAppointmentId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"appointments",
+								"{{tempAppointmentId}}"
+							]
+						}
+					},
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Status did not change\", function () {",
+									"    pm.expect(pm.response.json().status).to.eql(\"COMPLETED\");",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "Delete the test appointment",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/appointments/delete/{{tempAppointmentId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"appointments",
+								"delete",
+								"{{tempAppointmentId}}"
+							]
+						}
+					},
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Message\", function () {",
+									"    pm.expect(pm.response.text()).to.eql(\"Appointment deleted successfully\");",
+									"});"
+								]
+							}
+						}
+					]
+				}
+			]
 		}
 	],
 	"variable": [

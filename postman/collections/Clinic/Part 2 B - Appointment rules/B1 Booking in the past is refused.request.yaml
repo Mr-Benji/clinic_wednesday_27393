@@ -1,0 +1,24 @@
+$kind: http-request
+url: "{{baseUrl}}/api/appointments/save?patientId={{patientId}}&doctorId={{doctorNoOfficeId}}"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+        "appointmentDate": "2026-01-01",
+        "reason": "Postman flow test"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status code is 400", function () {
+          pm.response.to.have.status(400);
+      });
+
+      pm.test("Message", function () {
+          pm.expect(pm.response.text()).to.eql("Appointment date cannot be in the past");
+      });
+    language: text/javascript
+order: 1000

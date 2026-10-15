@@ -1,0 +1,25 @@
+$kind: http-request
+url: "{{baseUrl}}/api/appointments/save?patientId={{patientId}}&doctorId={{doctorNoOfficeId}}"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+        "appointmentDate": "2026-12-01",
+        "reason": "Postman flow test",
+        "status": "COMPLETED"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status code is 200", function () {
+          pm.response.to.have.status(200);
+      });
+
+      pm.test("Message", function () {
+          pm.expect(pm.response.text()).to.eql("Appointment saved successfully");
+      });
+    language: text/javascript
+order: 2000

@@ -1,0 +1,15 @@
+$kind: http-request
+url: "{{baseUrl}}/api/appointments/{{tempAppointmentId}}"
+method: GET
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status code is 200", function () {
+          pm.response.to.have.status(200);
+      });
+
+      pm.test("Status did not change", function () {
+          pm.expect(pm.response.json().status).to.eql("COMPLETED");
+      });
+    language: text/javascript
+order: 17000

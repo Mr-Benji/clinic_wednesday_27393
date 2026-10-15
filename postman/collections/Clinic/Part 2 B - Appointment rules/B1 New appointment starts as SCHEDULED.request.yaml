@@ -1,0 +1,17 @@
+$kind: http-request
+url: "{{baseUrl}}/api/appointments/all"
+method: GET
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status code is 200", function () {
+          pm.response.to.have.status(200);
+      });
+
+      pm.test("Status is SCHEDULED even though the body said COMPLETED", function () {
+          const appointment = pm.response.json().find(a => a.reason === "Postman flow test");
+          pm.expect(appointment.status).to.eql("SCHEDULED");
+          pm.collectionVariables.set("tempAppointmentId", appointment.id);
+      });
+    language: text/javascript
+order: 3000
