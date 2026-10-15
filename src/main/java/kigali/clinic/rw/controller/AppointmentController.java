@@ -124,6 +124,14 @@ public class AppointmentController {
         return toResponse(returnedMessage);
     }
 
+    // e.g. /api/appointments/{id}/reschedule?newDate=2026-10-30
+    @PatchMapping(value="/{id}/reschedule")
+    public ResponseEntity<?> reschedule(@PathVariable UUID id, @RequestParam String newDate){
+
+        String returnedMessage = appointmentServ.reschedule(id, LocalDate.parse(newDate));
+        return toResponse(returnedMessage);
+    }
+
     @DeleteMapping(value="/delete/{id}")
     public ResponseEntity<?> deleteAppointment(@PathVariable UUID id){
 
