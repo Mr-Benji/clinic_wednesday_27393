@@ -12,4 +12,5 @@ scripts:
           pm.expect(pm.response.text()).to.eql("The appointment with that id does not exist");
       });
     language: text/javascript
+examples: .resources/B3 Unknown appointment.resources/examples
 order: 11000

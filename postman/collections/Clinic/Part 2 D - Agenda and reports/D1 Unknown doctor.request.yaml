@@ -12,4 +12,5 @@ scripts:
           pm.expect(pm.response.text()).to.eql("The doctor with that id does not exist");
       });
     language: text/javascript
+examples: .resources/D1 Unknown doctor.resources/examples
 order: 2000

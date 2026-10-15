@@ -1,0 +1,24 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/api/offices/free"
+  method: GET
+response:
+  statusCode: 200
+  statusText: ""
+  headers:
+    content-type: application/json
+    transfer-encoding: chunked
+    date: Thu, 15 Oct 2026 20:21:28 GMT
+    keep-alive: timeout=60
+    connection: keep-alive
+  body:
+    type: json
+    content: |-
+      [
+        {
+          "id": "35550fd0-c349-4ebf-8af4-e34c8e5519fa",
+          "name": "Cardiology",
+          "officeNumber": 103
+        }
+      ]
+order: 1792095688669

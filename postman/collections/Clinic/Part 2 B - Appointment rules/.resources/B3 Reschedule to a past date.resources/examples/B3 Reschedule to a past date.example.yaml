@@ -1,0 +1,19 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/api/appointments/{{tempAppointmentId}}/reschedule?newDate=2026-01-01"
+  method: PATCH
+  queryParams:
+    newDate: "2026-01-01"
+response:
+  statusCode: 400
+  statusText: ""
+  headers:
+    content-type: text/plain;charset=UTF-8
+    content-length: "38"
+    date: Thu, 15 Oct 2026 20:21:34 GMT
+    connection: close
+  body:
+    type: text
+    content: |-
+      Appointment date cannot be in the past
+order: 1792095695690

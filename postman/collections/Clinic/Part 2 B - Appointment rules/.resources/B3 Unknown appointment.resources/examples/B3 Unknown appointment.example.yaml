@@ -1,0 +1,20 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/api/appointments/00000000-0000-0000-0000-000000000000/reschedule?newDate=2026-12-03"
+  method: PATCH
+  queryParams:
+    newDate: "2026-12-03"
+response:
+  statusCode: 404
+  statusText: ""
+  headers:
+    content-type: text/plain;charset=UTF-8
+    content-length: "43"
+    date: Thu, 15 Oct 2026 20:21:34 GMT
+    keep-alive: timeout=60
+    connection: keep-alive
+  body:
+    type: text
+    content: |-
+      The appointment with that id does not exist
+order: 1792095695694

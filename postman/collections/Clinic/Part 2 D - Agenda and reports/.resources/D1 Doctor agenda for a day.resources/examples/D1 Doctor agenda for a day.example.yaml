@@ -1,0 +1,55 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/api/doctors/{{doctorId}}/agenda?date=2026-10-20"
+  method: GET
+  queryParams:
+    date: "2026-10-20"
+response:
+  statusCode: 200
+  statusText: ""
+  headers:
+    content-type: application/json
+    transfer-encoding: chunked
+    date: Thu, 15 Oct 2026 20:21:48 GMT
+    keep-alive: timeout=60
+    connection: keep-alive
+  body:
+    type: json
+    content: |-
+      [
+        {
+          "appointmentDate": "2026-10-20",
+          "doctor": {
+            "dateOfBirth": "1980-05-01",
+            "firstName": "Jean",
+            "id": "16157faf-0052-46d0-879d-3197b2ceb1ca",
+            "lastName": "Mugisha",
+            "office": {
+              "id": "ccbbcd58-be11-4e77-a259-07b1232e669c",
+              "name": "Cardiology",
+              "officeNumber": 101
+            },
+            "specializations": [
+              {
+                "id": "02b4fbeb-d92b-422b-bd60-f711f53cb8d7",
+                "name": "Pediatrics"
+              },
+              {
+                "id": "ddd00864-7b25-466b-8525-1eeb9b27242b",
+                "name": "Cardiology"
+              }
+            ]
+          },
+          "id": "c4d2d138-2fc1-41a4-bbc5-a63c03447df4",
+          "patient": {
+            "dateOfBirth": "1995-02-10",
+            "firstName": "Alice",
+            "id": "8aeee4f7-4d39-4d9f-b9a0-8689e788a2d4",
+            "lastName": "Uwase",
+            "ssNumber": "SS1001"
+          },
+          "reason": "Heart check-up",
+          "status": "SCHEDULED"
+        }
+      ]
+order: 1792095709408

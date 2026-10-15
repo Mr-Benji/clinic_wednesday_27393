@@ -1,0 +1,28 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/api/appointments/update/{{tempAppointmentId}}"
+  method: PUT
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: |-
+      {
+          "appointmentDate": "2026-12-02",
+          "reason": "Postman flow test",
+          "status": "CANCELLED"
+      }
+response:
+  statusCode: 200
+  statusText: ""
+  headers:
+    content-type: text/plain;charset=UTF-8
+    content-length: "32"
+    date: Thu, 15 Oct 2026 20:21:35 GMT
+    keep-alive: timeout=60
+    connection: keep-alive
+  body:
+    type: text
+    content: |-
+      Appointment updated successfully
+order: 1792095695699

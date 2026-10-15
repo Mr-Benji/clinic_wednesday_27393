@@ -13,4 +13,5 @@ scripts:
           pm.expect(pm.response.json().status).to.eql("SCHEDULED");
       });
     language: text/javascript
+examples: .resources/B3 Rescheduled appointment is SCHEDULED again.resources/examples
 order: 10000

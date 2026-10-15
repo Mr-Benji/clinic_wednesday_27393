@@ -17,4 +17,5 @@ scripts:
           });
       });
     language: text/javascript
+examples: .resources/D1 Doctor agenda for a day.resources/examples
 order: 1000

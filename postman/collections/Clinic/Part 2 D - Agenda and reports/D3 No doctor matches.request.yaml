@@ -12,4 +12,5 @@ scripts:
           pm.expect(pm.response.json()).to.eql([]);
       });
     language: text/javascript
+examples: .resources/D3 No doctor matches.resources/examples
 order: 7000

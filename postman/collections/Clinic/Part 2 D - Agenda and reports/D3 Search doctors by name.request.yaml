@@ -13,4 +13,5 @@ scripts:
           pm.expect(lastNames).to.include("Mugisha");
       });
     language: text/javascript
+examples: .resources/D3 Search doctors by name.resources/examples
 order: 5000

@@ -1,0 +1,28 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/api/prescriptions/update/{{tempPrescriptionId}}"
+  method: PUT
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: |-
+      {
+          "medicineName": "Test medicine",
+          "dosage": "2 tablets, twice a day",
+          "durationDays": 5
+      }
+response:
+  statusCode: 200
+  statusText: ""
+  headers:
+    content-type: text/plain;charset=UTF-8
+    content-length: "33"
+    date: Thu, 15 Oct 2026 20:21:42 GMT
+    keep-alive: timeout=60
+    connection: keep-alive
+  body:
+    type: text
+    content: |-
+      Prescription updated successfully
+order: 1792095702565

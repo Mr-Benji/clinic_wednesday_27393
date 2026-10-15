@@ -1,0 +1,31 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/api/prescriptions/stats/top-medicines"
+  method: GET
+response:
+  statusCode: 200
+  statusText: ""
+  headers:
+    content-type: application/json
+    transfer-encoding: chunked
+    date: Thu, 15 Oct 2026 20:21:54 GMT
+    keep-alive: timeout=60
+    connection: keep-alive
+  body:
+    type: json
+    content: |-
+      [
+        [
+          "Amoxicillin",
+          3
+        ],
+        [
+          "Paracetamol",
+          2
+        ],
+        [
+          "Ibuprofen",
+          1
+        ]
+      ]
+order: 1792095714848

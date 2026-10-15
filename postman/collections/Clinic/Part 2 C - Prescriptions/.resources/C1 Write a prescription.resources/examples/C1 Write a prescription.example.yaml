@@ -1,0 +1,30 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/api/prescriptions/save?appointmentId={{appointmentId}}"
+  method: POST
+  headers:
+    Content-Type: application/json
+  queryParams:
+    appointmentId: "{{appointmentId}}"
+  body:
+    type: json
+    content: |-
+      {
+          "medicineName": "Test medicine",
+          "dosage": "1 tablet, 3 times a day",
+          "durationDays": 7
+      }
+response:
+  statusCode: 201
+  statusText: ""
+  headers:
+    content-type: text/plain;charset=UTF-8
+    content-length: "31"
+    date: Thu, 15 Oct 2026 20:21:41 GMT
+    keep-alive: timeout=60
+    connection: keep-alive
+  body:
+    type: text
+    content: |-
+      Prescription saved successfully
+order: 1792095702557

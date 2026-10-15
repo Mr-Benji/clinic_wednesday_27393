@@ -1,0 +1,30 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/api/prescriptions/save?appointmentId=00000000-0000-0000-0000-000000000000"
+  method: POST
+  headers:
+    Content-Type: application/json
+  queryParams:
+    appointmentId: "00000000-0000-0000-0000-000000000000"
+  body:
+    type: json
+    content: |-
+      {
+          "medicineName": "Test medicine",
+          "dosage": "1 tablet, 3 times a day",
+          "durationDays": 7
+      }
+response:
+  statusCode: 404
+  statusText: ""
+  headers:
+    content-type: text/plain;charset=UTF-8
+    content-length: "43"
+    date: Thu, 15 Oct 2026 20:21:41 GMT
+    keep-alive: timeout=60
+    connection: keep-alive
+  body:
+    type: text
+    content: |-
+      The appointment with that id does not exist
+order: 1792095702559

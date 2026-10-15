@@ -1,0 +1,19 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/api/appointments/{{tempAppointmentId}}/status?status=COMPLETED"
+  method: PATCH
+  queryParams:
+    status: "COMPLETED"
+response:
+  statusCode: 400
+  statusText: ""
+  headers:
+    content-type: text/plain;charset=UTF-8
+    content-length: "48"
+    date: Thu, 15 Oct 2026 20:21:34 GMT
+    connection: close
+  body:
+    type: text
+    content: |-
+      Cannot change status from SCHEDULED to COMPLETED
+order: 1792095695687

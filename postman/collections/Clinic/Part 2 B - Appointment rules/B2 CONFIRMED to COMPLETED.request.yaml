@@ -12,4 +12,5 @@ scripts:
           pm.expect(pm.response.text()).to.eql("Appointment status updated successfully");
       });
     language: text/javascript
+examples: .resources/B2 CONFIRMED to COMPLETED.resources/examples
 order: 13000

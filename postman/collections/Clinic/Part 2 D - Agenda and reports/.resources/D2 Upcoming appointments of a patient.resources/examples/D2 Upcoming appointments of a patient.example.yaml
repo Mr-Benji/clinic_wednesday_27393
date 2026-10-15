@@ -1,0 +1,143 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/api/patients/SS1001/upcoming"
+  method: GET
+response:
+  statusCode: 200
+  statusText: ""
+  headers:
+    content-type: application/json
+    transfer-encoding: chunked
+    date: Thu, 15 Oct 2026 20:21:48 GMT
+    keep-alive: timeout=60
+    connection: keep-alive
+  body:
+    type: json
+    content: |-
+      [
+        {
+          "appointmentDate": "2026-10-20",
+          "doctor": {
+            "dateOfBirth": "1980-05-01",
+            "firstName": "Jean",
+            "id": "16157faf-0052-46d0-879d-3197b2ceb1ca",
+            "lastName": "Mugisha",
+            "office": {
+              "id": "ccbbcd58-be11-4e77-a259-07b1232e669c",
+              "name": "Cardiology",
+              "officeNumber": 101
+            },
+            "specializations": [
+              {
+                "id": "02b4fbeb-d92b-422b-bd60-f711f53cb8d7",
+                "name": "Pediatrics"
+              },
+              {
+                "id": "ddd00864-7b25-466b-8525-1eeb9b27242b",
+                "name": "Cardiology"
+              }
+            ]
+          },
+          "id": "c4d2d138-2fc1-41a4-bbc5-a63c03447df4",
+          "patient": {
+            "dateOfBirth": "1995-02-10",
+            "firstName": "Alice",
+            "id": "8aeee4f7-4d39-4d9f-b9a0-8689e788a2d4",
+            "lastName": "Uwase",
+            "ssNumber": "SS1001"
+          },
+          "reason": "Heart check-up",
+          "status": "SCHEDULED"
+        },
+        {
+          "appointmentDate": "2026-10-22",
+          "doctor": {
+            "dateOfBirth": "1985-09-12",
+            "firstName": "Claudine",
+            "id": "edc2c7d7-436c-4616-800f-1f01cddb0f01",
+            "lastName": "Mukamana",
+            "office": {
+              "id": "4b4e4157-95c7-47a8-8c41-87106f19a1c8",
+              "name": "Pediatrics",
+              "officeNumber": 102
+            },
+            "specializations": [
+              {
+                "id": "129f3e7d-1167-4ff2-8a5f-1894a35d2975",
+                "name": "Dermatology"
+              }
+            ]
+          },
+          "id": "4ef90ad8-b272-4065-9a9a-36af49ffc98a",
+          "patient": {
+            "dateOfBirth": "1995-02-10",
+            "firstName": "Alice",
+            "id": "8aeee4f7-4d39-4d9f-b9a0-8689e788a2d4",
+            "lastName": "Uwase",
+            "ssNumber": "SS1001"
+          },
+          "reason": "Skin rash follow-up",
+          "status": "CONFIRMED"
+        },
+        {
+          "appointmentDate": "2026-10-30",
+          "doctor": {
+            "dateOfBirth": "1978-03-25",
+            "firstName": "Patrick",
+            "id": "5e3f5ab8-eff1-46bc-8610-ddeaa5c77db5",
+            "lastName": "Niyonzima",
+            "office": {
+              "id": "35550fd0-c349-4ebf-8af4-e34c8e5519fa",
+              "name": "Cardiology",
+              "officeNumber": 103
+            },
+            "specializations": [
+              {
+                "id": "ddd00864-7b25-466b-8525-1eeb9b27242b",
+                "name": "Cardiology"
+              }
+            ]
+          },
+          "id": "ca34cf46-2c0a-45e4-a61a-5949bb7cac7b",
+          "patient": {
+            "dateOfBirth": "1995-02-10",
+            "firstName": "Alice",
+            "id": "8aeee4f7-4d39-4d9f-b9a0-8689e788a2d4",
+            "lastName": "Uwase",
+            "ssNumber": "SS1001"
+          },
+          "reason": "Headache consultation",
+          "status": "SCHEDULED"
+        },
+        {
+          "appointmentDate": "2026-11-10",
+          "doctor": {
+            "dateOfBirth": "1985-09-12",
+            "firstName": "Claudine",
+            "id": "edc2c7d7-436c-4616-800f-1f01cddb0f01",
+            "lastName": "Mukamana",
+            "office": {
+              "id": "4b4e4157-95c7-47a8-8c41-87106f19a1c8",
+              "name": "Pediatrics",
+              "officeNumber": 102
+            },
+            "specializations": [
+              {
+                "id": "129f3e7d-1167-4ff2-8a5f-1894a35d2975",
+                "name": "Dermatology"
+              }
+            ]
+          },
+          "id": "9fb788e8-0df1-4585-896e-f59db4874cbb",
+          "patient": {
+            "dateOfBirth": "1995-02-10",
+            "firstName": "Alice",
+            "id": "8aeee4f7-4d39-4d9f-b9a0-8689e788a2d4",
+            "lastName": "Uwase",
+            "ssNumber": "SS1001"
+          },
+          "reason": "Skin check",
+          "status": "CONFIRMED"
+        }
+      ]
+order: 1792095709410

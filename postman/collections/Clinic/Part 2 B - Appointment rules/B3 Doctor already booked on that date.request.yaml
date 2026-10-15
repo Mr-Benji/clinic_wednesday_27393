@@ -12,4 +12,5 @@ scripts:
           pm.expect(pm.response.text()).to.eql("Doctor is already booked on that date");
       });
     language: text/javascript
+examples: .resources/B3 Doctor already booked on that date.resources/examples
 order: 8000

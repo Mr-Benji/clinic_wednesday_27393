@@ -1,0 +1,28 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/api/prescriptions/update/00000000-0000-0000-0000-000000000000"
+  method: PUT
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: |-
+      {
+          "medicineName": "Test medicine",
+          "dosage": "1 tablet, 3 times a day",
+          "durationDays": 7
+      }
+response:
+  statusCode: 404
+  statusText: ""
+  headers:
+    content-type: text/plain;charset=UTF-8
+    content-length: "44"
+    date: Thu, 15 Oct 2026 20:21:42 GMT
+    keep-alive: timeout=60
+    connection: keep-alive
+  body:
+    type: text
+    content: |-
+      The prescription with that id does not exist
+order: 1792095702566

@@ -1,0 +1,59 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/api/doctors/search?name=MU"
+  method: GET
+  queryParams:
+    name: "MU"
+response:
+  statusCode: 200
+  statusText: ""
+  headers:
+    content-type: application/json
+    transfer-encoding: chunked
+    date: Thu, 15 Oct 2026 20:21:49 GMT
+    keep-alive: timeout=60
+    connection: keep-alive
+  body:
+    type: json
+    content: |-
+      [
+        {
+          "dateOfBirth": "1980-05-01",
+          "firstName": "Jean",
+          "id": "16157faf-0052-46d0-879d-3197b2ceb1ca",
+          "lastName": "Mugisha",
+          "office": {
+            "id": "ccbbcd58-be11-4e77-a259-07b1232e669c",
+            "name": "Cardiology",
+            "officeNumber": 101
+          },
+          "specializations": [
+            {
+              "id": "02b4fbeb-d92b-422b-bd60-f711f53cb8d7",
+              "name": "Pediatrics"
+            },
+            {
+              "id": "ddd00864-7b25-466b-8525-1eeb9b27242b",
+              "name": "Cardiology"
+            }
+          ]
+        },
+        {
+          "dateOfBirth": "1985-09-12",
+          "firstName": "Claudine",
+          "id": "edc2c7d7-436c-4616-800f-1f01cddb0f01",
+          "lastName": "Mukamana",
+          "office": {
+            "id": "4b4e4157-95c7-47a8-8c41-87106f19a1c8",
+            "name": "Pediatrics",
+            "officeNumber": 102
+          },
+          "specializations": [
+            {
+              "id": "129f3e7d-1167-4ff2-8a5f-1894a35d2975",
+              "name": "Dermatology"
+            }
+          ]
+        }
+      ]
+order: 1792095709413

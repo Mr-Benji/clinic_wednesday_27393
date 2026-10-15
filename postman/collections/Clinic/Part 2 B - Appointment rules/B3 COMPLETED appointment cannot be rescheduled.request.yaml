@@ -12,4 +12,5 @@ scripts:
           pm.expect(pm.response.text()).to.eql("A COMPLETED appointment cannot be rescheduled");
       });
     language: text/javascript
+examples: .resources/B3 COMPLETED appointment cannot be rescheduled.resources/examples
 order: 15000

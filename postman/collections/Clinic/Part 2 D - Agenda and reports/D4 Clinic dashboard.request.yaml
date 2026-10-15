@@ -14,4 +14,5 @@ scripts:
           Object.values(summary).forEach(v => pm.expect(v).to.be.a("number"));
       });
     language: text/javascript
+examples: .resources/D4 Clinic dashboard.resources/examples
 order: 8000

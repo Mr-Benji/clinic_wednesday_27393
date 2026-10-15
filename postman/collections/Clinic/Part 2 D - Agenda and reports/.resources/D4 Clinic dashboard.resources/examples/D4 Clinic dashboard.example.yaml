@@ -1,0 +1,25 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/api/dashboard/summary"
+  method: GET
+response:
+  statusCode: 200
+  statusText: ""
+  headers:
+    content-type: application/json
+    transfer-encoding: chunked
+    date: Thu, 15 Oct 2026 20:21:49 GMT
+    keep-alive: timeout=60
+    connection: keep-alive
+  body:
+    type: json
+    content: |-
+      {
+        "patients": 5,
+        "doctors": 3,
+        "freeOffices": 1,
+        "appointmentsToday": 0,
+        "scheduled": 3,
+        "prescriptions": 6
+      }
+order: 1792095709415

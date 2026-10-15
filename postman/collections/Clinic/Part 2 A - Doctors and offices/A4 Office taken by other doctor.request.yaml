@@ -12,4 +12,5 @@ scripts:
           pm.expect(pm.response.text()).to.eql("That office is taken by other doctor");
       });
     language: text/javascript
+examples: .resources/A4 Office taken by other doctor.resources/examples
 order: 12000

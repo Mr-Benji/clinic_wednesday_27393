@@ -12,4 +12,5 @@ scripts:
           pm.expect(pm.response.text()).to.eql("The doctor does not have that specialization");
       });
     language: text/javascript
+examples: .resources/A2 Remove it again.resources/examples
 order: 7000

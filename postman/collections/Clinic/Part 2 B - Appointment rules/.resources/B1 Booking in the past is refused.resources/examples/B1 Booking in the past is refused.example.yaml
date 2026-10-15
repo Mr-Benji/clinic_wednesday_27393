@@ -1,0 +1,29 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/api/appointments/save?patientId={{patientId}}&doctorId={{doctorNoOfficeId}}"
+  method: POST
+  headers:
+    Content-Type: application/json
+  queryParams:
+    patientId: "{{patientId}}"
+    doctorId: "{{doctorNoOfficeId}}"
+  body:
+    type: json
+    content: |-
+      {
+          "appointmentDate": "2026-01-01",
+          "reason": "Postman flow test"
+      }
+response:
+  statusCode: 400
+  statusText: ""
+  headers:
+    content-type: text/plain;charset=UTF-8
+    content-length: "38"
+    date: Thu, 15 Oct 2026 20:21:33 GMT
+    connection: close
+  body:
+    type: text
+    content: |-
+      Appointment date cannot be in the past
+order: 1792095695684

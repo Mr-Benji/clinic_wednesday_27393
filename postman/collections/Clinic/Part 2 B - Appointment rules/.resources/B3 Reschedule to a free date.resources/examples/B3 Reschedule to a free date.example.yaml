@@ -1,0 +1,20 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/api/appointments/{{tempAppointmentId}}/reschedule?newDate=2026-12-02"
+  method: PATCH
+  queryParams:
+    newDate: "2026-12-02"
+response:
+  statusCode: 200
+  statusText: ""
+  headers:
+    content-type: text/plain;charset=UTF-8
+    content-length: "36"
+    date: Thu, 15 Oct 2026 20:21:34 GMT
+    keep-alive: timeout=60
+    connection: keep-alive
+  body:
+    type: text
+    content: |-
+      Appointment rescheduled successfully
+order: 1792095695692

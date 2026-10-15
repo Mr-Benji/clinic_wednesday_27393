@@ -1,0 +1,47 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/api/appointments/{{tempAppointmentId}}"
+  method: GET
+response:
+  statusCode: 200
+  statusText: ""
+  headers:
+    content-type: application/json
+    transfer-encoding: chunked
+    date: Thu, 15 Oct 2026 20:21:34 GMT
+    keep-alive: timeout=60
+    connection: keep-alive
+  body:
+    type: json
+    content: |-
+      {
+        "appointmentDate": "2026-12-02",
+        "doctor": {
+          "dateOfBirth": "1978-03-25",
+          "firstName": "Patrick",
+          "id": "5e3f5ab8-eff1-46bc-8610-ddeaa5c77db5",
+          "lastName": "Niyonzima",
+          "office": {
+            "id": "35550fd0-c349-4ebf-8af4-e34c8e5519fa",
+            "name": "Cardiology",
+            "officeNumber": 103
+          },
+          "specializations": [
+            {
+              "id": "ddd00864-7b25-466b-8525-1eeb9b27242b",
+              "name": "Cardiology"
+            }
+          ]
+        },
+        "id": "aad297db-0308-404c-8e57-fb37d9716380",
+        "patient": {
+          "dateOfBirth": "1995-02-10",
+          "firstName": "Alice",
+          "id": "8aeee4f7-4d39-4d9f-b9a0-8689e788a2d4",
+          "lastName": "Uwase",
+          "ssNumber": "SS1001"
+        },
+        "reason": "Postman flow test",
+        "status": "SCHEDULED"
+      }
+order: 1792095695693

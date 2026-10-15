@@ -20,4 +20,5 @@ scripts:
           });
       });
     language: text/javascript
+examples: .resources/D2 Upcoming appointments of a patient.resources/examples
 order: 3000

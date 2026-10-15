@@ -12,4 +12,5 @@ scripts:
           pm.expect(pm.response.text()).to.eql("Specialization added to the doctor");
       });
     language: text/javascript
+examples: .resources/A1 Add a specialization to a doctor.resources/examples
 order: 2000

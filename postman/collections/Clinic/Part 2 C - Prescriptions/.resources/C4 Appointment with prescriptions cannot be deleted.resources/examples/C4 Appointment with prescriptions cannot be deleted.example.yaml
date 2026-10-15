@@ -1,0 +1,18 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/api/appointments/delete/{{appointmentId}}"
+  method: DELETE
+response:
+  statusCode: 409
+  statusText: ""
+  headers:
+    content-type: text/plain;charset=UTF-8
+    content-length: "53"
+    date: Thu, 15 Oct 2026 20:21:42 GMT
+    keep-alive: timeout=60
+    connection: keep-alive
+  body:
+    type: text
+    content: |-
+      That appointment has prescriptions, delete them first
+order: 1792095702567

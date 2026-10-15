@@ -1,0 +1,142 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/api/prescriptions/appointment/{{appointmentId}}"
+  method: GET
+response:
+  statusCode: 200
+  statusText: ""
+  headers:
+    content-type: application/json
+    transfer-encoding: chunked
+    date: Thu, 15 Oct 2026 20:21:41 GMT
+    keep-alive: timeout=60
+    connection: keep-alive
+  body:
+    type: json
+    content: |-
+      [
+        {
+          "appointment": {
+            "appointmentDate": "2026-10-05",
+            "doctor": {
+              "dateOfBirth": "1980-05-01",
+              "firstName": "Jean",
+              "id": "16157faf-0052-46d0-879d-3197b2ceb1ca",
+              "lastName": "Mugisha",
+              "office": {
+                "id": "ccbbcd58-be11-4e77-a259-07b1232e669c",
+                "name": "Cardiology",
+                "officeNumber": 101
+              },
+              "specializations": [
+                {
+                  "id": "02b4fbeb-d92b-422b-bd60-f711f53cb8d7",
+                  "name": "Pediatrics"
+                },
+                {
+                  "id": "ddd00864-7b25-466b-8525-1eeb9b27242b",
+                  "name": "Cardiology"
+                }
+              ]
+            },
+            "id": "1af453a9-fd97-496f-9fcc-2ee9dae14085",
+            "patient": {
+              "dateOfBirth": "1995-02-10",
+              "firstName": "Alice",
+              "id": "8aeee4f7-4d39-4d9f-b9a0-8689e788a2d4",
+              "lastName": "Uwase",
+              "ssNumber": "SS1001"
+            },
+            "reason": "Chest pain",
+            "status": "COMPLETED"
+          },
+          "dosage": "1 tablet, 3 times a day",
+          "durationDays": 7,
+          "id": "c5d6c41d-04db-4ca3-8c26-03c7313c393a",
+          "issuedDate": "2026-10-15",
+          "medicineName": "Amoxicillin"
+        },
+        {
+          "appointment": {
+            "appointmentDate": "2026-10-05",
+            "doctor": {
+              "dateOfBirth": "1980-05-01",
+              "firstName": "Jean",
+              "id": "16157faf-0052-46d0-879d-3197b2ceb1ca",
+              "lastName": "Mugisha",
+              "office": {
+                "id": "ccbbcd58-be11-4e77-a259-07b1232e669c",
+                "name": "Cardiology",
+                "officeNumber": 101
+              },
+              "specializations": [
+                {
+                  "id": "02b4fbeb-d92b-422b-bd60-f711f53cb8d7",
+                  "name": "Pediatrics"
+                },
+                {
+                  "id": "ddd00864-7b25-466b-8525-1eeb9b27242b",
+                  "name": "Cardiology"
+                }
+              ]
+            },
+            "id": "1af453a9-fd97-496f-9fcc-2ee9dae14085",
+            "patient": {
+              "dateOfBirth": "1995-02-10",
+              "firstName": "Alice",
+              "id": "8aeee4f7-4d39-4d9f-b9a0-8689e788a2d4",
+              "lastName": "Uwase",
+              "ssNumber": "SS1001"
+            },
+            "reason": "Chest pain",
+            "status": "COMPLETED"
+          },
+          "dosage": "2 tablets, when needed",
+          "durationDays": 3,
+          "id": "21f9cd6d-1cf1-4753-95cf-73f3f8cea6b6",
+          "issuedDate": "2026-10-15",
+          "medicineName": "Paracetamol"
+        },
+        {
+          "appointment": {
+            "appointmentDate": "2026-10-05",
+            "doctor": {
+              "dateOfBirth": "1980-05-01",
+              "firstName": "Jean",
+              "id": "16157faf-0052-46d0-879d-3197b2ceb1ca",
+              "lastName": "Mugisha",
+              "office": {
+                "id": "ccbbcd58-be11-4e77-a259-07b1232e669c",
+                "name": "Cardiology",
+                "officeNumber": 101
+              },
+              "specializations": [
+                {
+                  "id": "02b4fbeb-d92b-422b-bd60-f711f53cb8d7",
+                  "name": "Pediatrics"
+                },
+                {
+                  "id": "ddd00864-7b25-466b-8525-1eeb9b27242b",
+                  "name": "Cardiology"
+                }
+              ]
+            },
+            "id": "1af453a9-fd97-496f-9fcc-2ee9dae14085",
+            "patient": {
+              "dateOfBirth": "1995-02-10",
+              "firstName": "Alice",
+              "id": "8aeee4f7-4d39-4d9f-b9a0-8689e788a2d4",
+              "lastName": "Uwase",
+              "ssNumber": "SS1001"
+            },
+            "reason": "Chest pain",
+            "status": "COMPLETED"
+          },
+          "dosage": "1 tablet, 3 times a day",
+          "durationDays": 7,
+          "id": "b2684434-6877-47bc-bd2c-5d75cff15532",
+          "issuedDate": "2026-10-15",
+          "medicineName": "Test medicine"
+        }
+      ]
+order: 1792095702560

@@ -14,4 +14,5 @@ scripts:
           pm.collectionVariables.set("tempAppointmentId", appointment.id);
       });
     language: text/javascript
+examples: .resources/B1 New appointment starts as SCHEDULED.resources/examples
 order: 3000

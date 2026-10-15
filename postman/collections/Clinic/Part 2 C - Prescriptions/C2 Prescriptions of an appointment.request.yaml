@@ -15,4 +15,5 @@ scripts:
           pm.collectionVariables.set("tempPrescriptionId", prescription.id);
       });
     language: text/javascript
+examples: .resources/C2 Prescriptions of an appointment.resources/examples
 order: 4000

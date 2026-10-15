@@ -12,4 +12,5 @@ scripts:
           pm.expect(pm.response.text()).to.eql("Cannot change status from SCHEDULED to COMPLETED");
       });
     language: text/javascript
+examples: .resources/B2 SCHEDULED to COMPLETED is refused.resources/examples
 order: 4000

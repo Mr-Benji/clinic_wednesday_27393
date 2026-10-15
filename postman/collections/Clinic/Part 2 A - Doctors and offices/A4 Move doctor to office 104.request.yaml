@@ -12,4 +12,5 @@ scripts:
           pm.expect(pm.response.text()).to.eql("Office changed successfully");
       });
     language: text/javascript
+examples: .resources/A4 Move doctor to office 104.resources/examples
 order: 13000

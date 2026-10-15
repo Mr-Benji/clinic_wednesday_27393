@@ -1,0 +1,20 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/api/appointments/{{tempAppointmentId}}/reschedule?newDate=2026-11-04"
+  method: PATCH
+  queryParams:
+    newDate: "2026-11-04"
+response:
+  statusCode: 409
+  statusText: ""
+  headers:
+    content-type: text/plain;charset=UTF-8
+    content-length: "37"
+    date: Thu, 15 Oct 2026 20:21:34 GMT
+    keep-alive: timeout=60
+    connection: keep-alive
+  body:
+    type: text
+    content: |-
+      Doctor is already booked on that date
+order: 1792095695691

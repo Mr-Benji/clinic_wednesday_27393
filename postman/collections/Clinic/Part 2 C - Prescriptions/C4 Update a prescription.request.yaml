@@ -22,4 +22,5 @@ scripts:
           pm.expect(pm.response.text()).to.eql("Prescription updated successfully");
       });
     language: text/javascript
+examples: .resources/C4 Update a prescription.resources/examples
 order: 9000

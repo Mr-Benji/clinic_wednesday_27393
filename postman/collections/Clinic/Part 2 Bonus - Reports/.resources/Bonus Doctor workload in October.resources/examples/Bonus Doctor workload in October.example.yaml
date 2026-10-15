@@ -1,0 +1,32 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/api/doctors/workload?start=2026-10-01&end=2026-10-31"
+  method: GET
+  queryParams:
+    start: "2026-10-01"
+    end: "2026-10-31"
+response:
+  statusCode: 200
+  statusText: ""
+  headers:
+    content-type: application/json
+    transfer-encoding: chunked
+    date: Thu, 15 Oct 2026 20:21:54 GMT
+    keep-alive: timeout=60
+    connection: keep-alive
+  body:
+    type: json
+    content: |-
+      [
+        [
+          "Jean",
+          "Mugisha",
+          1
+        ],
+        [
+          "Claudine",
+          "Mukamana",
+          1
+        ]
+      ]
+order: 1792095714849

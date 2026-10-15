@@ -4939,7 +4939,53 @@
 							]
 						}
 					},
-					"response": [],
+					"response": [
+						{
+							"name": "A3 Free offices",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/offices/free",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"offices",
+										"free"
+									]
+								}
+							},
+							"status": "",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json"
+								},
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 15 Oct 2026 20:21:26 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"id\": \"697ce044-b470-4152-9e93-1af5bd4d3127\",\n    \"name\": \"Cardiology\",\n    \"officeNumber\": 104\n  }\n]"
+						}
+					],
 					"event": [
 						{
 							"listen": "test",
@@ -4978,7 +5024,55 @@
 							]
 						}
 					},
-					"response": [],
+					"response": [
+						{
+							"name": "A1 Add a specialization to a doctor",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/doctors/{{doctorNoOfficeId}}/specializations/{{unusedSpecializationId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"doctors",
+										"{{doctorNoOfficeId}}",
+										"specializations",
+										"{{unusedSpecializationId}}"
+									]
+								}
+							},
+							"status": "",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "content-length",
+									"value": "34"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 15 Oct 2026 20:21:27 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "Specialization added to the doctor"
+						}
+					],
 					"event": [
 						{
 							"listen": "test",
@@ -5016,7 +5110,55 @@
 							]
 						}
 					},
-					"response": [],
+					"response": [
+						{
+							"name": "A1 Add the same specialization again",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/doctors/{{doctorNoOfficeId}}/specializations/{{unusedSpecializationId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"doctors",
+										"{{doctorNoOfficeId}}",
+										"specializations",
+										"{{unusedSpecializationId}}"
+									]
+								}
+							},
+							"status": "",
+							"code": 409,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "content-length",
+									"value": "42"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 15 Oct 2026 20:21:27 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "The doctor already has that specialization"
+						}
+					],
 					"event": [
 						{
 							"listen": "test",
@@ -5054,7 +5196,55 @@
 							]
 						}
 					},
-					"response": [],
+					"response": [
+						{
+							"name": "A1 Unknown doctor",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/doctors/00000000-0000-0000-0000-000000000000/specializations/{{unusedSpecializationId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"doctors",
+										"00000000-0000-0000-0000-000000000000",
+										"specializations",
+										"{{unusedSpecializationId}}"
+									]
+								}
+							},
+							"status": "",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "content-length",
+									"value": "38"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 15 Oct 2026 20:21:27 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "The doctor with that id does not exist"
+						}
+					],
 					"event": [
 						{
 							"listen": "test",
@@ -5092,7 +5282,55 @@
 							]
 						}
 					},
-					"response": [],
+					"response": [
+						{
+							"name": "A1 Unknown specialization",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/doctors/{{doctorNoOfficeId}}/specializations/00000000-0000-0000-0000-000000000000",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"doctors",
+										"{{doctorNoOfficeId}}",
+										"specializations",
+										"00000000-0000-0000-0000-000000000000"
+									]
+								}
+							},
+							"status": "",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "content-length",
+									"value": "34"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 15 Oct 2026 20:21:27 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "That specialization does not exist"
+						}
+					],
 					"event": [
 						{
 							"listen": "test",
@@ -5130,7 +5368,55 @@
 							]
 						}
 					},
-					"response": [],
+					"response": [
+						{
+							"name": "A2 Remove a specialization from a doctor",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/doctors/{{doctorNoOfficeId}}/specializations/{{unusedSpecializationId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"doctors",
+										"{{doctorNoOfficeId}}",
+										"specializations",
+										"{{unusedSpecializationId}}"
+									]
+								}
+							},
+							"status": "",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "content-length",
+									"value": "38"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 15 Oct 2026 20:21:27 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "Specialization removed from the doctor"
+						}
+					],
 					"event": [
 						{
 							"listen": "test",
@@ -5168,7 +5454,55 @@
 							]
 						}
 					},
-					"response": [],
+					"response": [
+						{
+							"name": "A2 Remove it again",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/doctors/{{doctorNoOfficeId}}/specializations/{{unusedSpecializationId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"doctors",
+										"{{doctorNoOfficeId}}",
+										"specializations",
+										"{{unusedSpecializationId}}"
+									]
+								}
+							},
+							"status": "",
+							"code": 409,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "content-length",
+									"value": "44"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 15 Oct 2026 20:21:27 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "The doctor does not have that specialization"
+						}
+					],
 					"event": [
 						{
 							"listen": "test",
@@ -5206,7 +5540,55 @@
 							]
 						}
 					},
-					"response": [],
+					"response": [
+						{
+							"name": "A2 Unknown doctor",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/doctors/00000000-0000-0000-0000-000000000000/specializations/{{unusedSpecializationId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"doctors",
+										"00000000-0000-0000-0000-000000000000",
+										"specializations",
+										"{{unusedSpecializationId}}"
+									]
+								}
+							},
+							"status": "",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "content-length",
+									"value": "38"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 15 Oct 2026 20:21:27 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "The doctor with that id does not exist"
+						}
+					],
 					"event": [
 						{
 							"listen": "test",
@@ -5244,7 +5626,55 @@
 							]
 						}
 					},
-					"response": [],
+					"response": [
+						{
+							"name": "A2 Unknown specialization",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/doctors/{{doctorNoOfficeId}}/specializations/00000000-0000-0000-0000-000000000000",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"doctors",
+										"{{doctorNoOfficeId}}",
+										"specializations",
+										"00000000-0000-0000-0000-000000000000"
+									]
+								}
+							},
+							"status": "",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "content-length",
+									"value": "34"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 15 Oct 2026 20:21:27 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "That specialization does not exist"
+						}
+					],
 					"event": [
 						{
 							"listen": "test",
@@ -5287,7 +5717,60 @@
 							]
 						}
 					},
-					"response": [],
+					"response": [
+						{
+							"name": "A4 Unknown office number",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/doctors/{{doctorNoOfficeId}}/office?officeNumber=999",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"doctors",
+										"{{doctorNoOfficeId}}",
+										"office"
+									],
+									"query": [
+										{
+											"key": "officeNumber",
+											"value": "999"
+										}
+									]
+								}
+							},
+							"status": "",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "content-length",
+									"value": "49"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 15 Oct 2026 20:21:28 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "The office with that office number does not exist"
+						}
+					],
 					"event": [
 						{
 							"listen": "test",
@@ -5330,7 +5813,60 @@
 							]
 						}
 					},
-					"response": [],
+					"response": [
+						{
+							"name": "A4 Unknown doctor",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/doctors/00000000-0000-0000-0000-000000000000/office?officeNumber=104",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"doctors",
+										"00000000-0000-0000-0000-000000000000",
+										"office"
+									],
+									"query": [
+										{
+											"key": "officeNumber",
+											"value": "104"
+										}
+									]
+								}
+							},
+							"status": "",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "content-length",
+									"value": "38"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 15 Oct 2026 20:21:28 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "The doctor with that id does not exist"
+						}
+					],
 					"event": [
 						{
 							"listen": "test",
@@ -5373,7 +5909,60 @@
 							]
 						}
 					},
-					"response": [],
+					"response": [
+						{
+							"name": "A4 Office taken by other doctor",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/doctors/{{doctorNoOfficeId}}/office?officeNumber=101",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"doctors",
+										"{{doctorNoOfficeId}}",
+										"office"
+									],
+									"query": [
+										{
+											"key": "officeNumber",
+											"value": "101"
+										}
+									]
+								}
+							},
+							"status": "",
+							"code": 409,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "content-length",
+									"value": "36"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 15 Oct 2026 20:21:28 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "That office is taken by other doctor"
+						}
+					],
 					"event": [
 						{
 							"listen": "test",
@@ -5416,7 +6005,60 @@
 							]
 						}
 					},
-					"response": [],
+					"response": [
+						{
+							"name": "A4 Move doctor to office 104",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/doctors/{{doctorNoOfficeId}}/office?officeNumber=104",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"doctors",
+										"{{doctorNoOfficeId}}",
+										"office"
+									],
+									"query": [
+										{
+											"key": "officeNumber",
+											"value": "104"
+										}
+									]
+								}
+							},
+							"status": "",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "content-length",
+									"value": "27"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 15 Oct 2026 20:21:28 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "Office changed successfully"
+						}
+					],
 					"event": [
 						{
 							"listen": "test",
@@ -5452,7 +6094,53 @@
 							]
 						}
 					},
-					"response": [],
+					"response": [
+						{
+							"name": "A3 Free offices after the move",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/offices/free",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"offices",
+										"free"
+									]
+								}
+							},
+							"status": "",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json"
+								},
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 15 Oct 2026 20:21:28 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"id\": \"35550fd0-c349-4ebf-8af4-e34c8e5519fa\",\n    \"name\": \"Cardiology\",\n    \"officeNumber\": 103\n  }\n]"
+						}
+					],
 					"event": [
 						{
 							"listen": "test",
@@ -5496,7 +6184,60 @@
 							]
 						}
 					},
-					"response": [],
+					"response": [
+						{
+							"name": "A4 Move doctor back to office 103",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/doctors/{{doctorNoOfficeId}}/office?officeNumber=103",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"doctors",
+										"{{doctorNoOfficeId}}",
+										"office"
+									],
+									"query": [
+										{
+											"key": "officeNumber",
+											"value": "103"
+										}
+									]
+								}
+							},
+							"status": "",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "content-length",
+									"value": "27"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 15 Oct 2026 20:21:28 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "Office changed successfully"
+						}
+					],
 					"event": [
 						{
 							"listen": "test",
@@ -5561,7 +6302,73 @@
 							}
 						}
 					},
-					"response": [],
+					"response": [
+						{
+							"name": "B1 Booking in the past is refused",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/appointments/save?patientId={{patientId}}&doctorId={{doctorNoOfficeId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"appointments",
+										"save"
+									],
+									"query": [
+										{
+											"key": "patientId",
+											"value": "{{patientId}}"
+										},
+										{
+											"key": "doctorId",
+											"value": "{{doctorNoOfficeId}}"
+										}
+									]
+								},
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"appointmentDate\": \"2026-01-01\",\n    \"reason\": \"Postman flow test\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								}
+							},
+							"status": "",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "content-length",
+									"value": "38"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 15 Oct 2026 20:21:33 GMT"
+								},
+								{
+									"key": "connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "Appointment date cannot be in the past"
+						}
+					],
 					"event": [
 						{
 							"listen": "test",
@@ -5621,7 +6428,77 @@
 							}
 						}
 					},
-					"response": [],
+					"response": [
+						{
+							"name": "B1 Save a new appointment",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/appointments/save?patientId={{patientId}}&doctorId={{doctorNoOfficeId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"appointments",
+										"save"
+									],
+									"query": [
+										{
+											"key": "patientId",
+											"value": "{{patientId}}"
+										},
+										{
+											"key": "doctorId",
+											"value": "{{doctorNoOfficeId}}"
+										}
+									]
+								},
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"appointmentDate\": \"2026-12-01\",\n    \"reason\": \"Postman flow test\",\n    \"status\": \"COMPLETED\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								}
+							},
+							"status": "",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "content-length",
+									"value": "30"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 15 Oct 2026 20:21:33 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "Appointment saved successfully"
+						}
+					],
 					"event": [
 						{
 							"listen": "test",
@@ -5657,7 +6534,53 @@
 							]
 						}
 					},
-					"response": [],
+					"response": [
+						{
+							"name": "B1 New appointment starts as SCHEDULED",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/appointments/all",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"appointments",
+										"all"
+									]
+								}
+							},
+							"status": "",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json"
+								},
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 15 Oct 2026 20:21:33 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"appointmentDate\": \"2026-10-05\",\n    \"doctor\": {\n      \"dateOfBirth\": \"1980-05-01\",\n      \"firstName\": \"Jean\",\n      \"id\": \"16157faf-0052-46d0-879d-3197b2ceb1ca\",\n      \"lastName\": \"Mugisha\",\n      \"office\": {\n        \"id\": \"ccbbcd58-be11-4e77-a259-07b1232e669c\",\n        \"name\": \"Cardiology\",\n        \"officeNumber\": 101\n      },\n      \"specializations\": [\n        {\n          \"id\": \"ddd00864-7b25-466b-8525-1eeb9b27242b\",\n          \"name\": \"Cardiology\"\n        },\n        {\n          \"id\": \"02b4fbeb-d92b-422b-bd60-f711f53cb8d7\",\n          \"name\": \"Pediatrics\"\n        }\n      ]\n    },\n    \"id\": \"1af453a9-fd97-496f-9fcc-2ee9dae14085\",\n    \"patient\": {\n      \"dateOfBirth\": \"1995-02-10\",\n      \"firstName\": \"Alice\",\n      \"id\": \"8aeee4f7-4d39-4d9f-b9a0-8689e788a2d4\",\n      \"lastName\": \"Uwase\",\n      \"ssNumber\": \"SS1001\"\n    },\n    \"reason\": \"Chest pain\",\n    \"status\": \"COMPLETED\"\n  },\n  {\n    \"appointmentDate\": \"2026-10-08\",\n    \"doctor\": {\n      \"dateOfBirth\": \"1985-09-12\",\n      \"firstName\": \"Claudine\",\n      \"id\": \"edc2c7d7-436c-4616-800f-1f01cddb0f01\",\n      \"lastName\": \"Mukamana\",\n      \"office\": {\n        \"id\": \"4b4e4157-95c7-47a8-8c41-87106f19a1c8\",\n        \"name\": \"Pediatrics\",\n        \"officeNumber\": 102\n      },\n      \"specializations\": [\n        {\n          \"id\": \"129f3e7d-1167-4ff2-8a5f-1894a35d2975\",\n          \"name\": \"Dermatology\"\n        }\n      ]\n    },\n    \"id\": \"63f3cbb9-7f98-4602-bca1-ce7fb7b9236d\",\n    \"patient\": {\n      \"dateOfBirth\": \"1998-06-03\",\n      \"firstName\": \"Diane\",\n      \"id\": \"a827e6e4-6a7d-48c3-b2d2-f24fa31cf292\",\n      \"lastName\": \"Uwase\",\n      \"ssNumber\": \"SS1002\"\n    },\n    \"reason\": \"Acne treatment\",\n    \"status\": \"CANCELLED\"\n  },\n  {\n    \"appointmentDate\": \"2026-10-12\",\n    \"doctor\": {\n      \"dateOfBirth\": \"1978-03-25\",\n      \"firstName\": \"Patrick\",\n      \"id\": \"5e3f5ab8-eff1-46bc-8610-ddeaa5c77db5\",\n      \"lastName\": \"Niyonzima\",\n      \"office\": {\n        \"id\": \"35550fd0-c349-4ebf-8af4-e34c8e5519fa\",\n        \"name\": \"Cardiology\",\n        \"officeNumber\": 103\n      },\n      \"specializations\": [\n        {\n          \"id\": \"ddd00864-7b25-466b-8525-1eeb9b27242b\",\n          \"name\": \"Cardiology\"\n        }\n      ]\n    },\n    \"id\": \"0a1fe0ab-b07e-4041-aa9b-83dee5dbe32e\",\n    \"patient\": {\n      \"dateOfBirth\": \"1987-04-08\",\n      \"firstName\": \"Kevin\",\n      \"id\": \"643200a0-77f0-4ed7-9708-397de8edf144\",\n      \"lastName\": \"Nshimiyimana\",\n      \"ssNumber\": \"SS1005\"\n    },\n    \"reason\": \"ECG test\",\n    \"status\": \"CANCELLED\"\n  },\n  {\n    \"appointmentDate\": \"2026-10-14\",\n    \"doctor\": {\n      \"dateOfBirth\": \"1985-09-12\",\n      \"firstName\": \"Claudine\",\n      \"id\": \"edc2c7d7-436c-4616-800f-1f01cddb0f01\",\n      \"lastName\": \"Mukamana\",\n      \"office\": {\n        \"id\": \"4b4e4157-95c7-47a8-8c41-87106f19a1c8\",\n        \"name\": \"Pediatrics\",\n        \"officeNumber\": 102\n      },\n      \"specializations\": [\n        {\n          \"id\": \"129f3e7d-1167-4ff2-8a5f-1894a35d2975\",\n          \"name\": \"Dermatology\"\n        }\n      ]\n    },\n    \"id\": \"4c61b215-c800-4c89-b7e3-c5368bed9f66\",\n    \"patient\": {\n      \"dateOfBirth\": \"1995-02-10\",\n      \"firstName\": \"Alice\",\n      \"id\": \"8aeee4f7-4d39-4d9f-b9a0-8689e788a2d4\",\n      \"lastName\": \"Uwase\",\n      \"ssNumber\": \"SS1001\"\n    },\n    \"reason\": \"Skin rash\",\n    \"status\": \"COMPLETED\"\n  },\n  {\n    \"appointmentDate\": \"2026-11-04\",\n    \"doctor\": {\n      \"dateOfBirth\": \"1978-03-25\",\n      \"firstName\": \"Patrick\",\n      \"id\": \"5e3f5ab8-eff1-46bc-8610-ddeaa5c77db5\",\n      \"lastName\": \"Niyonzima\",\n      \"office\": {\n        \"id\": \"35550fd0-c349-4ebf-8af4-e34c8e5519fa\",\n        \"name\": \"Cardiology\",\n        \"officeNumber\": 103\n      },\n      \"specializations\": [\n        {\n          \"id\": \"ddd00864-7b25-466b-8525-1eeb9b27242b\",\n          \"name\": \"Cardiology\"\n        }\n      ]\n    },\n    \"id\": \"a9b517e4-f048-4b45-b6eb-e47130a7d738\",\n    \"patient\": {\n      \"dateOfBirth\": \"1990-07-20\",\n      \"firstName\": \"Eric\",\n      \"id\": \"667c92f4-cb72-4695-86c0-68c724fa0e98\",\n      \"lastName\": \"Habimana\",\n      \"ssNumber\": \"SS1003\"\n    },\n    \"reason\": \"Annual checkup\",\n    \"status\": \"SCHEDULED\"\n  },\n  {\n    \"appointmentDate\": \"2026-11-10\",\n    \"doctor\": {\n      \"dateOfBirth\": \"1985-09-12\",\n      \"firstName\": \"Claudine\",\n      \"id\": \"edc2c7d7-436c-4616-800f-1f01cddb0f01\",\n      \"lastName\": \"Mukamana\",\n      \"office\": {\n        \"id\": \"4b4e4157-95c7-47a8-8c41-87106f19a1c8\",\n        \"name\": \"Pediatrics\",\n        \"officeNumber\": 102\n      },\n      \"specializations\": [\n        {\n          \"id\": \"129f3e7d-1167-4ff2-8a5f-1894a35d2975\",\n          \"name\": \"Dermatology\"\n        }\n      ]\n    },\n    \"id\": \"9fb788e8-0df1-4585-896e-f59db4874cbb\",\n    \"patient\": {\n      \"dateOfBirth\": \"1995-02-10\",\n      \"firstName\": \"Alice\",\n      \"id\": \"8aeee4f7-4d39-4d9f-b9a0-8689e788a2d4\",\n      \"lastName\": \"Uwase\",\n      \"ssNumber\": \"SS1001\"\n    },\n    \"reason\": \"Skin check\",\n    \"status\": \"CONFIRMED\"\n  },\n  {\n    \"appointmentDate\": \"2026-11-18\",\n    \"doctor\": {\n      \"dateOfBirth\": \"1980-05-01\",\n      \"firstName\": \"Jean\",\n      \"id\": \"16157faf-0052-46d0-879d-3197b2ceb1ca\",\n      \"lastName\": \"Mugisha\",\n      \"office\": {\n        \"id\": \"ccbbcd58-be11-4e77-a259-07b1232e669c\",\n        \"name\": \"Cardiology\",\n        \"officeNumber\": 101\n      },\n      \"specializations\": [\n        {\n          \"id\": \"ddd00864-7b25-466b-8525-1eeb9b27242b\",\n          \"name\": \"Cardiology\"\n        },\n        {\n          \"id\": \"02b4fbeb-d92b-422b-bd60-f711f53cb8d7\",\n          \"name\": \"Pediatrics\"\n        }\n      ]\n    },\n    \"id\": \"56ca883e-373f-4b23-9501-82b774f7c557\",\n    \"patient\": {\n      \"dateOfBirth\": \"1998-06-03\",\n      \"firstName\": \"Diane\",\n      \"id\": \"a827e6e4-6a7d-48c3-b2d2-f24fa31cf292\",\n      \"lastName\": \"Uwase\",\n      \"ssNumber\": \"SS1002\"\n    },\n    \"reason\": \"Heart screening\",\n    \"status\": \"COMPLETED\"\n  },\n  {\n    \"appointmentDate\": \"2026-12-01\",\n    \"doctor\": {\n      \"dateOfBirth\": \"1978-03-25\",\n      \"firstName\": \"Patrick\",\n      \"id\": \"5e3f5ab8-eff1-46bc-8610-ddeaa5c77db5\",\n      \"lastName\": \"Niyonzima\",\n      \"office\": {\n        \"id\": \"35550fd0-c349-4ebf-8af4-e34c8e5519fa\",\n        \"name\": \"Cardiology\",\n        \"officeNumber\": 103\n      },\n      \"specializations\": [\n        {\n          \"id\": \"ddd00864-7b25-466b-8525-1eeb9b27242b\",\n          \"name\": \"Cardiology\"\n        }\n      ]\n    },\n    \"id\": \"aad297db-0308-404c-8e57-fb37d9716380\",\n    \"patient\": {\n      \"dateOfBirth\": \"1995-02-10\",\n      \"firstName\": \"Alice\",\n      \"id\": \"8aeee4f7-4d39-4d9f-b9a0-8689e788a2d4\",\n      \"lastName\": \"Uwase\",\n      \"ssNumber\": \"SS1001\"\n    },\n    \"reason\": \"Postman flow test\",\n    \"status\": \"SCHEDULED\"\n  },\n  {\n    \"appointmentDate\": \"2026-10-20\",\n    \"doctor\": {\n      \"dateOfBirth\": \"1980-05-01\",\n      \"firstName\": \"Jean\",\n      \"id\": \"16157faf-0052-46d0-879d-3197b2ceb1ca\",\n      \"lastName\": \"Mugisha\",\n      \"office\": {\n        \"id\": \"ccbbcd58-be11-4e77-a259-07b1232e669c\",\n        \"name\": \"Cardiology\",\n        \"officeNumber\": 101\n      },\n      \"specializations\": [\n        {\n          \"id\": \"ddd00864-7b25-466b-8525-1eeb9b27242b\",\n          \"name\": \"Cardiology\"\n        },\n        {\n          \"id\": \"02b4fbeb-d92b-422b-bd60-f711f53cb8d7\",\n          \"name\": \"Pediatrics\"\n        }\n      ]\n    },\n    \"id\": \"e516051f-ad4b-4460-af9b-1efb6380c287\",\n    \"patient\": {\n      \"dateOfBirth\": \"1995-02-10\",\n      \"firstName\": \"Alice\",\n      \"id\": \"8aeee4f7-4d39-4d9f-b9a0-8689e788a2d4\",\n      \"lastName\": \"Uwase\",\n      \"ssNumber\": \"SS1001\"\n    },\n    \"reason\": \"Follow-up\",\n    \"status\": \"CANCELLED\"\n  },\n  {\n    \"appointmentDate\": \"2026-10-20\",\n    \"doctor\": {\n      \"dateOfBirth\": \"1980-05-01\",\n      \"firstName\": \"Jean\",\n      \"id\": \"16157faf-0052-46d0-879d-3197b2ceb1ca\",\n      \"lastName\": \"Mugisha\",\n      \"office\": {\n        \"id\": \"ccbbcd58-be11-4e77-a259-07b1232e669c\",\n        \"name\": \"Cardiology\",\n        \"officeNumber\": 101\n      },\n      \"specializations\": [\n        {\n          \"id\": \"ddd00864-7b25-466b-8525-1eeb9b27242b\",\n          \"name\": \"Cardiology\"\n        },\n        {\n          \"id\": \"02b4fbeb-d92b-422b-bd60-f711f53cb8d7\",\n          \"name\": \"Pediatrics\"\n        }\n      ]\n    },\n    \"id\": \"771bdd68-2cdb-4f7e-853a-291a51dbd16b\",\n    \"patient\": {\n      \"dateOfBirth\": \"1990-07-20\",\n      \"firstName\": \"Eric\",\n      \"id\": \"667c92f4-cb72-4695-86c0-68c724fa0e98\",\n      \"lastName\": \"Habimana\",\n      \"ssNumber\": \"SS1003\"\n    },\n    \"reason\": \"Blood pressure check\",\n    \"status\": \"CANCELLED\"\n  },\n  {\n    \"appointmentDate\": \"2026-10-20\",\n    \"doctor\": {\n      \"dateOfBirth\": \"1980-05-01\",\n      \"firstName\": \"Jean\",\n      \"id\": \"16157faf-0052-46d0-879d-3197b2ceb1ca\",\n      \"lastName\": \"Mugisha\",\n      \"office\": {\n        \"id\": \"ccbbcd58-be11-4e77-a259-07b1232e669c\",\n        \"name\": \"Cardiology\",\n        \"officeNumber\": 101\n      },\n      \"specializations\": [\n        {\n          \"id\": \"ddd00864-7b25-466b-8525-1eeb9b27242b\",\n          \"name\": \"Cardiology\"\n        },\n        {\n          \"id\": \"02b4fbeb-d92b-422b-bd60-f711f53cb8d7\",\n          \"name\": \"Pediatrics\"\n        }\n      ]\n    },\n    \"id\": \"91b5a130-6c73-4816-acd8-74abb7b76642\",\n    \"patient\": {\n      \"dateOfBirth\": \"2001-11-15\",\n      \"firstName\": \"Grace\",\n      \"id\": \"feef9285-3361-4005-85f1-990171db7aeb\",\n      \"lastName\": \"Ingabire\",\n      \"ssNumber\": \"SS1004\"\n    },\n    \"reason\": \"Palpitations\",\n    \"status\": \"CANCELLED\"\n  },\n  {\n    \"appointmentDate\": \"2026-10-20\",\n    \"doctor\": {\n      \"dateOfBirth\": \"1980-05-01\",\n      \"firstName\": \"Jean\",\n      \"id\": \"16157faf-0052-46d0-879d-3197b2ceb1ca\",\n      \"lastName\": \"Mugisha\",\n      \"office\": {\n        \"id\": \"ccbbcd58-be11-4e77-a259-07b1232e669c\",\n        \"name\": \"Cardiology\",\n        \"officeNumber\": 101\n      },\n      \"specializations\": [\n        {\n          \"id\": \"ddd00864-7b25-466b-8525-1eeb9b27242b\",\n          \"name\": \"Cardiology\"\n        },\n        {\n          \"id\": \"02b4fbeb-d92b-422b-bd60-f711f53cb8d7\",\n          \"name\": \"Pediatrics\"\n        }\n      ]\n    },\n    \"id\": \"c4d2d138-2fc1-41a4-bbc5-a63c03447df4\",\n    \"patient\": {\n      \"dateOfBirth\": \"1995-02-10\",\n      \"firstName\": \"Alice\",\n      \"id\": \"8aeee4f7-4d39-4d9f-b9a0-8689e788a2d4\",\n      \"lastName\": \"Uwase\",\n      \"ssNumber\": \"SS1001\"\n    },\n    \"reason\": \"Heart check-up\",\n    \"status\": \"SCHEDULED\"\n  },\n  {\n    \"appointmentDate\": \"2026-10-22\",\n    \"doctor\": {\n      \"dateOfBirth\": \"1985-09-12\",\n      \"firstName\": \"Claudine\",\n      \"id\": \"edc2c7d7-436c-4616-800f-1f01cddb0f01\",\n      \"lastName\": \"Mukamana\",\n      \"office\": {\n        \"id\": \"4b4e4157-95c7-47a8-8c41-87106f19a1c8\",\n        \"name\": \"Pediatrics\",\n        \"officeNumber\": 102\n      },\n      \"specializations\": [\n        {\n          \"id\": \"129f3e7d-1167-4ff2-8a5f-1894a35d2975\",\n          \"name\": \"Dermatology\"\n        }\n      ]\n    },\n    \"id\": \"4ef90ad8-b272-4065-9a9a-36af49ffc98a\",\n    \"patient\": {\n      \"dateOfBirth\": \"1995-02-10\",\n      \"firstName\": \"Alice\",\n      \"id\": \"8aeee4f7-4d39-4d9f-b9a0-8689e788a2d4\",\n      \"lastName\": \"Uwase\",\n      \"ssNumber\": \"SS1001\"\n    },\n    \"reason\": \"Skin rash follow-up\",\n    \"status\": \"CONFIRMED\"\n  },\n  {\n    \"appointmentDate\": \"2026-10-30\",\n    \"doctor\": {\n      \"dateOfBirth\": \"1978-03-25\",\n      \"firstName\": \"Patrick\",\n      \"id\": \"5e3f5ab8-eff1-46bc-8610-ddeaa5c77db5\",\n      \"lastName\": \"Niyonzima\",\n      \"office\": {\n        \"id\": \"35550fd0-c349-4ebf-8af4-e34c8e5519fa\",\n        \"name\": \"Cardiology\",\n        \"officeNumber\": 103\n      },\n      \"specializations\": [\n        {\n          \"id\": \"ddd00864-7b25-466b-8525-1eeb9b27242b\",\n          \"name\": \"Cardiology\"\n        }\n      ]\n    },\n    \"id\": \"ca34cf46-2c0a-45e4-a61a-5949bb7cac7b\",\n    \"patient\": {\n      \"dateOfBirth\": \"1995-02-10\",\n      \"firstName\": \"Alice\",\n      \"id\": \"8aeee4f7-4d39-4d9f-b9a0-8689e788a2d4\",\n      \"lastName\": \"Uwase\",\n      \"ssNumber\": \"SS1001\"\n    },\n    \"reason\": \"Headache consultation\",\n    \"status\": \"SCHEDULED\"\n  }\n]"
+						}
+					],
 					"event": [
 						{
 							"listen": "test",
@@ -5702,7 +6625,56 @@
 							]
 						}
 					},
-					"response": [],
+					"response": [
+						{
+							"name": "B2 SCHEDULED to COMPLETED is refused",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/appointments/{{tempAppointmentId}}/status?status=COMPLETED",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"appointments",
+										"{{tempAppointmentId}}",
+										"status"
+									],
+									"query": [
+										{
+											"key": "status",
+											"value": "COMPLETED"
+										}
+									]
+								}
+							},
+							"status": "",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "content-length",
+									"value": "48"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 15 Oct 2026 20:21:34 GMT"
+								},
+								{
+									"key": "connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "Cannot change status from SCHEDULED to COMPLETED"
+						}
+					],
 					"event": [
 						{
 							"listen": "test",
@@ -5745,7 +6717,60 @@
 							]
 						}
 					},
-					"response": [],
+					"response": [
+						{
+							"name": "B2 SCHEDULED to CONFIRMED",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/appointments/{{tempAppointmentId}}/status?status=CONFIRMED",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"appointments",
+										"{{tempAppointmentId}}",
+										"status"
+									],
+									"query": [
+										{
+											"key": "status",
+											"value": "CONFIRMED"
+										}
+									]
+								}
+							},
+							"status": "",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "content-length",
+									"value": "39"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 15 Oct 2026 20:21:34 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "Appointment status updated successfully"
+						}
+					],
 					"event": [
 						{
 							"listen": "test",
@@ -5788,7 +6813,60 @@
 							]
 						}
 					},
-					"response": [],
+					"response": [
+						{
+							"name": "B2 Unknown appointment",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/appointments/00000000-0000-0000-0000-000000000000/status?status=CONFIRMED",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"appointments",
+										"00000000-0000-0000-0000-000000000000",
+										"status"
+									],
+									"query": [
+										{
+											"key": "status",
+											"value": "CONFIRMED"
+										}
+									]
+								}
+							},
+							"status": "",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "content-length",
+									"value": "43"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 15 Oct 2026 20:21:34 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "The appointment with that id does not exist"
+						}
+					],
 					"event": [
 						{
 							"listen": "test",
@@ -5831,7 +6909,56 @@
 							]
 						}
 					},
-					"response": [],
+					"response": [
+						{
+							"name": "B3 Reschedule to a past date",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/appointments/{{tempAppointmentId}}/reschedule?newDate=2026-01-01",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"appointments",
+										"{{tempAppointmentId}}",
+										"reschedule"
+									],
+									"query": [
+										{
+											"key": "newDate",
+											"value": "2026-01-01"
+										}
+									]
+								}
+							},
+							"status": "",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "content-length",
+									"value": "38"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 15 Oct 2026 20:21:34 GMT"
+								},
+								{
+									"key": "connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "Appointment date cannot be in the past"
+						}
+					],
 					"event": [
 						{
 							"listen": "test",
@@ -5874,7 +7001,60 @@
 							]
 						}
 					},
-					"response": [],
+					"response": [
+						{
+							"name": "B3 Doctor already booked on that date",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/appointments/{{tempAppointmentId}}/reschedule?newDate=2026-11-04",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"appointments",
+										"{{tempAppointmentId}}",
+										"reschedule"
+									],
+									"query": [
+										{
+											"key": "newDate",
+											"value": "2026-11-04"
+										}
+									]
+								}
+							},
+							"status": "",
+							"code": 409,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "content-length",
+									"value": "37"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 15 Oct 2026 20:21:34 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "Doctor is already booked on that date"
+						}
+					],
 					"event": [
 						{
 							"listen": "test",
@@ -5917,7 +7097,60 @@
 							]
 						}
 					},
-					"response": [],
+					"response": [
+						{
+							"name": "B3 Reschedule to a free date",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/appointments/{{tempAppointmentId}}/reschedule?newDate=2026-12-02",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"appointments",
+										"{{tempAppointmentId}}",
+										"reschedule"
+									],
+									"query": [
+										{
+											"key": "newDate",
+											"value": "2026-12-02"
+										}
+									]
+								}
+							},
+							"status": "",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "content-length",
+									"value": "36"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 15 Oct 2026 20:21:34 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "Appointment rescheduled successfully"
+						}
+					],
 					"event": [
 						{
 							"listen": "test",
@@ -5953,7 +7186,53 @@
 							]
 						}
 					},
-					"response": [],
+					"response": [
+						{
+							"name": "B3 Rescheduled appointment is SCHEDULED again",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/appointments/{{tempAppointmentId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"appointments",
+										"{{tempAppointmentId}}"
+									]
+								}
+							},
+							"status": "",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json"
+								},
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 15 Oct 2026 20:21:34 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"appointmentDate\": \"2026-12-02\",\n  \"doctor\": {\n    \"dateOfBirth\": \"1978-03-25\",\n    \"firstName\": \"Patrick\",\n    \"id\": \"5e3f5ab8-eff1-46bc-8610-ddeaa5c77db5\",\n    \"lastName\": \"Niyonzima\",\n    \"office\": {\n      \"id\": \"35550fd0-c349-4ebf-8af4-e34c8e5519fa\",\n      \"name\": \"Cardiology\",\n      \"officeNumber\": 103\n    },\n    \"specializations\": [\n      {\n        \"id\": \"ddd00864-7b25-466b-8525-1eeb9b27242b\",\n        \"name\": \"Cardiology\"\n      }\n    ]\n  },\n  \"id\": \"aad297db-0308-404c-8e57-fb37d9716380\",\n  \"patient\": {\n    \"dateOfBirth\": \"1995-02-10\",\n    \"firstName\": \"Alice\",\n    \"id\": \"8aeee4f7-4d39-4d9f-b9a0-8689e788a2d4\",\n    \"lastName\": \"Uwase\",\n    \"ssNumber\": \"SS1001\"\n  },\n  \"reason\": \"Postman flow test\",\n  \"status\": \"SCHEDULED\"\n}"
+						}
+					],
 					"event": [
 						{
 							"listen": "test",
@@ -5997,7 +7276,60 @@
 							]
 						}
 					},
-					"response": [],
+					"response": [
+						{
+							"name": "B3 Unknown appointment",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/appointments/00000000-0000-0000-0000-000000000000/reschedule?newDate=2026-12-03",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"appointments",
+										"00000000-0000-0000-0000-000000000000",
+										"reschedule"
+									],
+									"query": [
+										{
+											"key": "newDate",
+											"value": "2026-12-03"
+										}
+									]
+								}
+							},
+							"status": "",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "content-length",
+									"value": "43"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 15 Oct 2026 20:21:34 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "The appointment with that id does not exist"
+						}
+					],
 					"event": [
 						{
 							"listen": "test",
@@ -6040,7 +7372,60 @@
 							]
 						}
 					},
-					"response": [],
+					"response": [
+						{
+							"name": "B2 Confirm again",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/appointments/{{tempAppointmentId}}/status?status=CONFIRMED",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"appointments",
+										"{{tempAppointmentId}}",
+										"status"
+									],
+									"query": [
+										{
+											"key": "status",
+											"value": "CONFIRMED"
+										}
+									]
+								}
+							},
+							"status": "",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "content-length",
+									"value": "39"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 15 Oct 2026 20:21:34 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "Appointment status updated successfully"
+						}
+					],
 					"event": [
 						{
 							"listen": "test",
@@ -6083,7 +7468,60 @@
 							]
 						}
 					},
-					"response": [],
+					"response": [
+						{
+							"name": "B2 CONFIRMED to COMPLETED",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/appointments/{{tempAppointmentId}}/status?status=COMPLETED",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"appointments",
+										"{{tempAppointmentId}}",
+										"status"
+									],
+									"query": [
+										{
+											"key": "status",
+											"value": "COMPLETED"
+										}
+									]
+								}
+							},
+							"status": "",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "content-length",
+									"value": "39"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 15 Oct 2026 20:21:34 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "Appointment status updated successfully"
+						}
+					],
 					"event": [
 						{
 							"listen": "test",
@@ -6126,7 +7564,56 @@
 							]
 						}
 					},
-					"response": [],
+					"response": [
+						{
+							"name": "B2 COMPLETED to SCHEDULED is refused",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/appointments/{{tempAppointmentId}}/status?status=SCHEDULED",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"appointments",
+										"{{tempAppointmentId}}",
+										"status"
+									],
+									"query": [
+										{
+											"key": "status",
+											"value": "SCHEDULED"
+										}
+									]
+								}
+							},
+							"status": "",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "content-length",
+									"value": "48"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 15 Oct 2026 20:21:35 GMT"
+								},
+								{
+									"key": "connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "Cannot change status from COMPLETED to SCHEDULED"
+						}
+					],
 					"event": [
 						{
 							"listen": "test",
@@ -6169,7 +7656,56 @@
 							]
 						}
 					},
-					"response": [],
+					"response": [
+						{
+							"name": "B3 COMPLETED appointment cannot be rescheduled",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/appointments/{{tempAppointmentId}}/reschedule?newDate=2026-12-04",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"appointments",
+										"{{tempAppointmentId}}",
+										"reschedule"
+									],
+									"query": [
+										{
+											"key": "newDate",
+											"value": "2026-12-04"
+										}
+									]
+								}
+							},
+							"status": "",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "content-length",
+									"value": "45"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 15 Oct 2026 20:21:35 GMT"
+								},
+								{
+									"key": "connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "A COMPLETED appointment cannot be rescheduled"
+						}
+					],
 					"event": [
 						{
 							"listen": "test",
@@ -6220,7 +7756,68 @@
 							}
 						}
 					},
-					"response": [],
+					"response": [
+						{
+							"name": "B2 Update does not change the status",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/appointments/update/{{tempAppointmentId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"appointments",
+										"update",
+										"{{tempAppointmentId}}"
+									]
+								},
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"appointmentDate\": \"2026-12-02\",\n    \"reason\": \"Postman flow test\",\n    \"status\": \"CANCELLED\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								}
+							},
+							"status": "",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "content-length",
+									"value": "32"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 15 Oct 2026 20:21:35 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "Appointment updated successfully"
+						}
+					],
 					"event": [
 						{
 							"listen": "test",
@@ -6256,7 +7853,53 @@
 							]
 						}
 					},
-					"response": [],
+					"response": [
+						{
+							"name": "B2 Status is still COMPLETED",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/appointments/{{tempAppointmentId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"appointments",
+										"{{tempAppointmentId}}"
+									]
+								}
+							},
+							"status": "",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json"
+								},
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 15 Oct 2026 20:21:35 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"appointmentDate\": \"2026-12-02\",\n  \"doctor\": {\n    \"dateOfBirth\": \"1978-03-25\",\n    \"firstName\": \"Patrick\",\n    \"id\": \"5e3f5ab8-eff1-46bc-8610-ddeaa5c77db5\",\n    \"lastName\": \"Niyonzima\",\n    \"office\": {\n      \"id\": \"35550fd0-c349-4ebf-8af4-e34c8e5519fa\",\n      \"name\": \"Cardiology\",\n      \"officeNumber\": 103\n    },\n    \"specializations\": [\n      {\n        \"id\": \"ddd00864-7b25-466b-8525-1eeb9b27242b\",\n        \"name\": \"Cardiology\"\n      }\n    ]\n  },\n  \"id\": \"aad297db-0308-404c-8e57-fb37d9716380\",\n  \"patient\": {\n    \"dateOfBirth\": \"1995-02-10\",\n    \"firstName\": \"Alice\",\n    \"id\": \"8aeee4f7-4d39-4d9f-b9a0-8689e788a2d4\",\n    \"lastName\": \"Uwase\",\n    \"ssNumber\": \"SS1001\"\n  },\n  \"reason\": \"Postman flow test\",\n  \"status\": \"COMPLETED\"\n}"
+						}
+					],
 					"event": [
 						{
 							"listen": "test",
@@ -6293,7 +7936,54 @@
 							]
 						}
 					},
-					"response": [],
+					"response": [
+						{
+							"name": "Delete the test appointment",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/appointments/delete/{{tempAppointmentId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"appointments",
+										"delete",
+										"{{tempAppointmentId}}"
+									]
+								}
+							},
+							"status": "",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "content-length",
+									"value": "32"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 15 Oct 2026 20:21:35 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "Appointment deleted successfully"
+						}
+					],
 					"event": [
 						{
 							"listen": "test",
@@ -6354,7 +8044,73 @@
 							}
 						}
 					},
-					"response": [],
+					"response": [
+						{
+							"name": "C1 Write a prescription",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/prescriptions/save?appointmentId={{appointmentId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"prescriptions",
+										"save"
+									],
+									"query": [
+										{
+											"key": "appointmentId",
+											"value": "{{appointmentId}}"
+										}
+									]
+								},
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"medicineName\": \"Test medicine\",\n    \"dosage\": \"1 tablet, 3 times a day\",\n    \"durationDays\": 7\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								}
+							},
+							"status": "",
+							"code": 201,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "content-length",
+									"value": "31"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 15 Oct 2026 20:21:41 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "Prescription saved successfully"
+						}
+					],
 					"event": [
 						{
 							"listen": "test",
@@ -6410,7 +8166,69 @@
 							}
 						}
 					},
-					"response": [],
+					"response": [
+						{
+							"name": "C1 Appointment is not COMPLETED",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/prescriptions/save?appointmentId={{notCompletedAppointmentId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"prescriptions",
+										"save"
+									],
+									"query": [
+										{
+											"key": "appointmentId",
+											"value": "{{notCompletedAppointmentId}}"
+										}
+									]
+								},
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"medicineName\": \"Test medicine\",\n    \"dosage\": \"1 tablet, 3 times a day\",\n    \"durationDays\": 7\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								}
+							},
+							"status": "",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "content-length",
+									"value": "49"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 15 Oct 2026 20:21:41 GMT"
+								},
+								{
+									"key": "connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "Prescriptions are only for COMPLETED appointments"
+						}
+					],
 					"event": [
 						{
 							"listen": "test",
@@ -6466,7 +8284,73 @@
 							}
 						}
 					},
-					"response": [],
+					"response": [
+						{
+							"name": "C1 Unknown appointment",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/prescriptions/save?appointmentId=00000000-0000-0000-0000-000000000000",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"prescriptions",
+										"save"
+									],
+									"query": [
+										{
+											"key": "appointmentId",
+											"value": "00000000-0000-0000-0000-000000000000"
+										}
+									]
+								},
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"medicineName\": \"Test medicine\",\n    \"dosage\": \"1 tablet, 3 times a day\",\n    \"durationDays\": 7\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								}
+							},
+							"status": "",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "content-length",
+									"value": "43"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 15 Oct 2026 20:21:41 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "The appointment with that id does not exist"
+						}
+					],
 					"event": [
 						{
 							"listen": "test",
@@ -6503,7 +8387,54 @@
 							]
 						}
 					},
-					"response": [],
+					"response": [
+						{
+							"name": "C2 Prescriptions of an appointment",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/prescriptions/appointment/{{appointmentId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"prescriptions",
+										"appointment",
+										"{{appointmentId}}"
+									]
+								}
+							},
+							"status": "",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json"
+								},
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 15 Oct 2026 20:21:41 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"appointment\": {\n      \"appointmentDate\": \"2026-10-05\",\n      \"doctor\": {\n        \"dateOfBirth\": \"1980-05-01\",\n        \"firstName\": \"Jean\",\n        \"id\": \"16157faf-0052-46d0-879d-3197b2ceb1ca\",\n        \"lastName\": \"Mugisha\",\n        \"office\": {\n          \"id\": \"ccbbcd58-be11-4e77-a259-07b1232e669c\",\n          \"name\": \"Cardiology\",\n          \"officeNumber\": 101\n        },\n        \"specializations\": [\n          {\n            \"id\": \"02b4fbeb-d92b-422b-bd60-f711f53cb8d7\",\n            \"name\": \"Pediatrics\"\n          },\n          {\n            \"id\": \"ddd00864-7b25-466b-8525-1eeb9b27242b\",\n            \"name\": \"Cardiology\"\n          }\n        ]\n      },\n      \"id\": \"1af453a9-fd97-496f-9fcc-2ee9dae14085\",\n      \"patient\": {\n        \"dateOfBirth\": \"1995-02-10\",\n        \"firstName\": \"Alice\",\n        \"id\": \"8aeee4f7-4d39-4d9f-b9a0-8689e788a2d4\",\n        \"lastName\": \"Uwase\",\n        \"ssNumber\": \"SS1001\"\n      },\n      \"reason\": \"Chest pain\",\n      \"status\": \"COMPLETED\"\n    },\n    \"dosage\": \"1 tablet, 3 times a day\",\n    \"durationDays\": 7,\n    \"id\": \"c5d6c41d-04db-4ca3-8c26-03c7313c393a\",\n    \"issuedDate\": \"2026-10-15\",\n    \"medicineName\": \"Amoxicillin\"\n  },\n  {\n    \"appointment\": {\n      \"appointmentDate\": \"2026-10-05\",\n      \"doctor\": {\n        \"dateOfBirth\": \"1980-05-01\",\n        \"firstName\": \"Jean\",\n        \"id\": \"16157faf-0052-46d0-879d-3197b2ceb1ca\",\n        \"lastName\": \"Mugisha\",\n        \"office\": {\n          \"id\": \"ccbbcd58-be11-4e77-a259-07b1232e669c\",\n          \"name\": \"Cardiology\",\n          \"officeNumber\": 101\n        },\n        \"specializations\": [\n          {\n            \"id\": \"02b4fbeb-d92b-422b-bd60-f711f53cb8d7\",\n            \"name\": \"Pediatrics\"\n          },\n          {\n            \"id\": \"ddd00864-7b25-466b-8525-1eeb9b27242b\",\n            \"name\": \"Cardiology\"\n          }\n        ]\n      },\n      \"id\": \"1af453a9-fd97-496f-9fcc-2ee9dae14085\",\n      \"patient\": {\n        \"dateOfBirth\": \"1995-02-10\",\n        \"firstName\": \"Alice\",\n        \"id\": \"8aeee4f7-4d39-4d9f-b9a0-8689e788a2d4\",\n        \"lastName\": \"Uwase\",\n        \"ssNumber\": \"SS1001\"\n      },\n      \"reason\": \"Chest pain\",\n      \"status\": \"COMPLETED\"\n    },\n    \"dosage\": \"2 tablets, when needed\",\n    \"durationDays\": 3,\n    \"id\": \"21f9cd6d-1cf1-4753-95cf-73f3f8cea6b6\",\n    \"issuedDate\": \"2026-10-15\",\n    \"medicineName\": \"Paracetamol\"\n  },\n  {\n    \"appointment\": {\n      \"appointmentDate\": \"2026-10-05\",\n      \"doctor\": {\n        \"dateOfBirth\": \"1980-05-01\",\n        \"firstName\": \"Jean\",\n        \"id\": \"16157faf-0052-46d0-879d-3197b2ceb1ca\",\n        \"lastName\": \"Mugisha\",\n        \"office\": {\n          \"id\": \"ccbbcd58-be11-4e77-a259-07b1232e669c\",\n          \"name\": \"Cardiology\",\n          \"officeNumber\": 101\n        },\n        \"specializations\": [\n          {\n            \"id\": \"02b4fbeb-d92b-422b-bd60-f711f53cb8d7\",\n            \"name\": \"Pediatrics\"\n          },\n          {\n            \"id\": \"ddd00864-7b25-466b-8525-1eeb9b27242b\",\n            \"name\": \"Cardiology\"\n          }\n        ]\n      },\n      \"id\": \"1af453a9-fd97-496f-9fcc-2ee9dae14085\",\n      \"patient\": {\n        \"dateOfBirth\": \"1995-02-10\",\n        \"firstName\": \"Alice\",\n        \"id\": \"8aeee4f7-4d39-4d9f-b9a0-8689e788a2d4\",\n        \"lastName\": \"Uwase\",\n        \"ssNumber\": \"SS1001\"\n      },\n      \"reason\": \"Chest pain\",\n      \"status\": \"COMPLETED\"\n    },\n    \"dosage\": \"1 tablet, 3 times a day\",\n    \"durationDays\": 7,\n    \"id\": \"b2684434-6877-47bc-bd2c-5d75cff15532\",\n    \"issuedDate\": \"2026-10-15\",\n    \"medicineName\": \"Test medicine\"\n  }\n]"
+						}
+					],
 					"event": [
 						{
 							"listen": "test",
@@ -6543,7 +8474,54 @@
 							]
 						}
 					},
-					"response": [],
+					"response": [
+						{
+							"name": "C2 Appointment without prescriptions",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/prescriptions/appointment/{{notCompletedAppointmentId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"prescriptions",
+										"appointment",
+										"{{notCompletedAppointmentId}}"
+									]
+								}
+							},
+							"status": "",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json"
+								},
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 15 Oct 2026 20:21:41 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[]"
+						}
+					],
 					"event": [
 						{
 							"listen": "test",
@@ -6580,7 +8558,54 @@
 							]
 						}
 					},
-					"response": [],
+					"response": [
+						{
+							"name": "C2 Unknown appointment",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/prescriptions/appointment/00000000-0000-0000-0000-000000000000",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"prescriptions",
+										"appointment",
+										"00000000-0000-0000-0000-000000000000"
+									]
+								}
+							},
+							"status": "",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "content-length",
+									"value": "43"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 15 Oct 2026 20:21:41 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "The appointment with that id does not exist"
+						}
+					],
 					"event": [
 						{
 							"listen": "test",
@@ -6617,7 +8642,54 @@
 							]
 						}
 					},
-					"response": [],
+					"response": [
+						{
+							"name": "C3 Prescription history of a patient",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/prescriptions/patient/SS1001",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"prescriptions",
+										"patient",
+										"SS1001"
+									]
+								}
+							},
+							"status": "",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json"
+								},
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 15 Oct 2026 20:21:41 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"appointment\": {\n      \"appointmentDate\": \"2026-10-05\",\n      \"doctor\": {\n        \"dateOfBirth\": \"1980-05-01\",\n        \"firstName\": \"Jean\",\n        \"id\": \"16157faf-0052-46d0-879d-3197b2ceb1ca\",\n        \"lastName\": \"Mugisha\",\n        \"office\": {\n          \"id\": \"ccbbcd58-be11-4e77-a259-07b1232e669c\",\n          \"name\": \"Cardiology\",\n          \"officeNumber\": 101\n        },\n        \"specializations\": [\n          {\n            \"id\": \"02b4fbeb-d92b-422b-bd60-f711f53cb8d7\",\n            \"name\": \"Pediatrics\"\n          },\n          {\n            \"id\": \"ddd00864-7b25-466b-8525-1eeb9b27242b\",\n            \"name\": \"Cardiology\"\n          }\n        ]\n      },\n      \"id\": \"1af453a9-fd97-496f-9fcc-2ee9dae14085\",\n      \"patient\": {\n        \"dateOfBirth\": \"1995-02-10\",\n        \"firstName\": \"Alice\",\n        \"id\": \"8aeee4f7-4d39-4d9f-b9a0-8689e788a2d4\",\n        \"lastName\": \"Uwase\",\n        \"ssNumber\": \"SS1001\"\n      },\n      \"reason\": \"Chest pain\",\n      \"status\": \"COMPLETED\"\n    },\n    \"dosage\": \"1 tablet, 3 times a day\",\n    \"durationDays\": 7,\n    \"id\": \"c5d6c41d-04db-4ca3-8c26-03c7313c393a\",\n    \"issuedDate\": \"2026-10-15\",\n    \"medicineName\": \"Amoxicillin\"\n  },\n  {\n    \"appointment\": {\n      \"appointmentDate\": \"2026-10-05\",\n      \"doctor\": {\n        \"dateOfBirth\": \"1980-05-01\",\n        \"firstName\": \"Jean\",\n        \"id\": \"16157faf-0052-46d0-879d-3197b2ceb1ca\",\n        \"lastName\": \"Mugisha\",\n        \"office\": {\n          \"id\": \"ccbbcd58-be11-4e77-a259-07b1232e669c\",\n          \"name\": \"Cardiology\",\n          \"officeNumber\": 101\n        },\n        \"specializations\": [\n          {\n            \"id\": \"02b4fbeb-d92b-422b-bd60-f711f53cb8d7\",\n            \"name\": \"Pediatrics\"\n          },\n          {\n            \"id\": \"ddd00864-7b25-466b-8525-1eeb9b27242b\",\n            \"name\": \"Cardiology\"\n          }\n        ]\n      },\n      \"id\": \"1af453a9-fd97-496f-9fcc-2ee9dae14085\",\n      \"patient\": {\n        \"dateOfBirth\": \"1995-02-10\",\n        \"firstName\": \"Alice\",\n        \"id\": \"8aeee4f7-4d39-4d9f-b9a0-8689e788a2d4\",\n        \"lastName\": \"Uwase\",\n        \"ssNumber\": \"SS1001\"\n      },\n      \"reason\": \"Chest pain\",\n      \"status\": \"COMPLETED\"\n    },\n    \"dosage\": \"2 tablets, when needed\",\n    \"durationDays\": 3,\n    \"id\": \"21f9cd6d-1cf1-4753-95cf-73f3f8cea6b6\",\n    \"issuedDate\": \"2026-10-15\",\n    \"medicineName\": \"Paracetamol\"\n  },\n  {\n    \"appointment\": {\n      \"appointmentDate\": \"2026-10-14\",\n      \"doctor\": {\n        \"dateOfBirth\": \"1985-09-12\",\n        \"firstName\": \"Claudine\",\n        \"id\": \"edc2c7d7-436c-4616-800f-1f01cddb0f01\",\n        \"lastName\": \"Mukamana\",\n        \"office\": {\n          \"id\": \"4b4e4157-95c7-47a8-8c41-87106f19a1c8\",\n          \"name\": \"Pediatrics\",\n          \"officeNumber\": 102\n        },\n        \"specializations\": [\n          {\n            \"id\": \"129f3e7d-1167-4ff2-8a5f-1894a35d2975\",\n            \"name\": \"Dermatology\"\n          }\n        ]\n      },\n      \"id\": \"4c61b215-c800-4c89-b7e3-c5368bed9f66\",\n      \"patient\": {\n        \"dateOfBirth\": \"1995-02-10\",\n        \"firstName\": \"Alice\",\n        \"id\": \"8aeee4f7-4d39-4d9f-b9a0-8689e788a2d4\",\n        \"lastName\": \"Uwase\",\n        \"ssNumber\": \"SS1001\"\n      },\n      \"reason\": \"Skin rash\",\n      \"status\": \"COMPLETED\"\n    },\n    \"dosage\": \"1 tablet, 3 times a day\",\n    \"durationDays\": 5,\n    \"id\": \"ae6b0eab-3382-481a-a2ac-8dbfa51c0296\",\n    \"issuedDate\": \"2026-10-15\",\n    \"medicineName\": \"Amoxicillin\"\n  },\n  {\n    \"appointment\": {\n      \"appointmentDate\": \"2026-10-14\",\n      \"doctor\": {\n        \"dateOfBirth\": \"1985-09-12\",\n        \"firstName\": \"Claudine\",\n        \"id\": \"edc2c7d7-436c-4616-800f-1f01cddb0f01\",\n        \"lastName\": \"Mukamana\",\n        \"office\": {\n          \"id\": \"4b4e4157-95c7-47a8-8c41-87106f19a1c8\",\n          \"name\": \"Pediatrics\",\n          \"officeNumber\": 102\n        },\n        \"specializations\": [\n          {\n            \"id\": \"129f3e7d-1167-4ff2-8a5f-1894a35d2975\",\n            \"name\": \"Dermatology\"\n          }\n        ]\n      },\n      \"id\": \"4c61b215-c800-4c89-b7e3-c5368bed9f66\",\n      \"patient\": {\n        \"dateOfBirth\": \"1995-02-10\",\n        \"firstName\": \"Alice\",\n        \"id\": \"8aeee4f7-4d39-4d9f-b9a0-8689e788a2d4\",\n        \"lastName\": \"Uwase\",\n        \"ssNumber\": \"SS1001\"\n      },\n      \"reason\": \"Skin rash\",\n      \"status\": \"COMPLETED\"\n    },\n    \"dosage\": \"1 tablet, twice a day\",\n    \"durationDays\": 4,\n    \"id\": \"e8eba87f-3b9d-40d2-912f-6bba0ea67374\",\n    \"issuedDate\": \"2026-10-15\",\n    \"medicineName\": \"Ibuprofen\"\n  },\n  {\n    \"appointment\": {\n      \"appointmentDate\": \"2026-10-05\",\n      \"doctor\": {\n        \"dateOfBirth\": \"1980-05-01\",\n        \"firstName\": \"Jean\",\n        \"id\": \"16157faf-0052-46d0-879d-3197b2ceb1ca\",\n        \"lastName\": \"Mugisha\",\n        \"office\": {\n          \"id\": \"ccbbcd58-be11-4e77-a259-07b1232e669c\",\n          \"name\": \"Cardiology\",\n          \"officeNumber\": 101\n        },\n        \"specializations\": [\n          {\n            \"id\": \"02b4fbeb-d92b-422b-bd60-f711f53cb8d7\",\n            \"name\": \"Pediatrics\"\n          },\n          {\n            \"id\": \"ddd00864-7b25-466b-8525-1eeb9b27242b\",\n            \"name\": \"Cardiology\"\n          }\n        ]\n      },\n      \"id\": \"1af453a9-fd97-496f-9fcc-2ee9dae14085\",\n      \"patient\": {\n        \"dateOfBirth\": \"1995-02-10\",\n        \"firstName\": \"Alice\",\n        \"id\": \"8aeee4f7-4d39-4d9f-b9a0-8689e788a2d4\",\n        \"lastName\": \"Uwase\",\n        \"ssNumber\": \"SS1001\"\n      },\n      \"reason\": \"Chest pain\",\n      \"status\": \"COMPLETED\"\n    },\n    \"dosage\": \"1 tablet, 3 times a day\",\n    \"durationDays\": 7,\n    \"id\": \"b2684434-6877-47bc-bd2c-5d75cff15532\",\n    \"issuedDate\": \"2026-10-15\",\n    \"medicineName\": \"Test medicine\"\n  }\n]"
+						}
+					],
 					"event": [
 						{
 							"listen": "test",
@@ -6656,7 +8728,54 @@
 							]
 						}
 					},
-					"response": [],
+					"response": [
+						{
+							"name": "C3 Patient with no prescriptions",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/prescriptions/patient/SS9999",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"prescriptions",
+										"patient",
+										"SS9999"
+									]
+								}
+							},
+							"status": "",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json"
+								},
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 15 Oct 2026 20:21:42 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[]"
+						}
+					],
 					"event": [
 						{
 							"listen": "test",
@@ -6707,7 +8826,68 @@
 							}
 						}
 					},
-					"response": [],
+					"response": [
+						{
+							"name": "C4 Update a prescription",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/prescriptions/update/{{tempPrescriptionId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"prescriptions",
+										"update",
+										"{{tempPrescriptionId}}"
+									]
+								},
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"medicineName\": \"Test medicine\",\n    \"dosage\": \"2 tablets, twice a day\",\n    \"durationDays\": 5\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								}
+							},
+							"status": "",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "content-length",
+									"value": "33"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 15 Oct 2026 20:21:42 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "Prescription updated successfully"
+						}
+					],
 					"event": [
 						{
 							"listen": "test",
@@ -6758,7 +8938,68 @@
 							}
 						}
 					},
-					"response": [],
+					"response": [
+						{
+							"name": "C4 Update an unknown prescription",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/prescriptions/update/00000000-0000-0000-0000-000000000000",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"prescriptions",
+										"update",
+										"00000000-0000-0000-0000-000000000000"
+									]
+								},
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"medicineName\": \"Test medicine\",\n    \"dosage\": \"1 tablet, 3 times a day\",\n    \"durationDays\": 7\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								}
+							},
+							"status": "",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "content-length",
+									"value": "44"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 15 Oct 2026 20:21:42 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "The prescription with that id does not exist"
+						}
+					],
 					"event": [
 						{
 							"listen": "test",
@@ -6795,7 +9036,54 @@
 							]
 						}
 					},
-					"response": [],
+					"response": [
+						{
+							"name": "C4 Appointment with prescriptions cannot be deleted",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/appointments/delete/{{appointmentId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"appointments",
+										"delete",
+										"{{appointmentId}}"
+									]
+								}
+							},
+							"status": "",
+							"code": 409,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "content-length",
+									"value": "53"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 15 Oct 2026 20:21:42 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "That appointment has prescriptions, delete them first"
+						}
+					],
 					"event": [
 						{
 							"listen": "test",
@@ -6832,7 +9120,54 @@
 							]
 						}
 					},
-					"response": [],
+					"response": [
+						{
+							"name": "C4 Delete a prescription",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/prescriptions/delete/{{tempPrescriptionId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"prescriptions",
+										"delete",
+										"{{tempPrescriptionId}}"
+									]
+								}
+							},
+							"status": "",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "content-length",
+									"value": "33"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 15 Oct 2026 20:21:42 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "Prescription deleted successfully"
+						}
+					],
 					"event": [
 						{
 							"listen": "test",
@@ -6869,7 +9204,54 @@
 							]
 						}
 					},
-					"response": [],
+					"response": [
+						{
+							"name": "C4 Delete an unknown prescription",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/prescriptions/delete/00000000-0000-0000-0000-000000000000",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"prescriptions",
+										"delete",
+										"00000000-0000-0000-0000-000000000000"
+									]
+								}
+							},
+							"status": "",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "content-length",
+									"value": "44"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 15 Oct 2026 20:21:42 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "The prescription with that id does not exist"
+						}
+					],
 					"event": [
 						{
 							"listen": "test",
@@ -6917,7 +9299,60 @@
 							]
 						}
 					},
-					"response": [],
+					"response": [
+						{
+							"name": "D1 Doctor agenda for a day",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/doctors/{{doctorId}}/agenda?date=2026-10-20",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"doctors",
+										"{{doctorId}}",
+										"agenda"
+									],
+									"query": [
+										{
+											"key": "date",
+											"value": "2026-10-20"
+										}
+									]
+								}
+							},
+							"status": "",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json"
+								},
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 15 Oct 2026 20:21:48 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"appointmentDate\": \"2026-10-20\",\n    \"doctor\": {\n      \"dateOfBirth\": \"1980-05-01\",\n      \"firstName\": \"Jean\",\n      \"id\": \"16157faf-0052-46d0-879d-3197b2ceb1ca\",\n      \"lastName\": \"Mugisha\",\n      \"office\": {\n        \"id\": \"ccbbcd58-be11-4e77-a259-07b1232e669c\",\n        \"name\": \"Cardiology\",\n        \"officeNumber\": 101\n      },\n      \"specializations\": [\n        {\n          \"id\": \"02b4fbeb-d92b-422b-bd60-f711f53cb8d7\",\n          \"name\": \"Pediatrics\"\n        },\n        {\n          \"id\": \"ddd00864-7b25-466b-8525-1eeb9b27242b\",\n          \"name\": \"Cardiology\"\n        }\n      ]\n    },\n    \"id\": \"c4d2d138-2fc1-41a4-bbc5-a63c03447df4\",\n    \"patient\": {\n      \"dateOfBirth\": \"1995-02-10\",\n      \"firstName\": \"Alice\",\n      \"id\": \"8aeee4f7-4d39-4d9f-b9a0-8689e788a2d4\",\n      \"lastName\": \"Uwase\",\n      \"ssNumber\": \"SS1001\"\n    },\n    \"reason\": \"Heart check-up\",\n    \"status\": \"SCHEDULED\"\n  }\n]"
+						}
+					],
 					"event": [
 						{
 							"listen": "test",
@@ -6965,7 +9400,60 @@
 							]
 						}
 					},
-					"response": [],
+					"response": [
+						{
+							"name": "D1 Unknown doctor",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/doctors/00000000-0000-0000-0000-000000000000/agenda?date=2026-10-20",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"doctors",
+										"00000000-0000-0000-0000-000000000000",
+										"agenda"
+									],
+									"query": [
+										{
+											"key": "date",
+											"value": "2026-10-20"
+										}
+									]
+								}
+							},
+							"status": "",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "content-length",
+									"value": "38"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 15 Oct 2026 20:21:48 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "The doctor with that id does not exist"
+						}
+					],
 					"event": [
 						{
 							"listen": "test",
@@ -7002,7 +9490,54 @@
 							]
 						}
 					},
-					"response": [],
+					"response": [
+						{
+							"name": "D2 Upcoming appointments of a patient",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/patients/SS1001/upcoming",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"patients",
+										"SS1001",
+										"upcoming"
+									]
+								}
+							},
+							"status": "",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json"
+								},
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 15 Oct 2026 20:21:48 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"appointmentDate\": \"2026-10-20\",\n    \"doctor\": {\n      \"dateOfBirth\": \"1980-05-01\",\n      \"firstName\": \"Jean\",\n      \"id\": \"16157faf-0052-46d0-879d-3197b2ceb1ca\",\n      \"lastName\": \"Mugisha\",\n      \"office\": {\n        \"id\": \"ccbbcd58-be11-4e77-a259-07b1232e669c\",\n        \"name\": \"Cardiology\",\n        \"officeNumber\": 101\n      },\n      \"specializations\": [\n        {\n          \"id\": \"02b4fbeb-d92b-422b-bd60-f711f53cb8d7\",\n          \"name\": \"Pediatrics\"\n        },\n        {\n          \"id\": \"ddd00864-7b25-466b-8525-1eeb9b27242b\",\n          \"name\": \"Cardiology\"\n        }\n      ]\n    },\n    \"id\": \"c4d2d138-2fc1-41a4-bbc5-a63c03447df4\",\n    \"patient\": {\n      \"dateOfBirth\": \"1995-02-10\",\n      \"firstName\": \"Alice\",\n      \"id\": \"8aeee4f7-4d39-4d9f-b9a0-8689e788a2d4\",\n      \"lastName\": \"Uwase\",\n      \"ssNumber\": \"SS1001\"\n    },\n    \"reason\": \"Heart check-up\",\n    \"status\": \"SCHEDULED\"\n  },\n  {\n    \"appointmentDate\": \"2026-10-22\",\n    \"doctor\": {\n      \"dateOfBirth\": \"1985-09-12\",\n      \"firstName\": \"Claudine\",\n      \"id\": \"edc2c7d7-436c-4616-800f-1f01cddb0f01\",\n      \"lastName\": \"Mukamana\",\n      \"office\": {\n        \"id\": \"4b4e4157-95c7-47a8-8c41-87106f19a1c8\",\n        \"name\": \"Pediatrics\",\n        \"officeNumber\": 102\n      },\n      \"specializations\": [\n        {\n          \"id\": \"129f3e7d-1167-4ff2-8a5f-1894a35d2975\",\n          \"name\": \"Dermatology\"\n        }\n      ]\n    },\n    \"id\": \"4ef90ad8-b272-4065-9a9a-36af49ffc98a\",\n    \"patient\": {\n      \"dateOfBirth\": \"1995-02-10\",\n      \"firstName\": \"Alice\",\n      \"id\": \"8aeee4f7-4d39-4d9f-b9a0-8689e788a2d4\",\n      \"lastName\": \"Uwase\",\n      \"ssNumber\": \"SS1001\"\n    },\n    \"reason\": \"Skin rash follow-up\",\n    \"status\": \"CONFIRMED\"\n  },\n  {\n    \"appointmentDate\": \"2026-10-30\",\n    \"doctor\": {\n      \"dateOfBirth\": \"1978-03-25\",\n      \"firstName\": \"Patrick\",\n      \"id\": \"5e3f5ab8-eff1-46bc-8610-ddeaa5c77db5\",\n      \"lastName\": \"Niyonzima\",\n      \"office\": {\n        \"id\": \"35550fd0-c349-4ebf-8af4-e34c8e5519fa\",\n        \"name\": \"Cardiology\",\n        \"officeNumber\": 103\n      },\n      \"specializations\": [\n        {\n          \"id\": \"ddd00864-7b25-466b-8525-1eeb9b27242b\",\n          \"name\": \"Cardiology\"\n        }\n      ]\n    },\n    \"id\": \"ca34cf46-2c0a-45e4-a61a-5949bb7cac7b\",\n    \"patient\": {\n      \"dateOfBirth\": \"1995-02-10\",\n      \"firstName\": \"Alice\",\n      \"id\": \"8aeee4f7-4d39-4d9f-b9a0-8689e788a2d4\",\n      \"lastName\": \"Uwase\",\n      \"ssNumber\": \"SS1001\"\n    },\n    \"reason\": \"Headache consultation\",\n    \"status\": \"SCHEDULED\"\n  },\n  {\n    \"appointmentDate\": \"2026-11-10\",\n    \"doctor\": {\n      \"dateOfBirth\": \"1985-09-12\",\n      \"firstName\": \"Claudine\",\n      \"id\": \"edc2c7d7-436c-4616-800f-1f01cddb0f01\",\n      \"lastName\": \"Mukamana\",\n      \"office\": {\n        \"id\": \"4b4e4157-95c7-47a8-8c41-87106f19a1c8\",\n        \"name\": \"Pediatrics\",\n        \"officeNumber\": 102\n      },\n      \"specializations\": [\n        {\n          \"id\": \"129f3e7d-1167-4ff2-8a5f-1894a35d2975\",\n          \"name\": \"Dermatology\"\n        }\n      ]\n    },\n    \"id\": \"9fb788e8-0df1-4585-896e-f59db4874cbb\",\n    \"patient\": {\n      \"dateOfBirth\": \"1995-02-10\",\n      \"firstName\": \"Alice\",\n      \"id\": \"8aeee4f7-4d39-4d9f-b9a0-8689e788a2d4\",\n      \"lastName\": \"Uwase\",\n      \"ssNumber\": \"SS1001\"\n    },\n    \"reason\": \"Skin check\",\n    \"status\": \"CONFIRMED\"\n  }\n]"
+						}
+					],
 					"event": [
 						{
 							"listen": "test",
@@ -7047,7 +9582,54 @@
 							]
 						}
 					},
-					"response": [],
+					"response": [
+						{
+							"name": "D2 Unknown patient",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/patients/SS9999/upcoming",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"patients",
+										"SS9999",
+										"upcoming"
+									]
+								}
+							},
+							"status": "",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "content-length",
+									"value": "46"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 15 Oct 2026 20:21:48 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "That patient with that ssnumber does not exist"
+						}
+					],
 					"event": [
 						{
 							"listen": "test",
@@ -7089,7 +9671,59 @@
 							]
 						}
 					},
-					"response": [],
+					"response": [
+						{
+							"name": "D3 Search doctors by name",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/doctors/search?name=gis",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"doctors",
+										"search"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "gis"
+										}
+									]
+								}
+							},
+							"status": "",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json"
+								},
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 15 Oct 2026 20:21:48 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"dateOfBirth\": \"1980-05-01\",\n    \"firstName\": \"Jean\",\n    \"id\": \"16157faf-0052-46d0-879d-3197b2ceb1ca\",\n    \"lastName\": \"Mugisha\",\n    \"office\": {\n      \"id\": \"ccbbcd58-be11-4e77-a259-07b1232e669c\",\n      \"name\": \"Cardiology\",\n      \"officeNumber\": 101\n    },\n    \"specializations\": [\n      {\n        \"id\": \"02b4fbeb-d92b-422b-bd60-f711f53cb8d7\",\n        \"name\": \"Pediatrics\"\n      },\n      {\n        \"id\": \"ddd00864-7b25-466b-8525-1eeb9b27242b\",\n        \"name\": \"Cardiology\"\n      }\n    ]\n  }\n]"
+						}
+					],
 					"event": [
 						{
 							"listen": "test",
@@ -7132,7 +9766,59 @@
 							]
 						}
 					},
-					"response": [],
+					"response": [
+						{
+							"name": "D3 Search ignores case and sorts by last name",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/doctors/search?name=MU",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"doctors",
+										"search"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "MU"
+										}
+									]
+								}
+							},
+							"status": "",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json"
+								},
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 15 Oct 2026 20:21:49 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"dateOfBirth\": \"1980-05-01\",\n    \"firstName\": \"Jean\",\n    \"id\": \"16157faf-0052-46d0-879d-3197b2ceb1ca\",\n    \"lastName\": \"Mugisha\",\n    \"office\": {\n      \"id\": \"ccbbcd58-be11-4e77-a259-07b1232e669c\",\n      \"name\": \"Cardiology\",\n      \"officeNumber\": 101\n    },\n    \"specializations\": [\n      {\n        \"id\": \"02b4fbeb-d92b-422b-bd60-f711f53cb8d7\",\n        \"name\": \"Pediatrics\"\n      },\n      {\n        \"id\": \"ddd00864-7b25-466b-8525-1eeb9b27242b\",\n        \"name\": \"Cardiology\"\n      }\n    ]\n  },\n  {\n    \"dateOfBirth\": \"1985-09-12\",\n    \"firstName\": \"Claudine\",\n    \"id\": \"edc2c7d7-436c-4616-800f-1f01cddb0f01\",\n    \"lastName\": \"Mukamana\",\n    \"office\": {\n      \"id\": \"4b4e4157-95c7-47a8-8c41-87106f19a1c8\",\n      \"name\": \"Pediatrics\",\n      \"officeNumber\": 102\n    },\n    \"specializations\": [\n      {\n        \"id\": \"129f3e7d-1167-4ff2-8a5f-1894a35d2975\",\n        \"name\": \"Dermatology\"\n      }\n    ]\n  }\n]"
+						}
+					],
 					"event": [
 						{
 							"listen": "test",
@@ -7176,7 +9862,59 @@
 							]
 						}
 					},
-					"response": [],
+					"response": [
+						{
+							"name": "D3 No doctor matches",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/doctors/search?name=zzz",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"doctors",
+										"search"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "zzz"
+										}
+									]
+								}
+							},
+							"status": "",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json"
+								},
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 15 Oct 2026 20:21:49 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[]"
+						}
+					],
 					"event": [
 						{
 							"listen": "test",
@@ -7212,7 +9950,53 @@
 							]
 						}
 					},
-					"response": [],
+					"response": [
+						{
+							"name": "D4 Clinic dashboard",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/dashboard/summary",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"dashboard",
+										"summary"
+									]
+								}
+							},
+							"status": "",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json"
+								},
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 15 Oct 2026 20:21:49 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"patients\": 5,\n  \"doctors\": 3,\n  \"freeOffices\": 1,\n  \"appointmentsToday\": 0,\n  \"scheduled\": 3,\n  \"prescriptions\": 6\n}"
+						}
+					],
 					"event": [
 						{
 							"listen": "test",
@@ -7256,7 +10040,54 @@
 							]
 						}
 					},
-					"response": [],
+					"response": [
+						{
+							"name": "Bonus Most prescribed medicines",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/prescriptions/stats/top-medicines",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"prescriptions",
+										"stats",
+										"top-medicines"
+									]
+								}
+							},
+							"status": "",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json"
+								},
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 15 Oct 2026 20:21:54 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  [\n    \"Amoxicillin\",\n    3\n  ],\n  [\n    \"Paracetamol\",\n    2\n  ],\n  [\n    \"Ibuprofen\",\n    1\n  ]\n]"
+						}
+					],
 					"event": [
 						{
 							"listen": "test",
@@ -7307,7 +10138,63 @@
 							]
 						}
 					},
-					"response": [],
+					"response": [
+						{
+							"name": "Bonus Doctor workload in October",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/doctors/workload?start=2026-10-01&end=2026-10-31",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"doctors",
+										"workload"
+									],
+									"query": [
+										{
+											"key": "start",
+											"value": "2026-10-01"
+										},
+										{
+											"key": "end",
+											"value": "2026-10-31"
+										}
+									]
+								}
+							},
+							"status": "",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json"
+								},
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 15 Oct 2026 20:21:54 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  [\n    \"Jean\",\n    \"Mugisha\",\n    1\n  ],\n  [\n    \"Claudine\",\n    \"Mukamana\",\n    1\n  ]\n]"
+						}
+					],
 					"event": [
 						{
 							"listen": "test",
@@ -7358,7 +10245,63 @@
 							]
 						}
 					},
-					"response": [],
+					"response": [
+						{
+							"name": "Bonus Both dates are included",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/doctors/workload?start=2026-10-05&end=2026-10-05",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"doctors",
+										"workload"
+									],
+									"query": [
+										{
+											"key": "start",
+											"value": "2026-10-05"
+										},
+										{
+											"key": "end",
+											"value": "2026-10-05"
+										}
+									]
+								}
+							},
+							"status": "",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json"
+								},
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 15 Oct 2026 20:21:54 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  [\n    \"Jean\",\n    \"Mugisha\",\n    1\n  ]\n]"
+						}
+					],
 					"event": [
 						{
 							"listen": "test",
@@ -7404,7 +10347,63 @@
 							]
 						}
 					},
-					"response": [],
+					"response": [
+						{
+							"name": "Bonus Workload with no completed appointments",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/doctors/workload?start=2027-01-01&end=2027-01-31",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"doctors",
+										"workload"
+									],
+									"query": [
+										{
+											"key": "start",
+											"value": "2027-01-01"
+										},
+										{
+											"key": "end",
+											"value": "2027-01-31"
+										}
+									]
+								}
+							},
+							"status": "",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json"
+								},
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "date",
+									"value": "Thu, 15 Oct 2026 20:21:54 GMT"
+								},
+								{
+									"key": "keep-alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[]"
+						}
+					],
 					"event": [
 						{
 							"listen": "test",
