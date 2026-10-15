@@ -1,0 +1,15 @@
+$kind: http-request
+url: "{{baseUrl}}/api/prescriptions/delete/00000000-0000-0000-0000-000000000000"
+method: DELETE
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status code is 404", function () {
+          pm.response.to.have.status(404);
+      });
+
+      pm.test("Message", function () {
+          pm.expect(pm.response.text()).to.eql("The prescription with that id does not exist");
+      });
+    language: text/javascript
+order: 13000

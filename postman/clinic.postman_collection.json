@@ -6313,6 +6313,582 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Part 2 C - Prescriptions",
+			"item": [
+				{
+					"name": "C1 Write a prescription",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/prescriptions/save?appointmentId={{appointmentId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"prescriptions",
+								"save"
+							],
+							"query": [
+								{
+									"key": "appointmentId",
+									"value": "{{appointmentId}}"
+								}
+							]
+						},
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"medicineName\": \"Test medicine\",\n    \"dosage\": \"1 tablet, 3 times a day\",\n    \"durationDays\": 7\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					},
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"pm.test(\"Message\", function () {",
+									"    pm.expect(pm.response.text()).to.eql(\"Prescription saved successfully\");",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "C1 Appointment is not COMPLETED",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/prescriptions/save?appointmentId={{notCompletedAppointmentId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"prescriptions",
+								"save"
+							],
+							"query": [
+								{
+									"key": "appointmentId",
+									"value": "{{notCompletedAppointmentId}}"
+								}
+							]
+						},
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"medicineName\": \"Test medicine\",\n    \"dosage\": \"1 tablet, 3 times a day\",\n    \"durationDays\": 7\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					},
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Message\", function () {",
+									"    pm.expect(pm.response.text()).to.eql(\"Prescriptions are only for COMPLETED appointments\");",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "C1 Unknown appointment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/prescriptions/save?appointmentId=00000000-0000-0000-0000-000000000000",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"prescriptions",
+								"save"
+							],
+							"query": [
+								{
+									"key": "appointmentId",
+									"value": "00000000-0000-0000-0000-000000000000"
+								}
+							]
+						},
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"medicineName\": \"Test medicine\",\n    \"dosage\": \"1 tablet, 3 times a day\",\n    \"durationDays\": 7\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					},
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"",
+									"pm.test(\"Message\", function () {",
+									"    pm.expect(pm.response.text()).to.eql(\"The appointment with that id does not exist\");",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "C2 Prescriptions of an appointment",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/prescriptions/appointment/{{appointmentId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"prescriptions",
+								"appointment",
+								"{{appointmentId}}"
+							]
+						}
+					},
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"The new prescription is in the list\", function () {",
+									"    const prescription = pm.response.json().find(p => p.medicineName === \"Test medicine\");",
+									"    pm.expect(prescription.dosage).to.eql(\"1 tablet, 3 times a day\");",
+									"    pm.expect(prescription.issuedDate).to.eql(new Date().toISOString().slice(0, 10));",
+									"    pm.collectionVariables.set(\"tempPrescriptionId\", prescription.id);",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "C2 Appointment without prescriptions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/prescriptions/appointment/{{notCompletedAppointmentId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"prescriptions",
+								"appointment",
+								"{{notCompletedAppointmentId}}"
+							]
+						}
+					},
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Empty list\", function () {",
+									"    pm.expect(pm.response.json()).to.eql([]);",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "C2 Unknown appointment",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/prescriptions/appointment/00000000-0000-0000-0000-000000000000",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"prescriptions",
+								"appointment",
+								"00000000-0000-0000-0000-000000000000"
+							]
+						}
+					},
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"",
+									"pm.test(\"Message\", function () {",
+									"    pm.expect(pm.response.text()).to.eql(\"The appointment with that id does not exist\");",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "C3 Prescription history of a patient",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/prescriptions/patient/SS1001",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"prescriptions",
+								"patient",
+								"SS1001"
+							]
+						}
+					},
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Newest issued date first\", function () {",
+									"    const dates = pm.response.json().map(p => p.issuedDate);",
+									"    pm.expect(dates.length).to.be.above(0);",
+									"    pm.expect(dates).to.eql([...dates].sort().reverse());",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "C3 Patient with no prescriptions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/prescriptions/patient/SS9999",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"prescriptions",
+								"patient",
+								"SS9999"
+							]
+						}
+					},
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Empty list\", function () {",
+									"    pm.expect(pm.response.json()).to.eql([]);",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "C4 Update a prescription",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/prescriptions/update/{{tempPrescriptionId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"prescriptions",
+								"update",
+								"{{tempPrescriptionId}}"
+							]
+						},
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"medicineName\": \"Test medicine\",\n    \"dosage\": \"2 tablets, twice a day\",\n    \"durationDays\": 5\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					},
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Message\", function () {",
+									"    pm.expect(pm.response.text()).to.eql(\"Prescription updated successfully\");",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "C4 Update an unknown prescription",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/prescriptions/update/00000000-0000-0000-0000-000000000000",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"prescriptions",
+								"update",
+								"00000000-0000-0000-0000-000000000000"
+							]
+						},
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"medicineName\": \"Test medicine\",\n    \"dosage\": \"1 tablet, 3 times a day\",\n    \"durationDays\": 7\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					},
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"",
+									"pm.test(\"Message\", function () {",
+									"    pm.expect(pm.response.text()).to.eql(\"The prescription with that id does not exist\");",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "C4 Appointment with prescriptions cannot be deleted",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/appointments/delete/{{appointmentId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"appointments",
+								"delete",
+								"{{appointmentId}}"
+							]
+						}
+					},
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 409\", function () {",
+									"    pm.response.to.have.status(409);",
+									"});",
+									"",
+									"pm.test(\"Message\", function () {",
+									"    pm.expect(pm.response.text()).to.eql(\"That appointment has prescriptions, delete them first\");",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "C4 Delete a prescription",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/prescriptions/delete/{{tempPrescriptionId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"prescriptions",
+								"delete",
+								"{{tempPrescriptionId}}"
+							]
+						}
+					},
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Message\", function () {",
+									"    pm.expect(pm.response.text()).to.eql(\"Prescription deleted successfully\");",
+									"});"
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "C4 Delete an unknown prescription",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/prescriptions/delete/00000000-0000-0000-0000-000000000000",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"prescriptions",
+								"delete",
+								"00000000-0000-0000-0000-000000000000"
+							]
+						}
+					},
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"",
+									"pm.test(\"Message\", function () {",
+									"    pm.expect(pm.response.text()).to.eql(\"The prescription with that id does not exist\");",
+									"});"
+								]
+							}
+						}
+					]
+				}
+			]
 		}
 	],
 	"variable": [
@@ -6334,6 +6910,10 @@
 		},
 		{
 			"key": "tempAppointmentId",
+			"value": ""
+		},
+		{
+			"key": "tempPrescriptionId",
 			"value": ""
 		}
 	]

@@ -1,0 +1,15 @@
+$kind: http-request
+url: "{{baseUrl}}/api/prescriptions/patient/SS9999"
+method: GET
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status code is 200", function () {
+          pm.response.to.have.status(200);
+      });
+
+      pm.test("Empty list", function () {
+          pm.expect(pm.response.json()).to.eql([]);
+      });
+    language: text/javascript
+order: 8000

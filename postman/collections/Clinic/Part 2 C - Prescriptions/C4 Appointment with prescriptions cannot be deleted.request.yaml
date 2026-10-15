@@ -1,0 +1,15 @@
+$kind: http-request
+url: "{{baseUrl}}/api/appointments/delete/{{appointmentId}}"
+method: DELETE
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status code is 409", function () {
+          pm.response.to.have.status(409);
+      });
+
+      pm.test("Message", function () {
+          pm.expect(pm.response.text()).to.eql("That appointment has prescriptions, delete them first");
+      });
+    language: text/javascript
+order: 11000

@@ -1,0 +1,25 @@
+$kind: http-request
+url: "{{baseUrl}}/api/prescriptions/save?appointmentId=00000000-0000-0000-0000-000000000000"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+        "medicineName": "Test medicine",
+        "dosage": "1 tablet, 3 times a day",
+        "durationDays": 7
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status code is 404", function () {
+          pm.response.to.have.status(404);
+      });
+
+      pm.test("Message", function () {
+          pm.expect(pm.response.text()).to.eql("The appointment with that id does not exist");
+      });
+    language: text/javascript
+order: 3000
