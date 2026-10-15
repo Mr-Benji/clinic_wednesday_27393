@@ -39,6 +39,12 @@ public interface AppointmentRepository extends JpaRepository<Appointment, UUID> 
     List<Appointment> findByPatientAndAppointmentDateGreaterThanEqualAndStatusInOrderByAppointmentDateAsc(
             Patient patient, LocalDate appointmentDate, List<AppointmentStatus> statuses);
 
+    // D4: appointments on the given date
+    long countByAppointmentDate(LocalDate appointmentDate);
+
+    // D4: appointments in the given status
+    long countByStatus(AppointmentStatus status);
+
     // C1: number of appointments for each status
     @Query("SELECT a.status, COUNT(a) FROM Appointment a GROUP BY a.status")
     List<Object[]> countAppointmentsByStatus();
